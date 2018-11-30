@@ -1,22 +1,11 @@
 import { cube } from './math.js'; 
 
 
-if (process.env.NODE_ENV !== 'production') {
-    alert('Looks like we are in development mode!');
-}
-else
+if (process.env.NODE_ENV === 'production') 
     alert('在生产环境')
+else
+    alert('在开发环境1');
 
-function component() {
-var element = document.createElement('pre');
+ console.log(11111);
  
-// lodash 是由当前 script 脚本 import 导入进来的 
-element.innerHTML = [
-    'Hello webpack!',
-    '5 cubed is equaafsl to ' + cube(5)
-].join('\n\n');
-
-return element;
-}
-
-document.body.appendChild(component());
+ 

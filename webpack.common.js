@@ -1,15 +1,10 @@
- const path = require('path');
- const CleanWebpackPlugin = require('clean-webpack-plugin'); 
-
+ const path = require('path');    
+ const CleanWebpackPlugin = require('clean-webpack-plugin');   //目标生成的目录  先清空再生成文件 
  module.exports = {
-   entry: {
-     app: './src/index.js'
-   },
-   plugins: [
-     new CleanWebpackPlugin(['dist']), 
-   ],
-   output: {
-     filename: '[name].bundle.js',
-     path: path.resolve(__dirname, 'dist')
-   }
+      
+  plugins: [
+    new CleanWebpackPlugin(['dist']),  
+    
+  ],
+   
  };

@@ -1,2 +1,5 @@
 
-body {background:#ddd url('./fengxian.png') no-repeat center center;}
+body {
+    background:#ddd url('./fengxian.png') no-repeat center center;
+    color:#ddd;
+}
