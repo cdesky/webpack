@@ -16,8 +16,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
    mode: 'development',
    devtool: 'cheap-module-source-map',
    devServer: {
-    contentBase: path.join(__dirname, './dist')
+    contentBase: path.join(__dirname, './dist'),
+    historyApiFallback: true
   },
+  resolve: { //路径 配置别名
+    alias: {
+        pages: path.join(__dirname, 'src/pages'),
+        component: path.join(__dirname, 'src/component'),
+        router: path.join(__dirname, 'src/router')
+    }
+},
    module:{
     rules:[ 
         {
