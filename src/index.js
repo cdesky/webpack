@@ -1,11 +1,13 @@
-import { cube } from './math.js'; 
+// import { cube } from './math.js'; 
+import React from 'react';
+import ReactDom from 'react-dom';
+import Hellow from './component/Hellow/Hellow';
+import getRouter from './router/router';
 
-
-if (process.env.NODE_ENV === 'production') 
-    alert('在生产环境')
-else
-    alert('在开发环境1');
-
- console.log(11111);
+ 
+ReactDom.render(
+    getRouter(), document.getElementById('app')
+);
+ 
  
  

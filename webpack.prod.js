@@ -13,8 +13,57 @@ module.exports = merge(common, {
    filename: '[name].bundle.js',
    path: path.resolve(__dirname, 'dist'),
    publicPath:'./', 
- },
-  
+ }, 
+ devServer: {
+  contentBase: path.join(__dirname, './dist')
+},
+  module:{
+    rules:[ 
+        {
+          test:/\.(css|less)$/,
+          include: path.resolve(__dirname, 'src'),
+          use:[
+              'style-loader',
+              'css-loader'
+          ]
+        },
+        {
+          test: /\.(js|jsx)$/,
+          include: path.resolve(__dirname, 'src'),
+          use: [
+              'babel-loader'
+          ]
+        },
+        {
+          test:/\.(png|svg|jpg|gif|jpeg)$/,
+          include: path.resolve(__dirname, 'src'),
+          use:[
+              'file-loader'
+          ]
+        },
+        {
+          test:/\.(woff|woff2|eot|ttf|otf)$/,
+          include: path.resolve(__dirname, 'src'),
+          use:[
+              'file-loader'
+          ]
+        },
+        {
+            test:/\.(csv|tsv)$/,
+            include: path.resolve(__dirname, 'src'),
+            use:[
+              'csv-loader'
+            ]
+        },
+        {
+          test:/\.xml$/,
+          include: path.resolve(__dirname, 'src'),
+          use:[
+            'xml-loader'
+          ]
+      },
+    ]
+},
   mode: 'production',
   devtool:'source-map',
    optimization: {
