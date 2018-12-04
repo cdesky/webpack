@@ -12,10 +12,18 @@ module.exports = merge(common, {
  output: {
    filename: '[name].bundle.js',
    path: path.resolve(__dirname, 'dist'),
-   publicPath:'./', 
+  //  publicPath:'./', 
  }, 
  devServer: {
-  contentBase: path.join(__dirname, './dist')
+  contentBase: path.join(__dirname, 'dist'),
+  historyApiFallback: true
+},
+resolve: { //路径 配置别名
+  alias: {
+      pages: path.join(__dirname, 'src/pages'),
+      component: path.join(__dirname, 'src/component'),
+      router: path.join(__dirname, 'src/router')
+  }
 },
   module:{
     rules:[ 
