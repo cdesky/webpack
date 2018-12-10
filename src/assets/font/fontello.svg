@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2018 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="note" unicode="&#xe800;" d="M381 820q0-42 46-97t90-100 61-119-39-154q-20-34-26-16-2 6 0 16 10 18 6 56t-13 78-43 73-82 41l0-536q2-48-37-95t-105-71q-74-28-143-8t-89 76 20 115 116 85q86 30 158 4l0 652 80 0z" horiz-adv-x="582" />
+
+<glyph glyph-name="note-beamed" unicode="&#xe801;" d="M206 714l534 116 0-704q2-42-30-81t-86-59q-64-24-110-8t-62 64q-18 48 7 97t85 73q52 20 106 10l0 376-354-82 0-490q0-42-32-81t-86-59q-64-22-109-7t-61 63q-18 48 6 97t84 73q54 20 108 10l0 592z" horiz-adv-x="740" />
+
+<glyph glyph-name="search" unicode="&#xe802;" d="M772 78q30-34 6-62l-46-46q-36-32-68 0l-190 190q-74-42-156-42-128 0-223 95t-95 223 90 219 218 91 224-95 96-223q0-88-46-162z m-678 358q0-88 68-156t156-68 151 63 63 153q0 88-68 155t-156 67-151-63-63-151z" horiz-adv-x="789" />
+
+<glyph glyph-name="music" unicode="&#xe803;" d="M600 800q42 0 71-29t29-71l0-700q0-40-29-70t-71-30l-500 0q-40 0-70 30t-30 70l0 700q0 42 30 71t70 29l500 0z m-110-476q32 44 23 92t-33 80-49 66-25 54l-60 0 0-368q-42 16-90-2-42-14-64-48t-12-64q12-32 53-45t85 1q88 30 88 98l0 262q36-6 55-32t18-52-3-42q-4-10 2-10 4 0 12 10z" horiz-adv-x="700" />
+</font>
+</defs>
+</svg>

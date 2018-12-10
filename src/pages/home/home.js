@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import "./home.css"; 
-import img from 'assets/images/upload.png';
+ 
+import "./home.css";
+import img from "assets/images/upload.png";
 
 export default class Home extends Component {
   constructor() {
@@ -10,13 +10,14 @@ export default class Home extends Component {
     };
   }
 
-  render() {
+  render() { 
     return (
       <div className="home">
-        this is home~
-        <a href="javascript:;" onClick={this.add}>
+        欢迎来到首页~
+        <i class="demo-icon icon-note">&#xe800;</i> 
+        <button type="button" onClick={this.add}>
           加
-        </a>
+        </button>
         <img src={img} />
       </div>
     );

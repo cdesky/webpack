@@ -2,46 +2,66 @@ const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
-const UglifyJs = require("uglifyjs-webpack-plugin"); 
- 
+const UglifyJs = require("uglifyjs-webpack-plugin");
 
 module.exports = merge(common, {
   entry: {
-    app:[
+    app: [
       "babel-polyfill",
-      path.resolve(__dirname,"./src/index.js")
+      "core-js/modules/es6.promise",
+      "core-js/modules/es6.array.iterator",
+      path.resolve(__dirname, "./src/index.js")
     ]
   },
   output: {
-    filename: "[name].[chunkhash].bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
-    // publicPath: "/webpack/dist",
-    chunkFilename: "[name].[chunkhash].js"
+    chunkFilename: "[name].[chunkhash].bundle.js"
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        pathRewrite: {'^/api' : ''}
+      }
+    }
   },
-  
+
   mode: "production",
   devtool: "cheap-module-source-map",
-  optimization: {
-    removeAvailableModules: false,
-    removeEmptyChunks: false,
-    sideEffects: true,
-    // splitChunks: {
-    //   name: "vendors",
-    //   chunks: "initial",
-    //   cacheGroups: {
-    //     styles: {
-    //       name: "vendors",
-    //       test: /\.(css|less)$/,
-    //       chunks: "initial",
-    //       enforce: true
-    //     }
-    //   }
-    // },
-    minimizer: [
+  optimization: { 
+    runtimeChunk: {
+      name: 'manifest'
+    }, 
+    splitChunks:{
+      chunks: 'async',
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      name: false,
+      cacheGroups: {
+        vendor: {
+          name: 'vendor',
+          chunks: 'initial',
+          priority: -10,
+          reuseExistingChunk: false,
+          test: /node_modules\/(.*)\.js/
+        },
+        styles: {
+          name: 'styles',
+          test: /\.(less|css)$/,
+          chunks: 'all',
+          minChunks: 1,
+          reuseExistingChunk: true,
+          enforce: true
+        }
+      }
+    },
+  
+     minimizer: [
       new UglifyJs({
         parallel: true,
         uglifyOptions: {
@@ -55,11 +75,12 @@ module.exports = merge(common, {
           }
         }
       })
-    ]
+     ]
   },
-  plugins: [ 
+  plugins: [
+     
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production")
+      "ENV": JSON.stringify("production")
     })
   ]
 });

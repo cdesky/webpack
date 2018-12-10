@@ -6,16 +6,15 @@ const common = require("./webpack.common.js");
 module.exports = merge(common, {
   entry: {
     app:[
-      "babel-polyfill",
-      // 'react-hot-loader/patch',
+      "babel-polyfill", 
       path.resolve(__dirname,"./src/index.js")
     ]
   },
   output: {
-    filename: "[name].[chunkhash].bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
-    publicPath: "/",  
-    filename: "[name].[chunkhash].bundle.js",
+    publicPath: "/",   
+    pathinfo:false,
   },
   mode: "development",
   devtool: "cheap-module-eval-source-map",
@@ -24,11 +23,16 @@ module.exports = merge(common, {
     historyApiFallback: true
   },
    
-   
+  optimization: {
+    removeAvailableModules: false,
+    removeEmptyChunks: false, 
+    splitChunks:false
+  },
   plugins: [
-     
+    
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("development"),
-    })
+      "ENV": JSON.stringify("development"),
+    }),
+    
   ]
 });

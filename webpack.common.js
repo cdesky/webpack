@@ -1,7 +1,7 @@
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin"); //目标生成的目录  先清空再生成文件
 const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin"); 
 
 configs = {
   resolve: {
@@ -17,20 +17,20 @@ configs = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-        exclude: "/node_modules"
+        use: ["style-loader", "css-loader", "postcss-loader"],
+        exclude: /node_modules/
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"],
-        exclude: "/node_modules"
+        use: ["style-loader", "css-loader", "postcss-loader","less-loader"],
+        exclude: /node_modules/
       },
       {
         //匹配js,使用babel-loade，但不管node_modules目录下面的
         //如果用到babel-loader，需要配置babelrc
-        test: /\.(js|jsx)$/,
-        use: "babel-loader",
-        exclude: /node_modules/
+        test: /\.js$/,
+        use: "babel-loader", 
+        exclude: /node_modules/, 
       },
       {
         test: /\.(png|svg|jpg|gif|jpeg)$/,
@@ -79,10 +79,17 @@ configs = {
       alwaysWriteToDisk: true,
       filename: "index.html",
       template: path.resolve("index.html"),
+      filename:'index.html',
       favicon: path.resolve("./src/favicon.ico"),
       minify: true,
       showError: true
     }),
+    new webpack.ProvidePlugin({ //常用引用 直接写在这里，之后就不用问题import了
+      React:'react',
+      ReactDOM:'react-dom',
+      Component:['react','Component']
+    }),
+     
     new CleanWebpackPlugin(["dist"])
   ]
 };
