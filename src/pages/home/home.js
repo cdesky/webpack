@@ -7,8 +7,11 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: null
+      count: 0
     };
+  }
+  componentDidMount(){ 
+    
   }
   add(){ 
     this.setState({
