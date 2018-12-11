@@ -1,5 +1,4 @@
 const path = require("path");
-const CleanWebpackPlugin = require("clean-webpack-plugin"); //目标生成的目录  先清空再生成文件
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); 
 
@@ -75,11 +74,10 @@ configs = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "冬哥出品-开发环境",
+      title: "冬哥出品11",
       alwaysWriteToDisk: true,
       filename: "index.html",
-      template: path.resolve("index.html"),
-      filename:'index.html',
+      template: path.resolve("index.html"), 
       favicon: path.resolve("./src/favicon.ico"),
       minify: true,
       showError: true
@@ -87,10 +85,10 @@ configs = {
     new webpack.ProvidePlugin({ //常用引用 直接写在这里，之后就不用问题import了
       React:'react',
       ReactDOM:'react-dom',
-      Component:['react','Component']
+      axios:'axios',
+      Component:['react','Component'],
     }),
      
-    new CleanWebpackPlugin(["dist"])
   ]
 };
 

@@ -1,7 +1,7 @@
  
 import "./home.css";
 import img from "assets/images/upload.png";
-
+ 
 let i=0
 export default class Home extends Component {
   constructor(props) {
@@ -10,9 +10,17 @@ export default class Home extends Component {
       count: 0
     };
   }
+
   componentDidMount(){ 
-    
+    axios.get('/ccp-web/getInspectTypeList')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
+
   add(){ 
     this.setState({
       count:++i
@@ -40,7 +48,7 @@ export default class Home extends Component {
         </a>
         <a href="javascript:;" onClick={this.minus.bind(this)}>
           减
-        </a>
+        </a> 
         <span>{this.state.count}</span>
         <img src={img} />
       </div>

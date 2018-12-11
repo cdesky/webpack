@@ -1,7 +1,10 @@
+ 
+
 const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
-const common = require("./webpack.common.js"); 
+const common = require("./webpack.common.js");
+const currentIp=require("./getIp.js");
 
 module.exports = merge(common, {
   entry: {
@@ -19,8 +22,24 @@ module.exports = merge(common, {
   mode: "development",
   devtool: "cheap-module-eval-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "./dist"),
-    historyApiFallback: true
+    contentBase: path.join(__dirname, "./src"),
+    historyApiFallback: true,
+    port:8080,
+    host:currentIp(),
+    compress: true ,
+    quiet: true ,
+    noInfo: true ,
+    clientLogLevel: 'none' ,
+    proxy: { 
+        context: [`!/ccp-web/**`],
+        target:'https://platform-test.mobilemd.cn',// 'http://localhost:3000',
+        pathRewrite: {
+          "^/$": ""
+        },
+        changeOrigin: true,
+        cookieDomainRewrite:currentIp()
+      
+    }
   },
    
   optimization: {

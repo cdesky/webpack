@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const UglifyJs = require("uglifyjs-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin"); //目标生成的目录  先清空再生成文件
 
 module.exports = merge(common, {
   entry: {
@@ -21,12 +22,7 @@ module.exports = merge(common, {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     historyApiFallback: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        pathRewrite: {'^/api' : ''}
-      }
-    }
+     
   },
 
   mode: "production",
@@ -81,6 +77,7 @@ module.exports = merge(common, {
      
     new webpack.DefinePlugin({
       "ENV": JSON.stringify("production")
-    })
+    }),
+    new CleanWebpackPlugin(["dist"])
   ]
 });
