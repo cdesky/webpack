@@ -12,7 +12,12 @@ export default class Home extends Component {
   }
 
   componentDidMount(){ 
-    axios.get('/api/ccp-web/schedule-plan/list-tab?projectId=c9336aa1fb2e11e79676000c29087164')
+    axios.get('/api/ccp-web/schedule-plan/list-tab?projectId=c9336aa1fb2e11e79676000c29087164',
+  {
+    //设置请求头
+    headers: {'X-Requested-With': 'XMLHttpRequest'},
+    headers: {'token': '12345'}
+  })
     .then(function (response) {
       console.log(response);
     })
