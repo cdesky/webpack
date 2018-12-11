@@ -18,13 +18,7 @@ module.exports = merge(common, {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     chunkFilename: "[name].[chunkhash].bundle.js"
-  },
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    historyApiFallback: true,
-     
-  },
-
+  }, 
   mode: "production",
   devtool: "cheap-module-source-map",
   optimization: { 
