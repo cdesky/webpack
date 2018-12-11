@@ -22,22 +22,21 @@ module.exports = merge(common, {
   mode: "development",
   devtool: "cheap-module-eval-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "./src"),
+    contentBase: path.join(__dirname, "./dist"),
     historyApiFallback: true,
     port:8080,
     host:currentIp(),
-    compress: true ,
-    quiet: true ,
-    noInfo: true ,
-    clientLogLevel: 'none' ,
+    compress: true , 
     proxy: { 
-        context: [`!/ccp-web/**`],
-        target:'https://platform-test.mobilemd.cn',// 'http://localhost:3000',
-        pathRewrite: {
-          "^/$": ""
-        },
-        changeOrigin: true,
-        cookieDomainRewrite:currentIp()
+        '/api/*':{
+          context: [`!/ccp-web/**`],
+          target:'https://platform-test.mobilemd.cn',// 'http://localhost:3000',
+          pathRewrite: {
+            "/api/": ""
+          },
+          changeOrigin: true,
+          cookieDomainRewrite:currentIp()
+        }
       
     }
   },

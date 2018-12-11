@@ -12,7 +12,18 @@ export default class Home extends Component {
   }
 
   componentDidMount(){ 
-    axios.get('/ccp-web/getInspectTypeList')
+    axios.get('/api/ccp-web/schedule-plan/list-tab?projectId=c9336aa1fb2e11e79676000c29087164')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+    axios.post('/api/ccp-web/risk/projectSiteDataList',{
+      "projectId":"c9336aa1fb2e11e79676000c29087164",
+      "projectSiteId":"ff8080816101ea35016101f768420004"
+    })
     .then(function (response) {
       console.log(response);
     })
@@ -41,7 +52,7 @@ export default class Home extends Component {
     return (
       <div className="home">
         欢迎来到首页~
-        <i class="demo-icon icon-note">&#xe800;</i> 
+        <i className="demo-icon icon-note">&#xe800;</i> 
           
         <a href="javascript:;" onClick={this.add.bind(this)}>
           加
