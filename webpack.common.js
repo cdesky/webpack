@@ -9,7 +9,8 @@ configs = {
       assets: path.resolve(__dirname, "src/assets"),
       pages: path.join(__dirname, "src/pages"),
       component: path.join(__dirname, "src/component"),
-      router: path.join(__dirname, "src/router")
+      router: path.join(__dirname, "src/router"),
+      common: path.join(__dirname, "src/common")
     }
   },
   module: {
@@ -17,7 +18,7 @@ configs = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader", "postcss-loader"],
-        exclude: /node_modules/
+        // exclude: /node_modules/
       },
       {
         test: /\.less$/,

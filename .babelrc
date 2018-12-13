@@ -9,6 +9,8 @@
         "regenerator": true,
         "useESModules": false
       }
-    ]
+    ],
+    ["import", { "libraryName": "antd", "libraryDirectory": "lib"}, "antd"],  
+    ["import", { "libraryName": "antd", "style": true },"less"]
   ]
 }
