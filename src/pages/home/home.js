@@ -1,4 +1,5 @@
  
+import {Button} from 'antd';
 import "./home.css";
 import img from "assets/images/upload.png";
  
@@ -58,7 +59,7 @@ export default class Home extends Component {
       <div className="home">
         欢迎来到首页~
         <i className="demo-icon icon-note">&#xe800;</i> 
-          
+          <Button type='primary'>保存</Button>
         <a href="javascript:;" onClick={this.add.bind(this)}>
           加
         </a>
