@@ -15,16 +15,22 @@ module.exports = merge(common, {
     ]
   },
   output: {
-    filename: "[name].bundle.js",
+    filename: "js/[name].[chunkhash:7].js",
     path: path.resolve(__dirname, "dist"),
-    chunkFilename: "[name].[chunkhash].bundle.js"
+    chunkFilename: "js/[name].[chunkhash:7].js",
+    publicPath: "/web/webpack/dist/"    //需要配置全局路径 走的路径 前面会自动加上这个目录
   }, 
+  devServer: {
+    historyApiFallback: {
+      index:'/web/webpack/dist/'
+    }
+   },
   mode: "production",
   devtool: "cheap-module-source-map",
   optimization: { 
-    runtimeChunk: {
-      name: 'manifest'
-    }, 
+    // runtimeChunk: {
+    //   name: 'manifest'
+    // }, 
     splitChunks:{
       chunks: 'async',
       minSize: 30000,

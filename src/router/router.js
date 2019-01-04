@@ -5,9 +5,11 @@ import { BrowserRouter as Router, Route, Switch, Link ,Redirect} from "react-rou
 import 'antd/dist/antd.min.css';
 import '../common/common.css';
 import RouterMap from './routerMap';
- 
+
+import hashHistory from 'router/history';
+
 const getRouter = () => ( 
-  <Router>
+  <Router history={hashHistory}>
     <div>
       <ul>
         <li>
@@ -27,9 +29,9 @@ const getRouter = () => (
       </ul>
       <Switch>
         <Route path="/" component={RouterMap.home} exact/>
-        <Route path="/project" component={RouterMap.project} exact/>
-        <Route path="/site" component={RouterMap.site} exact/> 
-        <Route path="/projectDetail" component={RouterMap.projectDetail} exact/> 
+        <Route path="/project/" component={RouterMap.project} />
+        <Route path="/site/" component={RouterMap.site} /> 
+        <Route path="/projectDetail/" component={RouterMap.projectDetail} /> 
         {/* <Redirect to={RouterMap.home} from={RouterMap.home} exact/>
         <Redirect to={RouterMap.project} from={RouterMap.project} exact/>
         <Redirect to={RouterMap.site} from={RouterMap.site} exact/> */}

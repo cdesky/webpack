@@ -1,4 +1,3 @@
-// import { cube } from './math.js'; 
 import React from 'react';
 import ReactDom from 'react-dom';
 import getRouter from 'router/router';
