@@ -24,7 +24,7 @@ const getRouter = () => (
           </ul>
         </li>  
         <li>
-          <Link to="/site">中心</Link>
+          <Link to="/site">中心</Link> 
         </li>
       </ul>
       <Switch>
