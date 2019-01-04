@@ -20,7 +20,7 @@ const getRouter = () => (
           <ul>
             <li>
               <Link to="/projectDetail">项目详情</Link>
-            </li>
+            </li>  
           </ul>
         </li>  
         <li>
