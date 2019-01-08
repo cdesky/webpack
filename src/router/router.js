@@ -1,6 +1,10 @@
 import React from "react";
 
+<<<<<<< HEAD
 import { Router, Route, Switch, Link ,Redirect} from "react-router-dom";
+=======
+import { Router  as HashRouter , Route, Switch, Link ,Redirect} from "react-router-dom";
+>>>>>>> c99b8f7ecf8d44e193252fd33daec6fff355d23c
  
 import 'antd/dist/antd.min.css';
 import '../common/common.css';
@@ -9,7 +13,7 @@ import RouterMap from './routerMap';
 import hashHistory from 'router/history';
 
 const getRouter = () => ( 
-  <Router history={hashHistory}>
+  <HashRouter  history={hashHistory}>
     <div>
       <ul>
         <li>
@@ -20,24 +24,21 @@ const getRouter = () => (
           <ul>
             <li>
               <Link to="/projectDetail">项目详情</Link>
-            </li>
+            </li>  
           </ul>
-        </li>
+        </li>  
         <li>
-          <Link to="/site">中心</Link>
+          <Link to="/site">中心</Link> 
         </li>
       </ul>
       <Switch>
         <Route path="/" component={RouterMap.home} exact/>
-        <Route path="/project/" component={RouterMap.project} />
-        <Route path="/site/" component={RouterMap.site} /> 
-        <Route path="/projectDetail/" component={RouterMap.projectDetail} /> 
-        {/* <Redirect to={RouterMap.home} from={RouterMap.home} exact/>
-        <Redirect to={RouterMap.project} from={RouterMap.project} exact/>
-        <Redirect to={RouterMap.site} from={RouterMap.site} exact/> */}
+        <Route path="/project" component={RouterMap.project} />
+        <Route path="/site" component={RouterMap.site} /> 
+        <Route path="/projectDetail" component={RouterMap.projectDetail} /> 
       </Switch>
     </div>
-  </Router>
+  </HashRouter >
 );
 
 export default getRouter;
