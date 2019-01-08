@@ -1,10 +1,6 @@
 import React from "react";
 
-<<<<<<< HEAD
 import { Router, Route, Switch, Link ,Redirect} from "react-router-dom";
-=======
-import { Router  as HashRouter , Route, Switch, Link ,Redirect} from "react-router-dom";
->>>>>>> c99b8f7ecf8d44e193252fd33daec6fff355d23c
  
 import 'antd/dist/antd.min.css';
 import '../common/common.css';
