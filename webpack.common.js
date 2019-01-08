@@ -1,11 +1,11 @@
 const path = require("path");
 const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin"); 
-const ExtractWebpackPlugin = require("extract-text-webpack-plugin");  //提取css 单独一个文件
-
+const HtmlWebpackPlugin = require("html-webpack-plugin");  
+const MiniCssPlugin = require("mini-css-extract-plugin"); //提取css 单独一个文件
 configs = {
   resolve: {
     //路径 配置别名
+    extensions:['.js','.json'],
     alias: {
       assets: path.resolve(__dirname, "src/assets"),
       pages: path.join(__dirname, "src/pages"),
@@ -17,20 +17,15 @@ configs = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use:ExtractWebpackPlugin.extract({
-          fallback:"style-loader",
-          use: ["css-loader", "postcss-loader"]
-        })
+        test: /\.(le|c)ss$/,
+        use: [
+          MiniCssPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'less-loader',
+        ], 
       },
-      {
-        test: /\.less$/,
-        use: ExtractWebpackPlugin.extract({
-          fallback:"style-loader",
-          use:["css-loader", "postcss-loader","less-loader"]
-        }),
-        include: path.resolve(__dirname, "src"),  //只在src目录下匹配
-      },
+  
       {
         //匹配js,使用babel-loade，但不管node_modules目录下面的
         //如果用到babel-loader，需要配置babelrc
@@ -97,8 +92,10 @@ configs = {
       }
     ]
   },
-  plugins: [
-    new ExtractWebpackPlugin('css/[name].css'),
+  plugins: [ 
+    new MiniCssPlugin({  
+      　　filename: "[name].css", 
+    }),
     new HtmlWebpackPlugin({
       title: "冬哥出品11",
       alwaysWriteToDisk: true,
