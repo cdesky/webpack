@@ -28,9 +28,9 @@ module.exports = merge(common, {
   mode: "production",
   devtool: "cheap-module-source-map",
   optimization: { 
-    // runtimeChunk: {
-    //   name: 'manifest'
-    // }, 
+    runtimeChunk: {
+      name: 'manifest'
+    }, 
     splitChunks:{
       chunks: 'async',
       minSize: 30000,

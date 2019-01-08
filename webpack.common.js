@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); 
+const ExtractWebpackPlugin = require("extract-text-webpack-plugin");  //提取css 单独一个文件
 
 configs = {
   resolve: {
@@ -17,31 +18,54 @@ configs = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-        // exclude: /node_modules/
+        use:ExtractWebpackPlugin.extract({
+          fallback:"style-loader",
+          use: ["css-loader", "postcss-loader"]
+        })
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "postcss-loader","less-loader"],
-        exclude: /node_modules/
+        use: ExtractWebpackPlugin.extract({
+          fallback:"style-loader",
+          use:["css-loader", "postcss-loader","less-loader"]
+        }),
+        include: path.resolve(__dirname, "src"),  //只在src目录下匹配
       },
       {
         //匹配js,使用babel-loade，但不管node_modules目录下面的
         //如果用到babel-loader，需要配置babelrc
         test: /\.js$/,
         use: "babel-loader", 
-        exclude: /node_modules/, 
+        //exclude: /node_modules/,
+        include: path.resolve(__dirname, "src"), 
       },
       {
         test: /\.(png|svg|jpg|gif|jpeg)$/,
         include: path.resolve(__dirname, "src"),
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 8192
-            }
-          }
+        use: [ 
+            'file-loader',
+            {
+              loader: 'image-webpack-loader', //图片压缩
+              options: {
+                mozjpeg: {
+                  progressive: true,
+                  quality: 65
+                }, 
+                optipng: {
+                  enabled: false,
+                },
+                pngquant: {
+                  quality: '65-90',
+                  speed: 4
+                },
+                gifsicle: {
+                  interlaced: false,
+                }, 
+                webp: {
+                  quality: 75
+                }
+              }
+            } 
         ]
       },
       {
@@ -74,6 +98,7 @@ configs = {
     ]
   },
   plugins: [
+    new ExtractWebpackPlugin('css/[name].css'),
     new HtmlWebpackPlugin({
       title: "冬哥出品11",
       alwaysWriteToDisk: true,
@@ -89,7 +114,6 @@ configs = {
       axios:'axios',
       Component:['react','Component'],
     }),
-     
   ]
 };
 

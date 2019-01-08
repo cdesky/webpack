@@ -16,8 +16,9 @@ module.exports = merge(common, {
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"), 
-    publicPath: "/",   
+    publicPath: "/",
     pathinfo:true,
+    chunkFilename: "[name].[hash].js"
   },
   mode: "development",
   devtool: "cheap-module-eval-source-map",

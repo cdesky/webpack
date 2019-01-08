@@ -1,6 +1,6 @@
  
 import {Button} from 'antd'; 
-import img from "assets/images/upload.png";
+import img from "assets/images/2.jpg";
   
 export default class ProjectDetail extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class ProjectDetail extends Component {
     return (
       <div className="projectDetail">
         欢迎来到详情页~
-        
+        <img src={img} />
       </div>
     );
   }
