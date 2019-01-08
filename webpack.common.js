@@ -38,7 +38,7 @@ configs = {
         test: /\.(png|svg|jpg|gif|jpeg)$/,
         include: path.resolve(__dirname, "src"),
         use: [ 
-            'file-loader',
+          'file-loader',
             {
               loader: 'image-webpack-loader', //图片压缩
               options: {
@@ -68,7 +68,7 @@ configs = {
         include: path.resolve(__dirname, "src"),
         use: [
           {
-            loader: "file-loader"
+            loader: 'file-loader?name=[name].[ext]&outputPath=font/',
           }
         ]
       },
