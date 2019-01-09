@@ -2,7 +2,8 @@
 import {Button} from 'antd';
 import "./home.css";
 import img from "assets/images/upload.png";
- 
+import PickerColor from 'component/pickerColor/index'
+
 let i=0
 export default class Home extends Component {
   constructor(props) {
@@ -55,6 +56,8 @@ export default class Home extends Component {
   }
 
   render() { 
+    
+
     return (
       <div className="home">
         欢迎来到首页~
@@ -68,6 +71,10 @@ export default class Home extends Component {
         </a> 
         <span>{this.state.count}</span>
         <img src={img} />
+        <br/>
+        <PickerColor />
+
+        
       </div>
     );
   }
