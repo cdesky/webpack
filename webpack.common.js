@@ -20,12 +20,7 @@ configs = {
         enforce: "pre",
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "eslint-loader",
-        options: {
-          emitError: true,
-          quiet: true,
-          failOnError: true,
-        }
+        loader: "eslint-loader"
       },
       {
         test: /\.js$/,
