@@ -2,6 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");  
 const MiniCssPlugin = require("mini-css-extract-plugin"); //提取css 单独一个文件
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"); //压缩css文件
+
 configs = {
   resolve: {
     //路径 配置别名
@@ -22,11 +24,11 @@ configs = {
         exclude: /node_modules/,
         loader: "eslint-loader"
       },
-      // {
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   loader: "babel-loader",
-      // },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      },
       {
         test: /\.(le|c)ss$/,
         use: [
@@ -34,7 +36,7 @@ configs = {
           'css-loader',
           'postcss-loader',
           'less-loader',
-        ], 
+        ]
       },
   
       {
@@ -107,6 +109,7 @@ configs = {
     new MiniCssPlugin({  
       　　filename: "[name].css", 
     }),
+    new OptimizeCssAssetsPlugin(),
     new HtmlWebpackPlugin({
       title: "冬哥出品11",
       alwaysWriteToDisk: true,
