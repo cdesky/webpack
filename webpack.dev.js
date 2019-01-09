@@ -14,11 +14,11 @@ module.exports = merge(common, {
     ]
   },
   output: {
-    filename: "[name].bundle.js",
+    filename: "[name].[chunkhash:7].js",
     path: path.resolve(__dirname, "dist"), 
     publicPath: "/",
     pathinfo:true,
-    chunkFilename: "[name].[hash].js"
+    chunkFilename: "[name].[chunkhash:7].js"
   },
   mode: "development",
   devtool: "cheap-module-eval-source-map",
@@ -38,7 +38,6 @@ module.exports = merge(common, {
           changeOrigin: true,
           cookieDomainRewrite:currentIp()
         }
-      
     }
   },
    
