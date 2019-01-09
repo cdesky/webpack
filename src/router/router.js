@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Router  as HashRouter , Route, Switch, Link ,Redirect} from "react-router-dom";
+import { Router  as HashRouter , Route, Switch, Link} from "react-router-dom";// ,Redirect
  
 import 'antd/dist/antd.min.css';
 import '../common/common.css';

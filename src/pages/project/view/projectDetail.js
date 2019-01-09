@@ -1,5 +1,3 @@
- 
-import {Button} from 'antd'; 
 import img from "assets/images/2.jpg";
   
 export default class ProjectDetail extends Component {

@@ -5,7 +5,7 @@ const MiniCssPlugin = require("mini-css-extract-plugin"); //提取css 单独一�
 configs = {
   resolve: {
     //路径 配置别名
-    extensions:['.js','.json'],
+    extensions:['.js','.json','.jsx'],
     alias: {
       assets: path.resolve(__dirname, "src/assets"),
       pages: path.join(__dirname, "src/pages"),
@@ -17,6 +17,22 @@ configs = {
   module: {
     rules: [
       {
+        enforce: "pre",
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+        options: {
+          emitError: true,
+          quiet: true,
+          failOnError: true,
+        }
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      },
+      {
         test: /\.(le|c)ss$/,
         use: [
           MiniCssPlugin.loader,
@@ -27,7 +43,7 @@ configs = {
       },
   
       {
-        //匹配js,使用babel-loade，但不管node_modules目录下面的
+        //匹配js,使用babel-loade， exclude是排除node_modules目录下面的   include就包括这个目录的
         //如果用到babel-loader，需要配置babelrc
         test: /\.js$/,
         use: "babel-loader", 
@@ -38,7 +54,7 @@ configs = {
         test: /\.(png|svg|jpg|gif|jpeg)$/,
         include: path.resolve(__dirname, "src"),
         use: [ 
-          'file-loader',
+          'file-loader?name=[name].[ext]&outputPath=images/',
             {
               loader: 'image-webpack-loader', //图片压缩
               options: {
