@@ -106,7 +106,7 @@ configs = {
     }),
     new webpack.ProvidePlugin({ //常用引用 直接写在这里，之后就不用问题import了
       React:'react',
-      ReactDOM:'react-dom',
+      ReactDom:'react-dom',
       axios:'axios',
       Component:['react','Component'],
     }),

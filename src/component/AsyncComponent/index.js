@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 const asyncComponent = loadComponent => (
 
     class AsyncComponent extends Component {
