@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");  
-const MiniCssPlugin = require("mini-css-extract-plugin"); //提取css 单独一个文件
+// const MiniCssPlugin = require("mini-css-extract-plugin"); //提取css 单独一个文件
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"); //压缩css文件
 
 configs = {
@@ -29,16 +29,24 @@ configs = {
         exclude: /node_modules/,
         loader: "babel-loader",
       },
+      // {
+      //   test: /\.(le|c)ss$/,
+      //   use: [
+      //     MiniCssPlugin.loader,
+      //     'css-loader',
+      //     'postcss-loader',
+      //     'less-loader',
+      //   ]
+      // },
       {
-        test: /\.(le|c)ss$/,
-        use: [
-          MiniCssPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'less-loader',
-        ]
+        test: /\.css$/,
+        use: ["style-loader", "css-loader","postcss-loader"],  
       },
-  
+      {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"],
+        include: path.resolve(__dirname, "src"),
+      },
       {
         //匹配js,使用babel-loade， exclude是排除node_modules目录下面的   include就包括这个目录的
         //如果用到babel-loader，需要配置babelrc
@@ -91,9 +99,9 @@ configs = {
     ]
   },
   plugins: [ 
-    new MiniCssPlugin({  
-      　　filename: "style/[name].css", 
-    }),
+    // new MiniCssPlugin({  
+    //   　　filename: "style/[name].css", 
+    // }),
     new OptimizeCssAssetsPlugin(),
     new HtmlWebpackPlugin({
       title: "冬哥出品11",

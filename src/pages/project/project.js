@@ -18,6 +18,7 @@ import "./project.less";
     return (
       <div className="project">
         this is Project~
+        <Icon type="step-forward" />
         <Row>
           <Col span={12}>col-12</Col>
           <Col span={12}>col-12</Col>
