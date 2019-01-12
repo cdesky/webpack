@@ -16,9 +16,9 @@ export default class Home extends Component {
   componentDidMount(){ 
     axios.get('/api/ccp-web/schedule-plan/list-tab?projectId=c9336aa1fb2e11e79676000c29087164',
   {
-    //设置请求头
-    headers: {'X-Requested-With': 'XMLHttpRequest'},
-    headers: {'token': '12345'}
+    //设置请求头 
+    headers: {'Content-Type': 'application/json'},
+    headers: {'TM-Header-Request-Source': 'CCP-WEB'},
   })
     .then(function (response) {
       console.log(response);
@@ -26,17 +26,7 @@ export default class Home extends Component {
     .catch(function (error) {
       console.log(error);
     });
-
-    axios.post('/api/ccp-web/risk/projectSiteDataList',{
-      "projectId":"c9336aa1fb2e11e79676000c29087164",
-      "projectSiteId":"ff8080816101ea35016101f768420004"
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+ 
   }
 
   add(){ 

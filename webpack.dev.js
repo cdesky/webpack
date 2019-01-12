@@ -29,11 +29,11 @@ module.exports = merge(common, {
     host:currentIp(),
     compress: true , 
     proxy: { 
-        '/api/*':{
+        '*':{
           context: [`!/ccp-web/**`],
-          target:'https://platform-test.mobilemd.cn',// 'http://localhost:3000',
+          target:'http://localhost/web/php/', //'https://platform-test.mobilemd.cn',// 
           pathRewrite: {
-            "/api/": ""
+            // "*": ""
           },
           changeOrigin: true,
           cookieDomainRewrite:currentIp()

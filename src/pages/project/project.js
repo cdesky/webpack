@@ -3,26 +3,14 @@ import "./project.less";
 
  class Project extends Component {
  
-
-  up(){
-    axios.post('../../../php/upload.php')
-    .then(res=>{
-      console.log(res)
-    })
-    .catch(err=>{
-      console.log(err)
-    })
-
-    
-  }
-
   render() {
   
     let props = {
       name: 'file',
-      action: '../../../php/upload.php',
-      headers: {
+      action: 'upload.php',
+      headers: {  //自己可以添加token 啥的
         authorization: 'authorization-text',
+        token:'123456'
       },
       onChange(info) {
         if (info.file.status !== 'uploading') {
@@ -50,9 +38,7 @@ import "./project.less";
           <div className="right">2222</div>
         </div>
 
-        <form action='../../../php/upload.php' datatype="multipart/form-data" >
-          <input type='file' name='files' onChange={this.up.bind(this)}/>
-        </form>
+         <br/>
         <Upload {...props}>
           <Button>
             <Icon type="upload" /> 上传
