@@ -1,19 +1,41 @@
-import { Row, Col ,Upload,Button,Icon} from "antd";
+import { Row, Col ,Upload,Button,Icon,message} from "antd";
 import "./project.less";
 
  class Project extends Component {
  
+
+  up(){
+    axios.post('../../../php/upload.php')
+    .then(res=>{
+      console.log(res)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+
+    
+  }
+
   render() {
   
     let props = {
-      action: '//jsonplaceholder.typicode.com/posts/',
-      onChange({ file, fileList }) {
-        if (file.status !== 'uploading') {
-          console.log(file, fileList);
-        }
+      name: 'file',
+      action: '../../../php/upload.php',
+      headers: {
+        authorization: 'authorization-text',
       },
-      
+      onChange(info) {
+        if (info.file.status !== 'uploading') {
+          console.log(info.file, info.fileList);
+        }
+        if (info.file.status === 'done') {
+          message.success(`${info.file.name} file uploaded successfully`);
+        } else if (info.file.status === 'error') {
+          message.error(`${info.file.name} file upload failed.`);
+        }
+      }
     };
+
 
     return (
       <div className="project">
@@ -28,6 +50,9 @@ import "./project.less";
           <div className="right">2222</div>
         </div>
 
+        <form action='../../../php/upload.php' datatype="multipart/form-data" >
+          <input type='file' name='files' onChange={this.up.bind(this)}/>
+        </form>
         <Upload {...props}>
           <Button>
             <Icon type="upload" /> 上传

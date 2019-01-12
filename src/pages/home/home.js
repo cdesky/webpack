@@ -59,7 +59,7 @@ export default class Home extends Component {
     
 
     return (
-      <div className="home">
+      <div className="home"> 
         欢迎来到首页~
         <i className="demo-icon icon-note">&#xe800;</i> 
           <Button type='primary'>保存</Button>
