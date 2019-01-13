@@ -14,7 +14,7 @@ export default class Home extends Component {
   }
 
   componentDidMount(){ 
-    axios.get('/api/ccp-web/schedule-plan/list-tab?projectId=c9336aa1fb2e11e79676000c29087164',
+    axios.get('/php/test.php',
   {
     //设置请求头 
     headers: {'Content-Type': 'application/json'},

@@ -6,12 +6,12 @@ import "./project.less";
   render() {
   
     let props = {
-      name: 'file',
-      action: 'upload.php',
-      headers: {  //自己可以添加token 啥的
-        authorization: 'authorization-text',
-        token:'123456'
-      },
+      name: 'uploadFile',
+      action: 'php/upload.php',
+      // headers: {  //自己可以添加token 啥的 
+      //   authorization: 'authorization-text',
+      //   token:'123456'
+      // },
       onChange(info) {
         if (info.file.status !== 'uploading') {
           console.log(info.file, info.fileList);

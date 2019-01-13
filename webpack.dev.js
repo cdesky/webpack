@@ -25,15 +25,16 @@ module.exports = merge(common, {
   devServer: {
     contentBase: path.join(__dirname, "./dist"),
     historyApiFallback: true,
-    port:8080,
+    port:9090,
     host:currentIp(),
     compress: true , 
     proxy: { 
         '*':{
-          context: [`!/ccp-web/**`],
-          target:'http://localhost/web/php/', //'https://platform-test.mobilemd.cn',// 
+          // context: [`!/ccp-web/**`],
+          context:[`!/php/**`],
+          target:'http://192.168.1.6:8080/', //'https://platform-test.mobilemd.cn',// 
           pathRewrite: {
-            // "*": ""
+            //  "/api/php/": ""
           },
           changeOrigin: true,
           cookieDomainRewrite:currentIp()
