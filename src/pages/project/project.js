@@ -7,7 +7,7 @@ import "./project.less";
   
     let props = {
       name: 'uploadFile',
-      action: 'web/php/upload.php', //'/php/upload.php',  //这个根据php的所在实际路径
+      action: '/php/upload.php', //'/php/upload.php',  //这个根据php的所在实际路径
       // headers: {  //自己可以添加token 啥的 
       //   authorization: 'authorization-text',
       //   token:'123456'

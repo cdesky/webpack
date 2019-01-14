@@ -14,18 +14,21 @@ export default class Home extends Component {
   }
 
   componentDidMount(){ 
-    axios.get('/php/test.php',
-  {
-    //设置请求头 
-    headers: {'Content-Type': 'application/json'},
-    headers: {'TM-Header-Request-Source': 'CCP-WEB'},
-  })
-    .then(function (response) {
-      console.log(response);
+    axios.get('/php/test.php', 
+    {
+      params:{
+        userName:'111',
+        pwd:'123456'
+      },
+      //设置请求头  
+      headers: {'TM-Header-Request-Source': 'CCP-WEB'},
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
  
   }
 

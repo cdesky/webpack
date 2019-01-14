@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js",
+    "start": "webpack-dev-server --color --progress --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "mock": "json-server ./mock/db.js --port 3003 ./routes.json"
   },
