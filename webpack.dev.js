@@ -15,7 +15,7 @@ module.exports = merge(common, {
   },
   output: {
     filename: "[name].[chunkhash:7].js",
-    path: path.resolve(__dirname, "dist"), 
+    path: path.resolve(__dirname, "./dist/"), 
     publicPath: "/",
     pathinfo:true,
     chunkFilename: "[name].[chunkhash:7].js"
@@ -23,22 +23,25 @@ module.exports = merge(common, {
   mode: "development",
   devtool: "cheap-module-eval-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "./dist"),
+    contentBase: path.join(__dirname, "./dist/"),
     historyApiFallback: true,
     port:9090,
+    open:true,
     host:currentIp(),
     compress: true , 
     proxy: { 
-        '*':{
-          // context: [`!/ccp-web/**`],
-          context:[`!/php/**`],
-          target:'http://192.168.1.6:8080/', //'https://platform-test.mobilemd.cn',// 
-          pathRewrite: {
-            //  "/api/php/": ""
-          },
-          changeOrigin: true,
-          cookieDomainRewrite:currentIp()
-        }
+        
+          '/web/php':{
+            context:[`!/web/php/**`],
+            secure: false,
+            target:'http://192.168.3.114:8080', //'https://platform-test.mobilemd.cn',// 
+            pathRewrite: {
+              "^/$": ""
+            },
+            changeOrigin: true,
+            cookieDomainRewrite:currentIp()
+          }
+        
     }
   },
    

@@ -7,7 +7,7 @@ import "./project.less";
   
     let props = {
       name: 'uploadFile',
-      action: 'php/upload.php',
+      action: 'web/php/upload.php', //'/php/upload.php',  //这个根据php的所在实际路径
       // headers: {  //自己可以添加token 啥的 
       //   authorization: 'authorization-text',
       //   token:'123456'
@@ -17,9 +17,9 @@ import "./project.less";
           console.log(info.file, info.fileList);
         }
         if (info.file.status === 'done') {
-          message.success(`${info.file.name} file uploaded successfully`);
+          message.success(`${info.file.name} 上传成功`);
         } else if (info.file.status === 'error') {
-          message.error(`${info.file.name} file upload failed.`);
+          message.error(`${info.file.name} 上传失败`);
         }
       }
     };
@@ -30,12 +30,12 @@ import "./project.less";
         this is Project~
         <Icon type="step-forward" />
         <Row>
-          <Col span={12}>col-12</Col>
-          <Col span={12}>col-12</Col>
+          <Col span={12}>col-121</Col>
+          <Col span={12}>col-122x</Col>
         </Row>
         <div className="box">
-          <div className="left">1111</div>
-          <div className="right">2222</div>
+          <div className="left">aa122</div>
+          <div className="right">bb1</div>
         </div>
 
          <br/>
