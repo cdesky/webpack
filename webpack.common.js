@@ -117,6 +117,7 @@ configs = {
       ReactDom:'react-dom',
       axios:'axios',
       Component:['react','Component'],
+      $:'jquery'
     }),
   ]
 };

@@ -1,0 +1,73 @@
+.login {
+  text-align: center;
+  width: 240px;
+  height: 188px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -140px 0 0 -120px;
+/* 默认placeholder颜色透明不可见 */
+.input-control:placeholder-shown::placeholder {
+    color: #fff;
+  }
+  .input-fill-x {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    position: relative;
+  }
+  .input-fill-x {
+    border-bottom: 1px solid #d0d0d5;
+    margin: 15px 0;
+  }
+  .input-fill-x::after {
+    content: "";
+    position: absolute;
+    border-bottom: 2px solid #2486ff;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    transform: scaleX(0);
+    transition: transform 0.25s;
+  } 
+  .input-fill-x:focus-within::after {
+    transform: scaleX(1);
+  }
+  .input-control {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    outline: none;
+  }
+  .input-fill {
+    padding: 20px 16px 6px;
+    border: 1px solid transparent;
+    background: #f5f5f5;
+  }
+
+  
+  .input-label {
+    position: absolute;
+    font-size: 16px;
+    line-height: 1.5;
+    left: 14px;
+    top: 17px;
+    color: #a2a9b6;
+    padding: 0 2px;
+    transform-origin: 0 0;
+    pointer-events: none;
+    transition: all 0.25s;
+    background:#fff;
+  }
+  /* 线框样式label定位 */
+  .input-control:not(:placeholder-shown) ~ .input-label,
+  .input-control:focus ~ .input-label {
+    color: #2486ff;
+    transform: scale(0.75) translate(-2px, -32px);
+  }
+  /* 填充样式下label定位 */
+  .input-fill:not(:placeholder-shown) ~ .input-label,
+  .input-fill:focus ~ .input-label {
+    transform: scale(0.75) translateY(-14px);
+  }
+}
