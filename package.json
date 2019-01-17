@@ -19,6 +19,7 @@
     "csv-loader": "^3.0.2",
     "file-loader": "^2.0.0",
     "history": "^4.7.2",
+    "jquery": "^3.3.1",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "lodash": "^4.17.11",
