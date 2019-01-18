@@ -9,11 +9,11 @@ module.exports = merge(common, {
     app: ["babel-polyfill", path.resolve(__dirname, "./src/index.js")]
   },
   output: {
-    filename: "[name].[chunkhash:7].js",
+    filename: "[name].[hash:7].js",
     path: path.resolve(__dirname, "./dist/"),
     publicPath: "/",
     pathinfo: true,
-    chunkFilename: "[name].[chunkhash:7].js"
+    chunkFilename: "[name].[hash:7].js"
   },
   mode: "development",
   devtool: "cheap-module-eval-source-map",
@@ -24,7 +24,7 @@ module.exports = merge(common, {
     open: true,
     host: currentIp(),
     compress: true,
-    noInfo:false,
+    noInfo:true,
     allowedHosts: ["http://192.168.3.114", "http://192.168.1.6"],
     proxy: {
       "/php/": { //匹配php开头的  把后面跟的地址一并连接到target后面  转发到后端

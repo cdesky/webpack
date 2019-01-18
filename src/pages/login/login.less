@@ -1,13 +1,13 @@
 .login {
   text-align: center;
-  width: 240px;
+  width: 218px;
   height: 188px;
   position: absolute;
   left: 50%;
   top: 50%;
   margin: -140px 0 0 -120px;
-/* 默认placeholder颜色透明不可见 */
-.input-control:placeholder-shown::placeholder {
+  /* 默认placeholder颜色透明不可见 */
+  .input-control:placeholder-shown::placeholder {
     color: #fff;
   }
   .input-fill-x {
@@ -29,7 +29,7 @@
     bottom: -1px;
     transform: scaleX(0);
     transition: transform 0.25s;
-  } 
+  }
   .input-fill-x:focus-within::after {
     transform: scaleX(1);
   }
@@ -42,10 +42,8 @@
   .input-fill {
     padding: 20px 16px 6px;
     border: 1px solid transparent;
-    background: #f5f5f5;
   }
 
-  
   .input-label {
     position: absolute;
     font-size: 16px;
@@ -57,7 +55,7 @@
     transform-origin: 0 0;
     pointer-events: none;
     transition: all 0.25s;
-    background:#fff;
+    background: #fff;
   }
   /* 线框样式label定位 */
   .input-control:not(:placeholder-shown) ~ .input-label,

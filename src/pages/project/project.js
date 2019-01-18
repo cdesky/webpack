@@ -1,5 +1,6 @@
 import { Row, Col ,Upload,Button,Icon,message} from "antd";
 import "./project.less";
+import PickerColor from 'component/pickerColor/index'
 
  class Project extends Component {
  
@@ -37,7 +38,7 @@ import "./project.less";
           <div className="left">aa122</div>
           <div className="right">bb1</div>
         </div>
-
+        <PickerColor />
          <br/>
         <Upload {...props}>
           <Button>
