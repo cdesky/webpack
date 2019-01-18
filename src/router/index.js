@@ -6,17 +6,25 @@ const { Content } = Layout;
 class Index extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      collapsed: false
+    };
   }
 
   componentDidMount() {}
 
+  toggle() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  }
+
   render() {
     return (
       <Layout style={{ height: "100%" }}>
-        <Header />
+        <Header toggle={() => this.toggle()} collapsed={this.state.collapsed} />
         <Layout style={{ height: "100%" }}>
-          <Sider />
+          <Sider collapsed={this.state.collapsed} />
           <Content
             style={{
               margin: "10px",

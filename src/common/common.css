@@ -21,6 +21,18 @@
     font-size:18px;
     text-align: center;
   }
+  #app .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color .3s;
+  }
+  
+  #app .trigger:hover {
+    color: #fff;
+  }
+
   .demo-icon
     {
       font-family: "fontello";
