@@ -14,12 +14,7 @@
               "name": "项目一览",
               "url": "/project/projectView/projectProgress",
               "code": "p_schedule",
-              "children":[{
-                "name": "项目数据报表1",
-                "url": "/project/projectView/statisticalReport11",
-                "code": "p_dataReport",
-                "children":[]
-              }]
+              "children":[]
             },
             {
               "name": "项目数据报表",

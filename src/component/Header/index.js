@@ -6,6 +6,7 @@ class Index extends Component {
        super();
        this.state = {
         collapsed: false,
+        rightCon:null
       };
    }
 
@@ -17,7 +18,9 @@ class Index extends Component {
 
       //加载它的子级
       getChildren(url){
-          alert(url)
+          this.setState({
+              rightCon:url
+          })
       }
 
   render() {
