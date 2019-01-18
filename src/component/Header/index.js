@@ -16,7 +16,7 @@ class Index extends Component {
   }
 
   render() {
-    let nav = JSON.parse(window.localStorage.getItem("menuList"));
+    let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
     let navRes = nav.data.map((val, i) => {
       return (
         <Menu.Item key={i + 1} onClick={() => this.getChildren(val.url)}>
@@ -32,7 +32,6 @@ class Index extends Component {
           className="trigger"
           type={this.props.collapsed ? "menu-unfold" : "menu-fold"}
           onClick={() => this.props.toggle()}
-          style={{ position: "absolute", zIndex: 9 }}
         />
         <Menu
           theme="dark"
