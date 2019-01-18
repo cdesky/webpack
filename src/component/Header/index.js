@@ -1,6 +1,5 @@
 import {Layout, Menu, Icon} from 'antd';
-import SiderBar from 'component/Sider'
-const { Header, Sider, Content } = Layout;
+const { Header } = Layout;
 class Index extends Component {
    constructor(){
        super();
@@ -31,33 +30,17 @@ class Index extends Component {
             </Menu.Item> 
     })
     return (
-        <Layout>
-    <Header className="header">
-      <div className="logo"/>
-      <Menu
-        theme="dark"
-        mode="horizontal"
-        defaultSelectedKeys={['1']}
-        style={{ lineHeight: '64px' }}
-      >
-       {navRes}
-      </Menu>
-    </Header>
-    <Layout>
-      <Sider width={200} style={{ background: '#fff' }}>
-        <SiderBar /> 
-      </Sider>
-      <Layout style={{ padding: '0 24px 24px' }}>
-        
-        <Content style={{
-          background: '#fff', padding: 24, margin: 0, minHeight: 280,
-        }}
-        >
-          更改这个页面就行了112
-        </Content>
-      </Layout>
-    </Layout>
-  </Layout>
+        <Header className="header">
+            <div className="logo">冬哥</div>
+            <Menu
+                theme="dark"
+                mode="horizontal"
+                defaultSelectedKeys={['1']}
+                style={{ lineHeight: '64px' }}
+            >
+            {navRes}
+            </Menu>
+        </Header>  
     );
   }     
 }

@@ -1,5 +1,8 @@
+import { Layout } from "antd";
 import Header from "component/header/index";
 import Sider from "component/Sider/index";
+const { Content } = Layout;
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -10,10 +13,22 @@ class Index extends Component {
 
   render() {
     return (
-      <div>
+      <Layout style={{ height: "100%" }}>
         <Header />
-        <Sider />
-      </div>
+        <Layout style={{ height: "100%" }}>
+          <Sider />
+          <Content
+            style={{
+              margin: "10px",
+              padding: "10px",
+              background: "#fff",
+              borderRadius: 4
+            }}
+          >
+            aaa
+          </Content>
+        </Layout>
+      </Layout>
     );
   }
 }

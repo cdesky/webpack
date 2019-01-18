@@ -7,24 +7,23 @@ import RouterMap from "./routerMap";
 import Page from "router/index";
 import hashHistory from "router/history";
 console.log("hashHistory", hashHistory);
- 
 
 const getRouter = () => (
-  <HashRouter history={hashHistory}> 
+  <HashRouter history={hashHistory}>
     {/* {hashHistory.location.pathname === "/login" ||
       hashHistory.location.pathname === "/" ? (
        <Login />
       ) : (
         null
       )} */}
-      <Switch> 
-        <Route path="/login" component={RouterMap.login} />
-        <Route path="/project" component={RouterMap.project} />
-        <Route path="/IndexBody" component={RouterMap.IndexBody} />
-        <Route path="/site" component={RouterMap.site} />
-        <Route path="/projectDetail" component={RouterMap.projectDetail} />
-        <Page />
-      </Switch> 
+    <Switch>
+      <Route path="/login" component={RouterMap.login} />
+      <Route path="/project" component={RouterMap.project} />
+      <Route path="/IndexBody" component={RouterMap.IndexBody} />
+      <Route path="/site" component={RouterMap.site} />
+      <Route path="/projectDetail" component={RouterMap.projectDetail} />
+      <Page />
+    </Switch>
   </HashRouter>
 );
 
