@@ -20,6 +20,7 @@ class Index extends Component {
   }
 
   render() {
+    console.log(this.props.data)
     return (
       <Layout style={{ height: "100%" }}>
         <Header toggle={() => this.toggle()} collapsed={this.state.collapsed} />
