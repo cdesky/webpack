@@ -23,6 +23,25 @@
               "children":[]
             }
           ]
+        },
+        {
+          "name": "项目概况1",
+          "url": "/project/projectView",
+          "code": "p_summary",
+          "children": [
+            {
+              "name": "项目一览",
+              "url": "/project/projectView/projectProgress",
+              "code": "p_schedule",
+              "children":[]
+            },
+            {
+              "name": "项目数据报表",
+              "url": "/project/projectView/statisticalReport",
+              "code": "p_dataReport",
+              "children":[]
+            }
+          ]
         }
       ]
     },

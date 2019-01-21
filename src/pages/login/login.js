@@ -33,7 +33,7 @@ class Login extends Component {
       },
       () => {
         // let menuRes = this.menuFirst(menu.data[0]);
-        window.sessionStorage.setItem("menuList", JSON.stringify(menu));
+        window.sessionStorage.setItem("menuList", JSON.stringify(menu.data));
         history.push("/IndexBody");
       }
     );

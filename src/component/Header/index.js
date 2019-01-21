@@ -4,22 +4,27 @@ class Index extends Component {
   constructor() {
     super();
     this.state = {
-      rightCon: null
+      
     };
+  }
+
+  componentDidMount(){
+    let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
+    console.log(nav[0].children)
+    window.sessionStorage.setItem('leftMenu',JSON.stringify(nav[0].children))
+    
   }
 
   //加载它的子级
   getChildren(url) {
-    this.setState({
-      rightCon: url
-    });
+    window.sessionStorage.setItem('leftMenu',JSON.stringify(url))
   }
 
   render() {
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
-    let navRes = nav.data.map((val, i) => {
+    let navRes = nav.map((val, i) => {
       return (
-        <Menu.Item key={i + 1} onClick={() => this.getChildren(val.url)}>
+        <Menu.Item key={i + 1} onClick={() => this.getChildren(val.children)}>
           <Icon type="user" />
           {val.name}
         </Menu.Item>
