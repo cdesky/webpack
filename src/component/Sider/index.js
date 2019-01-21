@@ -1,21 +1,35 @@
 // import { Route } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
+import history from "router/history";
+
 const { SubMenu } = Menu;
 const { Sider } = Layout;
-
 
 class Index extends Component {
   constructor(props) {
     super(props);
   }
 
-  jumpTo(code){ 
-    this.props.content(code)
+  componentDidMount() {
+    history.listen(location => {
+      // const { pathname } = location;
+      // const splitPathname = pathname.split('/');
+      console.log("location", location);
+      // const openKey = splitPathname.slice(0, 3).join('/');
+      // // const selectedKey = splitPathname.slice(0 , 4).join('/');
+      // this.setState({
+      //     openKeys: [openKey]
+      //     // selectedKeys: [ selectedKey ]
+      // });
+    });
+  }
+  jumpTo() {
+    this.props.content('pages/project');
   }
 
   render() {
-    let bar=JSON.parse(window.sessionStorage.getItem('leftMenu'))
- 
+    let bar = JSON.parse(window.sessionStorage.getItem("leftMenu"));
+     
     return (
       <Sider
         width={180}
@@ -30,26 +44,32 @@ class Index extends Component {
           defaultOpenKeys={["sub1"]}
           style={{ height: "100%", borderRight: 0 }}
         >
-        {
-          bar&&bar.map((val,y)=>{
-            return <SubMenu
-                    key={'sub'+(y+1)}
-                    title={
-                      <span>
-                        <Icon type="user" />
-                        {val.name}
-                      </span>
-                    }
-                  >
-                    {
-                      val.children&&val.children.map((x,i)=>{
-                        return <Menu.Item key={'bar'+i} onClick={()=>this.jumpTo(x.url)}>{x.name}</Menu.Item>
-                      })
-                    }
+          {bar &&
+            bar.map((val, y) => {
+              return (
+                <SubMenu
+                  key={"sub" + (y + 1)}
+                  title={
+                    <span>
+                      <Icon type="user" />
+                      {val.name}
+                    </span>
+                  }
+                >
+                  {val.children &&
+                    val.children.map((x) => {
+                      return (
+                        <Menu.Item
+                          key={"bar" + x.code}
+                          onClick={() => this.jumpTo(x.url)}
+                        >
+                          {x.name}
+                        </Menu.Item>
+                      );
+                    })}
                 </SubMenu>
-          })
-        }
-          
+              );
+            })}
         </Menu>
       </Sider>
     );

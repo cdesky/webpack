@@ -27,18 +27,18 @@
         {
           "name": "项目概况1",
           "url": "/project/projectView",
-          "code": "p_summary",
+          "code": "p_summary1",
           "children": [
             {
-              "name": "项目一览",
+              "name": "项目一览1",
               "url": "/project/projectView/projectProgress",
-              "code": "p_schedule",
+              "code": "p_schedule1",
               "children":[]
             },
             {
-              "name": "项目数据报表",
+              "name": "项目数据报表1",
               "url": "/project/projectView/statisticalReport",
-              "code": "p_dataReport",
+              "code": "p_dataReport1",
               "children":[]
             }
           ]
