@@ -34,7 +34,7 @@ class Index extends Component {
               borderRadius: 4
             }}
           >
-            aaa
+            {this.props.children}
           </Content>
         </Layout>
       </Layout>

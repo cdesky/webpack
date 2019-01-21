@@ -1,11 +1,27 @@
 // import { Link } from "react-router-dom";
 
 import { Layout, Menu, Icon } from "antd";
+import history from 'router/history';
+
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 class Index extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount(){
+    history.listen(location => {
+      // const { pathname } = location;
+      // const splitPathname = pathname.split('/');
+      console.log('location',location)
+      // const openKey = splitPathname.slice(0, 3).join('/');
+      // // const selectedKey = splitPathname.slice(0 , 4).join('/');
+      // this.setState({
+      //     openKeys: [openKey]
+      //     // selectedKeys: [ selectedKey ]
+      // });
+  });
   }
 
   render() {
