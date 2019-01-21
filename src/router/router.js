@@ -12,6 +12,9 @@ const getRouter = () => (
   <HashRouter history={hashHistory}>
     <Switch>
       <Route path="/IndexBody" component={RouterMap.IndexBody} />
+      <Route path="/404" exact>
+      <h1 style={{ textAlign: 'center', paddingTop: 200 }}>找不到页面</h1>                 
+      </Route>
       {/* <Route path="/project" component={RouterMap.project} />
       <Route path="/IndexBody" component={RouterMap.IndexBody} />
       <Route path="/site" component={RouterMap.site} /> */}
