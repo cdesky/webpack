@@ -55,6 +55,7 @@ class Index extends Component {
           dataIndex: "first",
           key: "first" + i,
           fixed: "left",
+          className:'firstCol',
           render: val => {
             return <span onClick={() => alert(0)}>{val}</span>;
           }
