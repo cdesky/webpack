@@ -1,4 +1,4 @@
-import { Router as HashRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 
 import "antd/dist/antd.min.css";
 import "../common/common.css";
@@ -13,7 +13,7 @@ function Main() {
   return (
     <main className="ccp-app-main">
       <Switch>
-        {children.map(v => {
+        {children&&children.map(v => {
           return (
             <Route key={v.url} path={v.url} component={componentMap[v.code]} />
           );
@@ -26,7 +26,7 @@ function Main() {
 }
 
 const getRouter = () => (
-  <HashRouter history={hashHistory}>
+  <Router history={hashHistory}>
     <Switch>
       <Route path="/IndexBody" component={RouterMap.IndexBody} />
       <Route path="/404" exact>
@@ -38,11 +38,11 @@ const getRouter = () => (
       {/* <Route path="/projectDetail" component={RouterMap.projectDetail} /> */}
       <Login />
       <Page>
-        {/* <Route> */}
+        <Route>
           <Main />
-        {/* </Route> */}
+        </Route>
       </Page>
     </Switch>
-  </HashRouter>
+  </Router>
 );
 export default getRouter;
