@@ -49,59 +49,73 @@ class Index extends Component {
 
     for (let i = 0; i < year.length; i++) {
       if (year[i] == "费用科目")
-        columns.push({
-          width: 100,
-          title: year[i],
-          dataIndex: "first",
-          key: "first" + i,
-          fixed: "left",
-          className:'firstCol',
-          render: val => {
-            return <span onClick={() => alert(0)}>{val}</span>;
-          }
-        });
-      else
-        columns.push({
-          key: "aa" + i,
-          title: year[i],
-          children: [
-            {
-              width: 60,
-              title: "预算",
-              dataIndex: "buget",
-              key: "buget" + i
-            },
-            {
-              width: 60,
-              title: "更新预算",
-              dataIndex: "upbuget",
-              key: "upbuget" + i
-            },
-            {
-              width: 60,
-              title: "实际",
-              dataIndex: "fact",
-              key: "fact" + i
+        {
+          console.log('"first" + i',"first" + i)
+          columns.push({
+            // width: 100,
+            title: year[i],
+            dataIndex: "first",
+            key: "first"+i,
+            fixed: "left",
+            className:'firstCol',
+            render: val => {
+              return <span onClick={() => alert(0)}>{val}</span>;
             }
-          ]
-        });
+          });
+        }
+      else
+        {
+          console.log('"aa" + i',"aa" + i)
+          console.log('"buget" + i',"buget" + i)
+          console.log('"upbuget" + i',"upbuget" + i)
+          console.log('"fact" + i',"fact" + i)
+          columns.push({
+            dataIndex: "first",
+            key: "first"+i,
+            title: year[i],
+            width:240,
+            children: [
+              {
+                width: 80,
+                title: "预算",
+                dataIndex: "buget",
+                key: "buget"+i
+              },
+              {
+                width: 80,
+                title: "更新预算",
+                dataIndex: "upbuget",
+                key: "upbuget"+i
+              },
+              {
+                width: 80,
+                title: "实际",
+                dataIndex: "fact",
+                key: "fact"+i
+              }
+            ]
+          });
+        }
+        console.log('columns',columns)
     }
 
     const data = [];
     for (let i = 0; i < 10; i++) {
-      data.push({
-        key: i,
+      data.push({ 
         first: "site费用" + i,
         buget: "111",
         upbuget: "222",
         fact: "333",
-        children:[{
+        key:'data'+i,
+        children:[{ 
           first: "经费" + i,
           buget: "aaa",
           upbuget: "bbb",
-          fact: "ccc",
+          fact: "ccc", 
+          key:'child'+i
         }]
       });
+      console.log('data',data)
     }
 
     return (

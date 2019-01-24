@@ -1,4 +1,4 @@
-import { Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import "antd/dist/antd.min.css";
 import "../common/common.css";
