@@ -1,4 +1,3 @@
-// import { Route } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
 import history from "router/history";
 
@@ -11,24 +10,15 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    history.listen(location => {
-      // const { pathname } = location;
-      // const splitPathname = pathname.split('/');
-      console.log("location", location);
-      // const openKey = splitPathname.slice(0, 3).join('/');
-      // // const selectedKey = splitPathname.slice(0 , 4).join('/');
-      // this.setState({
-      //     openKeys: [openKey]
-      //     // selectedKeys: [ selectedKey ]
-      // });
-    });
+   
   }
-  jumpTo() {
-    this.props.content('pages/project');
+  jumpTo(url) {
+    history.push(url)
   }
 
   render() {
-    let bar = JSON.parse(window.sessionStorage.getItem("leftMenu"));
+    console.log('sider')
+    let bar = this.props.content
      
     return (
       <Sider

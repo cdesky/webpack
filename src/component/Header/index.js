@@ -9,18 +9,19 @@ class Index extends Component {
   }
 
   componentDidMount(){
-    let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
-    console.log(nav[0].children)
-    window.sessionStorage.setItem('leftMenu',JSON.stringify(nav[0].children))
-    
+    //第一次进来的时候默认选中第一个
+    let nav = JSON.parse(window.sessionStorage.getItem("menuList")); 
+    this.props.content(nav[0].children)
   }
 
   //加载它的子级
   getChildren(url) {
     window.sessionStorage.setItem('leftMenu',JSON.stringify(url))
+    this.props.content(url)
   }
 
   render() {
+    console.log('header')
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
     let navRes = nav.map((val, i) => {
       return (

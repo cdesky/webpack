@@ -7,39 +7,39 @@
       "children": [
         {
           "name": "项目概况",
-          "url": "/project/projectView",
+          "url":"/app/projectDetail",
           "code": "p_summary",
           "children": [
             {
               "name": "项目一览",
-              "url": "/project/projectView/projectProgress",
-              "code": "p_schedule",
-              "children":[]
+              "code": "site",
+              "url":"/app/site",
+              "children": []
             },
             {
               "name": "项目数据报表",
-              "url": "/project/projectView/statisticalReport",
               "code": "p_dataReport",
-              "children":[]
+              "url":"/app/p_dataReport",
+              "children": []
             }
           ]
         },
         {
           "name": "项目概况1",
-          "url": "/project/projectView",
+          "url":"/app/projectDetail",
           "code": "p_summary1",
           "children": [
             {
               "name": "项目一览1",
-              "url": "/project/projectView/projectProgress",
-              "code": "p_schedule1",
-              "children":[]
+              "code": "project",
+              "url":"/app/project",
+              "children": []
             },
             {
               "name": "项目数据报表1",
-              "url": "/project/projectView/statisticalReport",
               "code": "p_dataReport1",
-              "children":[]
+              "url":"/app/p_dataReport1",
+              "children": []
             }
           ]
         }
@@ -47,25 +47,25 @@
     },
     {
       "name": "中心",
-      "url": "/site",
       "code": "site",
+      "url":"/app/projectDetail",
       "children": [
         {
           "name": "中心管理",
-          "url": "/site/siteManage",
           "code": "s_site",
+          "url":"/app/projectDetail",
           "children": [
             {
               "name": "中心一览",
-              "url": "/site/siteManage/siteEvent",
-              "code": "s_sitePlan",
-              "children":[]
+              "code": "projectDetail",
+              "url":"/app/projectDetail",
+              "children": []
             },
             {
               "name": "中心调研",
-              "url": "/site/siteManage/siteResearch",
               "code": "s_siteResearch",
-              "children":[]
+              "url":"/app/s_siteResearch",
+              "children": []
             }
           ]
         }

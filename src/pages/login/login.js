@@ -32,9 +32,11 @@ class Login extends Component {
         passWord: $.trim($(".pwd").val())
       },
       () => {
-        // let menuRes = this.menuFirst(menu.data[0]);
+        let menuRes = this.menuFirst(
+          menu.data[0] ? menu.data[0].children[0] : menu.data[0]
+        );
         window.sessionStorage.setItem("menuList", JSON.stringify(menu.data));
-        history.push("/IndexBody");
+        history.push(menuRes);
       }
     );
   }
@@ -45,12 +47,10 @@ class Login extends Component {
     for (const key in menu) {
       if (key === "children") {
         if (menu[key].length > 0) {
-          menu[key] &&
-            menu[key].map(val => {
-              if (val.children.length) url = this.menuFirst(val.children[0]);
-              else url = val.url;
-            });
+          url = menu[key][0].url;
         }
+        else
+          url=menu.url
       }
     }
     return url;

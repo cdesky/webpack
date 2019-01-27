@@ -105,7 +105,7 @@ configs = {
     new OptimizeCssAssetsPlugin(),
     new HtmlWebpackPlugin({
       title: "冬哥出品11",
-      alwaysWriteToDisk: true,
+      // alwaysWriteToDisk: true,
       filename: "index.html",
       template: path.resolve("index.html"), 
       favicon: path.resolve("./src/favicon.ico"),

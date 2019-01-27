@@ -1,10 +1,10 @@
-import { Layout, Table } from "antd";
+import { Layout } from "antd"; //Table
 import Header from "component/header/index";
 import Sider from "component/Sider/index";
 // import Body from "component/Sider/body";
-// import {Router as HashRouter,Switch,Route } from "react-router-dom";
+import { Route } from "react-router-dom";
+import RouterMap from "./routerMap";
 
-// import hashHistory from "router/history";
 const { Content } = Layout;
 
 class Index extends Component {
@@ -24,111 +24,111 @@ class Index extends Component {
     });
   }
 
+  //拿到父级点击返回的左侧树
   content(val) {
     this.setState({
-      body: val //<Route path={val} component={val}/>
+      body: val
     });
   }
 
   render() {
-    const rowSelection = {
-      onChange: (selectedRowKeys, selectedRows) => {
-        console.log(
-          `selectedRowKeys: ${selectedRowKeys}`,
-          "selectedRows: ",
-          selectedRows
-        );
-      },
-      getCheckboxProps: record => ({
-        disabled: record.name === "Disabled User" // Column configuration not to be checked
-      })
-    };
+    
+    console.log('router')
+    // const rowSelection = {
+    //   onChange: (selectedRowKeys, selectedRows) => {
+    //     console.log(
+    //       `selectedRowKeys: ${selectedRowKeys}`,
+    //       "selectedRows: ",
+    //       selectedRows
+    //     );
+    //   },
+    //   getCheckboxProps: record => ({
+    //     disabled: record.name === "Disabled User" // Column configuration not to be checked
+    //   })
+    // };
 
     let year = ["费用科目", "合计", "2018汇总", "2019汇总", "2020汇总"];
     const columns = [];
 
     for (let i = 0; i < year.length; i++) {
-      if (year[i] == "费用科目")
-        {
-          console.log('"first" + i',"first" + i)
-          columns.push({
-            // width: 100,
-            title: year[i],
-            dataIndex: "first",
-            key: "first"+i,
-            fixed: "left",
-            className:'firstCol',
-            render: val => {
-              return <span onClick={() => alert(0)}>{val}</span>;
+      if (year[i] == "费用科目") {
+        // console.log('"first" + i',"first" + i)
+        columns.push({
+          // width: 100,
+          title: year[i],
+          dataIndex: "first",
+          key: "first1" + i,
+          fixed: "left",
+          className: "firstCol",
+          render: val => {
+            return <span onClick={() => alert(0)}>{val}</span>;
+          }
+        });
+      } else {
+        // console.log('"aa" + i',"aa" + i)
+        // console.log('"buget" + i',"buget" + i)
+        // console.log('"upbuget" + i',"upbuget" + i)
+        // console.log('"fact" + i',"fact" + i)
+        columns.push({
+          dataIndex: "first",
+          key: "first" + i,
+          title: year[i],
+          width: 240,
+          children: [
+            {
+              width: 80,
+              title: "预算",
+              dataIndex: "buget",
+              key: "buget" + i
+            },
+            {
+              width: 80,
+              title: "更新预算",
+              dataIndex: "upbuget",
+              key: "upbuget" + i
+            },
+            {
+              width: 80,
+              title: "实际",
+              dataIndex: "fact",
+              key: "fact" + i
             }
-          });
-        }
-      else
-        {
-          console.log('"aa" + i',"aa" + i)
-          console.log('"buget" + i',"buget" + i)
-          console.log('"upbuget" + i',"upbuget" + i)
-          console.log('"fact" + i',"fact" + i)
-          columns.push({
-            dataIndex: "first",
-            key: "first"+i,
-            title: year[i],
-            width:240,
-            children: [
-              {
-                width: 80,
-                title: "预算",
-                dataIndex: "buget",
-                key: "buget"+i
-              },
-              {
-                width: 80,
-                title: "更新预算",
-                dataIndex: "upbuget",
-                key: "upbuget"+i
-              },
-              {
-                width: 80,
-                title: "实际",
-                dataIndex: "fact",
-                key: "fact"+i
-              }
-            ]
-          });
-        }
-        console.log('columns',columns)
+          ]
+        });
+      }
+      // console.log('columns',columns)
     }
 
     const data = [];
     for (let i = 0; i < 10; i++) {
-      data.push({ 
+      data.push({
+        key: "row" + i,
         first: "site费用" + i,
         buget: "111",
         upbuget: "222",
         fact: "333",
-        key:'data'+i,
-        children:[{ 
-          first: "经费" + i,
-          buget: "aaa",
-          upbuget: "bbb",
-          fact: "ccc", 
-          key:'child'+i
-        }]
+        key: "data" + i,
+        children: [
+          {
+            first: "经费" + i,
+            buget: "aaa",
+            upbuget: "bbb",
+            fact: "ccc",
+            key: Math.random(10)
+          }
+        ]
       });
-      console.log('data',data)
     }
 
     return (
       <Layout style={{ height: "100%" }}>
-        <Header toggle={() => this.toggle()} collapsed={this.state.collapsed} />
+        <Header toggle={() => this.toggle()} collapsed={this.state.collapsed} content={(x)=>this.content(x)}/>
         <Layout style={{ height: "100%" }}>
           <Sider
             collapsed={this.state.collapsed}
-            content={x => this.content(x)}
+            content={this.state.body}
           />
-          {/* <Body body={this.state.body}/>
-          
-          <Sider collapsed={this.state.collapsed} /> */}
+
           <Content
             style={{
               margin: "10px",
@@ -137,16 +137,19 @@ class Index extends Component {
               borderRadius: 4
             }}
           >
-            {/* <HashRouter history={hashHistory}><Switch>{this.state.body}</Switch></HashRouter> */}
-            <Table
+            <Route
+              component={RouterMap[this.props.location.pathname.split("/")[2]]}
+            />
+            {/* <Table
               rowSelection={rowSelection}
-              rowKey="tables"
+              rowKey="tables2"
+              key="tables1"
               bordered
               columns={columns}
               dataSource={data}
               size="middle"
               scroll={{ x: "130%", y: 300 }}
-            />
+            /> */}
           </Content>
         </Layout>
       </Layout>
