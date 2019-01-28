@@ -38,21 +38,8 @@ class Index extends Component {
 
   render() {
     console.log("router");
-    const rowSelection = {
-      onChange: (selectedRowKeys, selectedRows) => {
-        console.log(
-          `selectedRowKeys: ${selectedRowKeys}`,
-          "selectedRows: ",
-          selectedRows
-        );
-      },
-      getCheckboxProps: record => ({
-        disabled: record.name === "Disabled User" // Column configuration not to be checked
-      })
-    };
-
-    let year = ["费用科目", "合计", "2018汇总", "2019汇总", "2020汇总"];
-    const columns = [];
+    
+ 
 
     for (let i = 0; i < year.length; i++) {
       if (year[i] == "费用科目") {
@@ -124,6 +111,18 @@ class Index extends Component {
       });
     }
 
+    const rowSelection = {
+      onChange: (selectedRowKeys, selectedRows) => {
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      },
+      onSelect: (record, selected, selectedRows) => {
+        console.log(record, selected, selectedRows);
+      },
+      onSelectAll: (selected, selectedRows, changeRows) => {
+        console.log(selected, selectedRows, changeRows);
+      },
+    };
+
     return (
       <Layout style={{ height: "100%" }}>
         <Header
@@ -148,7 +147,6 @@ class Index extends Component {
             <Table
               rowSelection={rowSelection}
               rowKey="tables2"
-              key="tables1"
               bordered
               columns={columns}
               dataSource={data}
