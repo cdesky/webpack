@@ -8,7 +8,7 @@ import PickerColor from 'component/pickerColor/index'
   
     let props = {
       name: 'uploadFile',
-      action: '/php/upload.php', //'/php/upload.php',  //这个根据php的所在实际路径
+      action: '/php/upload.php',  //这个根据php的所在实际路径
       // headers: {  //自己可以添加token 啥的 
       //   authorization: 'authorization-text',
       //   token:'123456'
@@ -17,10 +17,11 @@ import PickerColor from 'component/pickerColor/index'
         if (info.file.status !== 'uploading') {
           console.log(info.file, info.fileList);
         }
-        if (info.file.status === 'done') {
-          message.success(`${info.file.name} 上传成功`);
-        } else if (info.file.status === 'error') {
-          message.error(`${info.file.name} 上传失败`);
+        if (info.file.response.success === true) {
+          console.log('info',info) 
+          message.success(info.file.response.data);
+        } else if (info.file.response.success === false) {  
+          message.error(info.file.response.data);
         }
       }
     };
@@ -31,18 +32,18 @@ import PickerColor from 'component/pickerColor/index'
         this is Project~
         <Icon type="step-forward" />
         <Row>
-          <Col span={12}>col-121</Col>
-          <Col span={12}>col-122x</Col>
+          <Col span={12}>col-1</Col>
+          <Col span={12}>col-2</Col>
         </Row>
         <div className="box">
-          <div className="left">aa122</div>
-          <div className="right">bb1</div>
+          <div className="left">ab</div>
+          <div className="right">cd</div>
         </div>
         <PickerColor />
          <br/>
         <Upload {...props}>
           <Button>
-            <Icon type="upload" /> 上传
+            <Icon type="upload" /> 上传1
           </Button>
         </Upload>
       </div>

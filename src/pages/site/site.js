@@ -7,9 +7,9 @@ export default class Site extends Component {
   render() {
     return (
       <div className="site">
-        this is site1~
+        this is site2~
         <DatePicker />
-        <Button type="danger">Danger</Button>
+        <Button type="danger">Danger3</Button>
         <Icon type="up-circle" />
         <Project />
       </div>

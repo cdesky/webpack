@@ -8,37 +8,41 @@ class Login extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    // axios.get('/php/test.php',
-    // {
-    //   params:{
-    //     userName:'111',
-    //     pwd:'123456'
-    //   },
-    // })
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-  }
+  componentDidMount() {}
 
   login() {
-    $.post(
-      "/php/test.php",
-      {
-        userName: $.trim($(".uName").val()),
-        passWord: $.trim($(".pwd").val())
-      },
-      () => {
+    axios
+      .post("/php/test.php", {
+        params: {
+          userName: $.trim($(".uName").val()),
+          passWord: $.trim($(".pwd").val())
+        }
+      })
+      .then(response => {
+        console.log(response);
         let menuRes = this.menuFirst(
           menu.data[0] ? menu.data[0].children[0] : menu.data[0]
         );
         window.sessionStorage.setItem("menuList", JSON.stringify(menu.data));
         history.push(menuRes);
-      }
-    );
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    // $.post(
+    //   "/php/test.php",
+    //   {
+    //     userName: $.trim($(".uName").val()),
+    //     passWord: $.trim($(".pwd").val())
+    //   },
+    //   () => {
+    //     let menuRes = this.menuFirst(
+    //       menu.data[0] ? menu.data[0].children[0] : menu.data[0]
+    //     );
+    //     window.sessionStorage.setItem("menuList", JSON.stringify(menu.data));
+    //     history.push(menuRes);
+    //   }
+    // );
   }
 
   //登录成功后  跳转到 第一个导航栏目
@@ -48,9 +52,7 @@ class Login extends Component {
       if (key === "children") {
         if (menu[key].length > 0) {
           url = menu[key][0].url;
-        }
-        else
-          url=menu.url
+        } else url = menu.url;
       }
     }
     return url;

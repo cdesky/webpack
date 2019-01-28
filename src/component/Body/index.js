@@ -1,9 +1,9 @@
-import { Layout } from "antd"; //Table
+import { Layout, Table } from "antd";
 import Header from "component/header/index";
 import Sider from "component/Sider/index";
-// import Body from "component/Sider/body";
 import { Route } from "react-router-dom";
-import RouterMap from "./routerMap";
+import RouterMap from "router/routerMap";
+import history from "router/history";
 
 const { Content } = Layout;
 
@@ -11,7 +11,8 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: false
+      collapsed: false,
+      body: null
     };
   }
 
@@ -19,8 +20,7 @@ class Index extends Component {
 
   toggle() {
     this.setState({
-      collapsed: !this.state.collapsed,
-      body: null
+      collapsed: !this.state.collapsed
     });
   }
 
@@ -29,23 +29,27 @@ class Index extends Component {
     this.setState({
       body: val
     });
+    if (val) {
+      let url = val[0].children[0] ? val[0].children[0].url : val[0].url;
+      console.log("bar", url);
+      history.push(url);
+    } 
   }
 
   render() {
-    
-    console.log('router')
-    // const rowSelection = {
-    //   onChange: (selectedRowKeys, selectedRows) => {
-    //     console.log(
-    //       `selectedRowKeys: ${selectedRowKeys}`,
-    //       "selectedRows: ",
-    //       selectedRows
-    //     );
-    //   },
-    //   getCheckboxProps: record => ({
-    //     disabled: record.name === "Disabled User" // Column configuration not to be checked
-    //   })
-    // };
+    console.log("router");
+    const rowSelection = {
+      onChange: (selectedRowKeys, selectedRows) => {
+        console.log(
+          `selectedRowKeys: ${selectedRowKeys}`,
+          "selectedRows: ",
+          selectedRows
+        );
+      },
+      getCheckboxProps: record => ({
+        disabled: record.name === "Disabled User" // Column configuration not to be checked
+      })
+    };
 
     let year = ["费用科目", "合计", "2018汇总", "2019汇总", "2020汇总"];
     const columns = [];
@@ -122,12 +126,13 @@ class Index extends Component {
 
     return (
       <Layout style={{ height: "100%" }}>
-        <Header toggle={() => this.toggle()} collapsed={this.state.collapsed} content={(x)=>this.content(x)}/>
+        <Header
+          toggle={() => this.toggle()}
+          collapsed={this.state.collapsed}
+          content={x => this.content(x)}
+        />
         <Layout style={{ height: "100%" }}>
-          <Sider
-            collapsed={this.state.collapsed}
-            content={this.state.body}
-          />
+          <Sider collapsed={this.state.collapsed} content={this.state.body} />
 
           <Content
             style={{
@@ -140,7 +145,7 @@ class Index extends Component {
             <Route
               component={RouterMap[this.props.location.pathname.split("/")[2]]}
             />
-            {/* <Table
+            <Table
               rowSelection={rowSelection}
               rowKey="tables2"
               key="tables1"
@@ -149,7 +154,7 @@ class Index extends Component {
               dataSource={data}
               size="middle"
               scroll={{ x: "130%", y: 300 }}
-            /> */}
+            />
           </Content>
         </Layout>
       </Layout>

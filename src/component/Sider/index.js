@@ -6,20 +6,21 @@ const { Sider } = Layout;
 
 class Index extends Component {
   constructor(props) {
-    super(props);
+    super(props); 
   }
 
   componentDidMount() {
-   
+    
   }
   jumpTo(url) {
-    history.push(url)
+    history.push(url);
   }
 
   render() {
-    console.log('sider')
-    let bar = this.props.content
-     
+    console.log("sider");
+    let bar=this.props.content 
+    let count = 0;
+
     return (
       <Sider
         width={180}
@@ -30,7 +31,7 @@ class Index extends Component {
       >
         <Menu
           mode="inline"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={["child1"]}
           defaultOpenKeys={["sub1"]}
           style={{ height: "100%", borderRight: 0 }}
         >
@@ -47,10 +48,11 @@ class Index extends Component {
                   }
                 >
                   {val.children &&
-                    val.children.map((x) => {
+                    val.children.map(x => {
+                      count++;
                       return (
                         <Menu.Item
-                          key={"bar" + x.code}
+                          key={"child" + count}
                           onClick={() => this.jumpTo(x.url)}
                         >
                           {x.name}

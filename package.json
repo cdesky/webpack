@@ -4,8 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --hot --color --progress --config webpack.dev.js",
-    "build": "webpack --progress --config webpack.prod.js",
-    "mock": "json-server ./mock/db.js --port 3003 ./routes.json"
+    "build": "webpack --progress --config webpack.prod.js"
   },
   "dependencies": {
     "@babel/core": "^7.1.6",
