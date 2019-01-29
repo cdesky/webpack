@@ -10,7 +10,6 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    
   }
   jumpTo(url) {
     history.push(url);
@@ -18,7 +17,13 @@ class Index extends Component {
 
   render() {
     console.log("sider");
-    let bar=this.props.content 
+    let bar=this.props.content
+    if(bar)
+    {
+      console.log('bar',bar[0].children[0]? bar[0].children[0].url:bar[0].url)
+      history.push(bar[0].children[0]? bar[0].children[0].url:bar[0].url)
+    }
+    
     let count = 0;
 
     return (
