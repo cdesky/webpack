@@ -1,4 +1,4 @@
-import { Layout ,Table} from "antd"; 
+import { Layout } from "antd"; //,Table
 import Header from "component/header/index";
 import Sider from "component/Sider/index";
 // import Body from "component/Sider/body";
@@ -6,12 +6,13 @@ import { Route } from "react-router-dom";
 import RouterMap from "router/routerMap";
 
 const { Content } = Layout;
-
+ 
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: false
+      collapsed: false,
+      body:null
     };
   }
 
@@ -19,8 +20,7 @@ class Index extends Component {
 
   toggle() {
     this.setState({
-      collapsed: !this.state.collapsed,
-      body: null
+      collapsed: !this.state.collapsed
     });
   }
 
@@ -119,17 +119,17 @@ class Index extends Component {
       });
     }
 
-    const rowSelection = {
-      onChange: (selectedRowKeys, selectedRows) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-      },
-      onSelect: (record, selected, selectedRows) => {
-        console.log(record, selected, selectedRows);
-      },
-      onSelectAll: (selected, selectedRows, changeRows) => {
-        console.log(selected, selectedRows, changeRows);
-      },
-    };
+    // const rowSelection = {
+    //   onChange: (selectedRowKeys, selectedRows) => {
+    //     console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    //   },
+    //   onSelect: (record, selected, selectedRows) => {
+    //     console.log(record, selected, selectedRows);
+    //   },
+    //   onSelectAll: (selected, selectedRows, changeRows) => {
+    //     console.log(selected, selectedRows, changeRows);
+    //   },
+    // };
 
     return (
       <Layout style={{ height: "100%" }}>
@@ -151,7 +151,7 @@ class Index extends Component {
             <Route
               component={RouterMap[this.props.location.pathname.split("/")[2]]}
             />
-            <Table
+            {/* <Table
               rowSelection={rowSelection}
               rowKey="tables2"
               key="tables1"
@@ -160,7 +160,7 @@ class Index extends Component {
               dataSource={data}
               size="middle"
               scroll={{ x: "130%", y: 300 }}
-            />
+            /> */}
           </Content>
         </Layout>
       </Layout>
