@@ -19,7 +19,7 @@
             {
               "name": "项目数据报表",
               "code": "p_dataReport",
-              "url":"/app/p_dataReport",
+              "url":"/app/table",
               "children": []
             }
           ]

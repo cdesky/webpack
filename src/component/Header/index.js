@@ -1,28 +1,34 @@
-import { Layout, Menu, Icon } from "antd";
+import { Layout, Menu, Icon, message } from "antd";
+import history from "router/history";
 const { Header } = Layout;
 class Index extends Component {
   constructor() {
     super();
-    this.state = {
-      
-    };
+    this.state = {};
   }
 
-  componentDidMount(){
+  componentDidMount() {
     //第一次进来的时候默认选中第一个
-    let nav = JSON.parse(window.sessionStorage.getItem("menuList")); 
-    this.props.content(nav[0].children)
+    let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
+    this.props.content(nav[0].children);
   }
 
   //加载它的子级
   getChildren(url) {
-    window.sessionStorage.setItem('leftMenu',JSON.stringify(url))
-    this.props.content(url)
+    window.sessionStorage.setItem("leftMenu", JSON.stringify(url));
+    this.props.content(url);
   }
 
   render() {
-    console.log('header')
+    console.log("header");
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
+    if (nav === null) {
+      message.error("登录超时,丢失token,请重新登录");
+      setTimeout(() => {
+        history.push("/");
+        window.location.reload();
+      }, 2000);
+    }
     let navRes = nav.map((val, i) => {
       return (
         <Menu.Item key={i + 1} onClick={() => this.getChildren(val.children)}>

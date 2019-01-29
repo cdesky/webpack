@@ -3,29 +3,38 @@ import history from "router/history";
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
-
 class Index extends Component {
   constructor(props) {
-    super(props); 
+    super(props);
+    this.state = {
+      ss: this.props.count
+    };
   }
 
-  componentDidMount() {
+  componentDidMount() {}
+
+  componentWillUpdate(){
+    console.log(0)
+    // this.setState({
+    //   ss:1
+    // })
   }
+
+  componentDidUpdate(){
+    console.log(1)
+    // this.setState({
+    //   ss:1
+    // })
+  }
+  
   jumpTo(url) {
     history.push(url);
   }
 
   render() {
     console.log("sider");
-    let bar=this.props.content
-    if(bar)
-    {
-      console.log('bar',bar[0].children[0]? bar[0].children[0].url:bar[0].url)
-      history.push(bar[0].children[0]? bar[0].children[0].url:bar[0].url)
-    }
-    
+    let bar = this.props.content;
     let count = 0;
-
     return (
       <Sider
         width={180}
@@ -36,7 +45,7 @@ class Index extends Component {
       >
         <Menu
           mode="inline"
-          defaultSelectedKeys={["child1"]}
+          defaultSelectedKeys={["child" + this.state.ss]}
           defaultOpenKeys={["sub1"]}
           style={{ height: "100%", borderRight: 0 }}
         >
@@ -55,6 +64,7 @@ class Index extends Component {
                   {val.children &&
                     val.children.map(x => {
                       count++;
+                      console.log("count", count);
                       return (
                         <Menu.Item
                           key={"child" + count}
