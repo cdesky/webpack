@@ -1,6 +1,8 @@
 import { Row, Col ,Upload,Button,Icon,message} from "antd";
 import "./project.less";
 import PickerColor from 'component/pickerColor/index'
+import {Link} from 'react-router-dom';
+
 
  class Project extends Component {
  
@@ -37,7 +39,8 @@ import PickerColor from 'component/pickerColor/index'
         </Row>
         <div className="box">
           <div className="left">ab</div>
-          <div className="right">cd</div>
+          <div className="right">cd
+        <Link to="/app/site">hehe</Link></div>
         </div>
         <PickerColor />
          <br/>

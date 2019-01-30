@@ -2,8 +2,8 @@ import { Layout, Menu, Icon, message } from "antd";
 import history from "router/history";
 const { Header } = Layout;
 class Index extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 

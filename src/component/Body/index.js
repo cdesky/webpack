@@ -18,6 +18,7 @@ class Index extends Component {
 
   componentDidMount() {}
 
+  
   toggle() {
     this.setState({
       collapsed: !this.state.collapsed
@@ -46,7 +47,7 @@ class Index extends Component {
           content={x => this.content(x)}
         />
         <Layout style={{ height: "100%" }}>
-          <Sider collapsed={this.state.collapsed} content={this.state.body} count={1}/>
+          <Sider collapsed={this.state.collapsed} content={this.state.body} />
 
           <Content
             style={{
@@ -58,7 +59,7 @@ class Index extends Component {
           >
             <Route
               component={RouterMap[this.props.location.pathname.split("/")[2]]}
-            />
+            /> 
           </Content>
         </Layout>
       </Layout>

@@ -2,8 +2,7 @@ import { Router, Route, Switch } from "react-router-dom";
 
 import "antd/dist/antd.min.css";
 import "../common/common.css";
-import RouterMap from "./routerMap";
-import Login from "pages/login/login";
+import RouterMap from "./routerMap"; 
 import hashHistory from "router/history";
 console.log("hashHistory", hashHistory);
 
@@ -28,13 +27,13 @@ function Main() {
 }
 
 const getRouter = () => (
-  <Router history={hashHistory}>
+  <Router  history={hashHistory}>
     <Switch>
-      <Route path="/app" component={RouterMap.App}>
+      <Route path="/app" component={RouterMap.app}>
         <Main />
       </Route>
-      <Login />
+      <Route path='/' component={RouterMap.login}/> 
     </Switch>
-  </Router>
+  </Router >
 );
 export default getRouter;
