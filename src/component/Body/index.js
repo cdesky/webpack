@@ -12,7 +12,8 @@ class Index extends Component {
     super(props);
     this.state = {
       collapsed: false,
-      body: null
+      body: null,
+      code:null
     };
   }
 
@@ -27,13 +28,18 @@ class Index extends Component {
 
   //拿到父级点击返回的左侧树
   content(val) {
-    this.setState({
-      body: val
-    });
+    let url ='',code=''
     if (val) {
-      let url = val[0].children[0] ? val[0].children[0].url : val[0].url;
+      url= val[0].children[0] ? val[0].children[0].url : val[0].url;
+      code=val[0].children[0] ? val[0].children[0].code : val[0].code;
       history.push(url);
     }
+
+    this.setState({
+      body: val,
+      code:code
+    });
+    
   }
 
   render() {
@@ -47,7 +53,7 @@ class Index extends Component {
           content={x => this.content(x)}
         />
         <Layout style={{ height: "100%" }}>
-          <Sider collapsed={this.state.collapsed} content={this.state.body} />
+          <Sider collapsed={this.state.collapsed} content={this.state.body} code={this.state.code}/>
 
           <Content
             style={{

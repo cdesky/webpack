@@ -7,51 +7,51 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedKey: 1,
+      selectedKey: null,
       bar: null
     };
   }
 
   componentDidMount() {
+    this.setState({
+      selectedKey: this.props.code
+    })
     // if(this.props.content)
-    //   this.SelectedKeys(this.props);
+      // this.SelectedKeys(this.props.code);
+      // setTimeout(() => {
+        // this.SelectedKeys(nextProps.code);
+        // this.SelectedKeys(this.props.code);
+      // }, null);
   }
 
   componentWillReceiveProps(nextProps) {
     console.log("componentWillReceiveProps", nextProps);
-    setTimeout(() => {
-      this.SelectedKeys(this.state.selectedKey);
-    }, 100);
+    this.SelectedKeys(this.state.selectedKey);
   }
+ 
 
   SelectedKeys(count) {
     this.setState({
-      selectedKey: count,
+      selectedKey: this.props.code,
       bar: this.props.content
     });
   }
 
-  st(a,b,c){
-    console.log('aaaa',a,b,c)
-    // this.setState({
-    //   selectedKey: num,
-    // });
-  }
-
+  
  
   jumpTo(url,num) {
-    history.push(url);
-
+    console.log('aaaa',url,num)
     this.setState({
       selectedKey:num
     })
+    history.push(url);
   }
 
   render() {
-    console.log("sider");
-    let bar = this.state.bar;
-    let selectedKey = this.state.selectedKey;
-    let count = 0;
+    console.log("sider 回调在render",this.state.selectedKey);
+    let bar =this.props.content// this.state.bar;
+    let selectedKey = this.state.selectedKey; 
+
     return (
       <Sider
         width={180}
@@ -62,10 +62,11 @@ class Index extends Component {
       >
         <Menu
           mode="inline"
-          // defaultSelectedKeys={["child" + selectedKey]}
+          // defaultSelectedKeys={[selectedKey]}
           defaultOpenKeys={["sub1"]} 
-          selectedKeys={["child"+selectedKey]}
+          selectedKeys={[selectedKey]}
           style={{ height: "100%", borderRight: 0 }}
+          forceSubMenuRender={true}
         >
           {bar &&
             bar.map((val, y) => {
@@ -80,13 +81,11 @@ class Index extends Component {
                   }
                 >
                   {val.children &&
-                    val.children.map(x => {
-                      count++;
+                    val.children.map(x => { 
                       return (
                         <Menu.Item
-                          key={"child" + count}
-                          // onClick={() => this.jumpTo(x.url)}
-                          onSelect={()=> this.st(x.url,count,key)}
+                          key={x.code}
+                          onClick={()=> this.jumpTo(x.url,x.code)}
                         >
                           {x.name}
                         </Menu.Item>
