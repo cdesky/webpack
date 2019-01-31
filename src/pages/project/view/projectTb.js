@@ -1,6 +1,6 @@
 import { Table } from "antd";
 
-export default class Tables extends Component {
+export default class ProjectTb extends Component {
   constructor(props) {
     super(props);
     this.state = {};

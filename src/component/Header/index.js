@@ -1,5 +1,5 @@
-import { Layout, Menu, Icon, message } from "antd";
-import history from "router/history";
+import { Layout, Menu, Icon } from "antd";
+// import history from "router/history";
 const { Header } = Layout;
 class Index extends Component {
   constructor(props) {
@@ -22,13 +22,13 @@ class Index extends Component {
   render() {
     console.log("header");
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
-    if (nav === null) {
-      message.error("登录超时,丢失token,请重新登录");
-      setTimeout(() => {
-        history.push("/");
-        window.location.reload();
-      }, 2000);
-    }
+    // if (nav === null) {
+    //   message.error("登录超时,丢失token,请重新登录");
+    //   setTimeout(() => {
+    //     history.push("/");
+    //     window.location.reload();
+    //   }, 2000);
+    // }
     let navRes = nav.map((val, i) => {
       return (
         <Menu.Item key={i + 1} onClick={() => this.getChildren(val.children)}>
@@ -39,7 +39,7 @@ class Index extends Component {
     });
     return (
       <Header className="header">
-        <div className="logo">冬哥</div>
+        <div className="logo">webpack</div>
         <Icon
           className="trigger"
           type={this.props.collapsed ? "menu-unfold" : "menu-fold"}

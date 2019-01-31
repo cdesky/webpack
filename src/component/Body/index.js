@@ -12,14 +12,12 @@ class Index extends Component {
     super(props);
     this.state = {
       collapsed: false,
-      body: null,
-      code:null
+      body: null
     };
   }
 
   componentDidMount() {}
 
-  
   toggle() {
     this.setState({
       collapsed: !this.state.collapsed
@@ -28,22 +26,19 @@ class Index extends Component {
 
   //拿到父级点击返回的左侧树
   content(val) {
-    let url ='',code=''
+    let url = "";
     if (val) {
-      url= val[0].children[0] ? val[0].children[0].url : val[0].url;
-      code=val[0].children[0] ? val[0].children[0].code : val[0].code;
+      url = val[0].children[0] ? val[0].children[0].url : val[0].url;
       history.push(url);
     }
 
     this.setState({
-      body: val,
-      code:code
+      body: val
     });
-    
   }
 
   render() {
-    console.log("router",this.props.location.pathname.split("/")[2]);
+    console.log("router", history);
 
     return (
       <Layout style={{ height: "100%" }}>
@@ -53,7 +48,7 @@ class Index extends Component {
           content={x => this.content(x)}
         />
         <Layout style={{ height: "100%" }}>
-          <Sider collapsed={this.state.collapsed} content={this.state.body} code={this.state.code}/>
+          <Sider collapsed={this.state.collapsed} content={this.state.body} />
 
           <Content
             style={{
@@ -64,8 +59,8 @@ class Index extends Component {
             }}
           >
             <Route
-              component={RouterMap[this.props.location.pathname.split("/")[2]]}
-            /> 
+              component={RouterMap[history.location.pathname.split("/")[2]]}
+            />
           </Content>
         </Layout>
       </Layout>

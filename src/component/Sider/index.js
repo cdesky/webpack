@@ -1,56 +1,23 @@
 import { Layout, Menu, Icon } from "antd";
 import history from "router/history";
+import { Link } from "react-router-dom";
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 class Index extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedKey: null,
-      bar: null
-    };
+    this.state = {};
   }
 
-  componentDidMount() {
-    this.setState({
-      selectedKey: this.props.code
-    })
-    // if(this.props.content)
-      // this.SelectedKeys(this.props.code);
-      // setTimeout(() => {
-        // this.SelectedKeys(nextProps.code);
-        // this.SelectedKeys(this.props.code);
-      // }, null);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log("componentWillReceiveProps", nextProps);
-    this.SelectedKeys(this.state.selectedKey);
-  }
- 
-
-  SelectedKeys(count) {
-    this.setState({
-      selectedKey: this.props.code,
-      bar: this.props.content
-    });
-  }
-
-  
- 
-  jumpTo(url,num) {
-    console.log('aaaa',url,num)
-    this.setState({
-      selectedKey:num
-    })
-    history.push(url);
-  }
+  componentDidMount() {}
 
   render() {
-    console.log("sider 回调在render",this.state.selectedKey);
-    let bar =this.props.content// this.state.bar;
-    let selectedKey = this.state.selectedKey; 
+    console.log("sider 回调在render");
+
+    let siderBar = this.props.content;
+
+    let selectedKey = history.location.pathname.split("/")[2];
 
     return (
       <Sider
@@ -62,37 +29,39 @@ class Index extends Component {
       >
         <Menu
           mode="inline"
-          // defaultSelectedKeys={[selectedKey]}
-          defaultOpenKeys={["sub1"]} 
+          defaultOpenKeys={["sub1"]}
           selectedKeys={[selectedKey]}
           style={{ height: "100%", borderRight: 0 }}
           forceSubMenuRender={true}
         >
-          {bar &&
-            bar.map((val, y) => {
-              return (
-                <SubMenu
-                  key={"sub" + (y + 1)}
-                  title={
-                    <span>
-                      <Icon type="user" />
-                      {val.name}
-                    </span>
-                  }
-                >
-                  {val.children &&
-                    val.children.map(x => { 
-                      return (
-                        <Menu.Item
-                          key={x.code}
-                          onClick={()=> this.jumpTo(x.url,x.code)}
-                        >
-                          {x.name}
-                        </Menu.Item>
-                      );
-                    })}
-                </SubMenu>
-              );
+          {siderBar &&
+            siderBar.map((val, y) => {
+              if (val.children.length>0) {
+                return (
+                  <SubMenu
+                    key={"sub" + (y + 1)}
+                    title={
+                      <span>
+                        <Icon type="user" />
+                        {val.name}
+                      </span>
+                    }
+                  >
+                    {val.children &&
+                      val.children.map(x => {
+                        return (
+                          <Menu.Item key={x.code}>
+                            <Link to={x.url}>{x.name}</Link>
+                          </Menu.Item>
+                        );
+                      })}
+                  </SubMenu>
+                );
+              } else {
+               return <Menu.Item key={val.code}>
+                  <Link to={val.url}>{val.name}</Link>
+                </Menu.Item>;
+              }
             })}
         </Menu>
       </Sider>
