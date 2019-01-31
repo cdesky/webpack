@@ -16,8 +16,9 @@ class Index extends Component {
     console.log("sider 回调在render");
 
     let siderBar = this.props.content;
-
-    let selectedKey = history.location.pathname.split("/")[2];
+    let len = history.location.pathname.split('/').length,
+      pathname = history.location.pathname.split('/');
+    let selectedKey = pathname[len-1];
 
     return (
       <Sider
@@ -36,7 +37,7 @@ class Index extends Component {
         >
           {siderBar &&
             siderBar.map((val, y) => {
-              if (val.children.length>0) {
+              if (val.children.length > 0) {
                 return (
                   <SubMenu
                     key={"sub" + (y + 1)}
@@ -58,9 +59,11 @@ class Index extends Component {
                   </SubMenu>
                 );
               } else {
-               return <Menu.Item key={val.code}>
-                  <Link to={val.url}>{val.name}</Link>
-                </Menu.Item>;
+                return (
+                  <Menu.Item key={val.code}>
+                    <Link to={val.url}>{val.name}</Link>
+                  </Menu.Item>
+                );
               }
             })}
         </Menu>

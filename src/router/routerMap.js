@@ -6,5 +6,5 @@ export default {
   project: Ac(() => import("pages/project/project")),
   site: Ac(() => import("pages/site/site")),
   projectDetail: Ac(() => import("pages/project/view/projectDetail")),
-  projectTb: Ac(() => import("pages/project/view/projectTb"))
+  table: Ac(() => import("pages/project/view/projectTb"))
 };

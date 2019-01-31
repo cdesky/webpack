@@ -40,7 +40,7 @@ import {Link} from 'react-router-dom';
         <div className="box">
           <div className="left">ab</div>
           <div className="right">cd
-        <Link to="/app/site">hehe</Link></div>
+        <Link to="/app/sit12/site">hehe</Link></div>
         </div>
         <PickerColor />
          <br/>

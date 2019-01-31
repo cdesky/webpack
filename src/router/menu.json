@@ -8,17 +8,17 @@
         {
           "name": "项目概况",
           "url":"/app/projects",
-          "code": "project2",
+          "code": "projects",
           "children": [
             {
               "name": "项目一览",
-              "code": "project3",
+              "code": "project",
               "url":"/app/projects/project",
               "children": []
             },
             {
               "name": "项目数据报表",
-              "code": "project4",
+              "code": "table",
               "url":"/app/projects/table",
               "children": []
             }
@@ -33,12 +33,12 @@
       "children": [
         {
           "name": "中心管理",
-          "code": "site2",
+          "code": "sites",
           "url":"/app/sites",
           "children": [
             {
               "name": "中心一览",
-              "code": "site3",
+              "code": "site",
               "url":"/app/sites/site",
               "children": []
             }

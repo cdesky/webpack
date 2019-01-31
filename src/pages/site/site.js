@@ -1,7 +1,7 @@
 import "./site.css";
 import { DatePicker, Button, Icon } from "antd";
 
-import Project from "../project/project";
+// import Project from "../project/project";
 
 export default class Site extends Component {
   render() {
@@ -11,7 +11,7 @@ export default class Site extends Component {
         <DatePicker />
         <Button type="danger">Danger3</Button>
         <Icon type="up-circle" />
-        <Project />
+        {/* <Project /> */}
       </div>
     );
   }

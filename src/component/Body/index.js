@@ -38,7 +38,10 @@ class Index extends Component {
   }
 
   render() {
-    console.log("router", history);
+    let len = history.location.pathname.split('/').length,
+      pathname = history.location.pathname.split('/');
+    let code=pathname[len-1]
+    console.log("router", this.props,code);
 
     return (
       <Layout style={{ height: "100%" }}>
@@ -59,7 +62,7 @@ class Index extends Component {
             }}
           >
             <Route
-              component={RouterMap[history.location.pathname.split("/")[2]]}
+              component={RouterMap[code]}
             />
           </Content>
         </Layout>
