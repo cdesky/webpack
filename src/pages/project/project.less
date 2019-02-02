@@ -23,14 +23,51 @@
   }
 
   .ant-table-tbody > tr > td.ant-table-selection-column,
-  .ant-table-thead > tr > th.ant-table-selection-column{
+  .ant-table-thead > tr > th.ant-table-selection-column {
     min-width: 30px;
-      width: 30px;
+    width: 30px;
   }
-  
+
   .ant-table-tbody > tr > td.firstCol,
-  .ant-table-thead > tr > th.firstCol { 
-      min-width: 250px;
-      width: 250px;
+  .ant-table-thead > tr > th.firstCol {
+    min-width: 250px;
+    width: 250px;
+  }
+
+  .bugetFixed {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 180px;
+  }
+  .ant-table-row-indent,
+  .ant-table-row-indent + .ant-table-row-expand-icon {
+    float: left;
+    margin: 0;
+  }
+  .ant-table-middle
+    > .ant-table-content
+    > .ant-table-fixed-left
+    > .ant-table-body-outer
+    > .ant-table-body-inner
+    > table
+    > .ant-table-tbody
+    > tr
+    > td {
+    padding: 8px;
+  }
+
+  .positionCol {
+    position: relative;
+  }
+  .positionCol:hover:after {
+    content: ">";
+    position: absolute;
+    right: -14px;
+    top: -4px;
+    color: #40c8f5;
+    font-size: 16px;
   }
 }
