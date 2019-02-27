@@ -1,5 +1,6 @@
 import { Table, Icon,Select ,Button,Popover} from "antd";
 import dataList from '../dataList';
+import './projectTb'
 
 const Option=Select.Option
 export default class ProjectTb extends Component {
@@ -24,10 +25,10 @@ export default class ProjectTb extends Component {
     ip.focus()
   }
 
-  getHeader(colList=[]) { 
-    colList &&
-    colList.map((item, i) => { 
-        
+  getHeader(colList) { 
+    return (
+      colList &&
+    colList.map((item, i) => {  
         if (item.colType === null) {
             return {
                 fixed: 'left',
@@ -40,7 +41,7 @@ export default class ProjectTb extends Component {
 
         if (item.colType === 1) {
             return {
-                fixed: 'left',
+                fixed: i>2?'left':'',
                 ...item,
                 title: item.title,
                 className: 'budgetCol',
@@ -229,6 +230,7 @@ export default class ProjectTb extends Component {
             };
         }
     })
+    )
   };
 
 
