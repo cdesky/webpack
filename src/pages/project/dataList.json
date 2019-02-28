@@ -30,7 +30,7 @@
             "id": "402883fd682c9fe20168311ce37a094b",
             "orderNumber": 1.0,
             "isWrite": 0,
-            "colType": 1,
+            "colType": -2,
             "isFrozen": 1,
             "isMust": 1,
             "dataIndex": "col_001",

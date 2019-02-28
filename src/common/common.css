@@ -70,25 +70,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.ant-table-tbody > tr > td.ant-table-selection-column,
-.ant-table-thead > tr > th.ant-table-selection-column,
-.ant-table-tbody > tr > td.firstCol,
-.ant-table-thead > tr > th.firstCol {
-  min-width: 30px;
-  width: 30px;
-}
-.ant-table-tbody > tr > td.firstCol,
-.ant-table-thead > tr > th.firstCol {
-  min-width: 120px;
-  width: 120px;
-}
-
-.ant-table-header .ant-table-thead .ant-table-selection-column {
-  min-width: 30px;
-  width: 30px;
-}
-
+ 
 ::-webkit-scrollbar
 {
     width: 9px;
