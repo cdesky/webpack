@@ -41,6 +41,12 @@
               "code": "site",
               "url":"/app/sites/site",
               "children": []
+            },
+            {
+              "name": "行拖",
+              "code": "dragTr",
+              "url":"/app/sites/dragTr",
+              "children": []
             }
           ]
         }
