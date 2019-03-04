@@ -31,8 +31,8 @@ module.exports = merge(common, {
       chunks: 'async',
       minSize: 30000,
       minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
+      maxAsyncRequests: 7,
+      maxInitialRequests:5,
       name: false,
       cacheGroups: {
         vendor: {
@@ -70,7 +70,6 @@ module.exports = merge(common, {
      ]
   },
   plugins: [
-     
     new webpack.DefinePlugin({
       "ENV": JSON.stringify("production")
     }),

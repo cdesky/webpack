@@ -1,121 +1,166 @@
 import { Table } from "antd";
+import { DragDropContext, DragSource, DropTarget } from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
+import update from "immutability-helper";
 
-// https://github.com/raisezhang/react-drag-listview
-// const ReactDragListView = window["react-drag-listview"];
-import ReactDragListView from "react-drag-listview";
-// import react-drag-listview from "react-drag-listview";
+let dragingIndex = -1;
 
-export default class DragTr extends Component {
-  constructor(props) {
-    super(props);
+class BodyRow extends React.Component {
+  constructor(props){
+    super(props)
+  }
+
+  render() { 
+    const {
+      isOver,
+      connectDragSource,
+      connectDropTarget,
+      moveRow,
+      ...restProps
+    } = this.props;
+
+    this.style = { ...restProps.style, cursor: "move" };
+    let className = restProps.className;
+    if (isOver) {
+      if (restProps.index > dragingIndex) {
+        className += " drop-over-downward";
+      }
+      if (restProps.index < dragingIndex) {
+        className += " drop-over-upward";
+      }
+    }
+    
+    return connectDragSource(
+      connectDropTarget(
+        <tr {...restProps} className={className} style={this.style} />
+      )
+    );
+  }
+}
+
+const rowSource = {
+  beginDrag(props) {
+    dragingIndex = props.index;
+    return {
+      index: props.index
+    };
+  }
+};
+
+const rowTarget = {
+  drop(props, monitor) {
+    const dragIndex = monitor.getItem().index;
+    const hoverIndex = props.index;
+
+    // Don't replace items with themselves
+    if (dragIndex === hoverIndex) {
+      return;
+    }
+
+    // Time to actually perform the action
+    props.moveRow(dragIndex, hoverIndex);
+
+    // Note: we're mutating the monitor item here!
+    // Generally it's better to avoid mutations,
+    // but it's good here for the sake of performance
+    // to avoid expensive index searches.
+    monitor.getItem().index = hoverIndex;
+  }
+};
+
+const DragableBodyRow = DropTarget("row", rowTarget, (connect, monitor) => ({
+  connectDropTarget: connect.dropTarget(),
+  isOver: monitor.isOver()
+  
+}))(
+  DragSource("row", rowSource, connect => ({
+    connectDragSource: connect.dragSource()
+    
+  }
+  ))(BodyRow)
+);
+
+
+
+class DragTr extends React.Component {
+  constructor(props){
+    super(props)
+    this.columns = [
+      {
+        title: "Name",
+        dataIndex: "name",
+        key: "name"
+      },
+      {
+        title: "Age",
+        dataIndex: "age",
+        key: "age"
+      },
+      {
+        title: "Address",
+        dataIndex: "address",
+        key: "address"
+      }
+    ];
 
     this.state = {
       data: [
         {
           key: "1",
-          name: "Boran",
-          gender: "male",
-          age: "12",
-          address: "New York"
+          name: "John Brown",
+          age: 32,
+          address: "New York No. 1 Lake Park"
         },
         {
           key: "2",
-          name: "JayChou",
-          gender: "male",
-          age: "38",
-          address: "TaiWan"
+          name: "Jim Green",
+          age: 42,
+          address: "London No. 1 Lake Park"
         },
         {
           key: "3",
-          name: "Lee",
-          gender: "female",
-          age: "22",
-          address: "BeiJing"
-        },
-        {
-          key: "4",
-          name: "ChouTan",
-          gender: "male",
-          age: "31",
-          address: "HangZhou"
-        },
-        {
-          key: "5",
-          name: "AiTing",
-          gender: "female",
-          age: "22",
-          address: "Xi’An"
+          name: "Joe Black",
+          age: 32,
+          address: "Sidney No. 1 Lake Park"
         }
       ]
     };
-    this.columns = [
-      {
-        title: "Key",
-        dataIndex: "key"
-      },
-      {
-        title: "Name",
-        dataIndex: "name"
-      },
-      {
-        title: "Gender",
-        dataIndex: "gender"
-      },
-      {
-        title: "Age",
-        dataIndex: "age"
-      },
-      {
-        title: "Address",
-        dataIndex: "address"
-      },
-      {
-        title: "Operates",
-        key: "operate",
-        render: () => (
-          <a className="drag-handle" href="#">
-            Drag
-          </a>
-        )
+  
+    this.components = {
+      body: {
+        row: DragableBodyRow
       }
-    ];
-
-    const that = this;
-    this.dragProps = {
-      onDragEnd(fromIndex, toIndex, direction) {
-        /**
-         * currentId: 当前模板节点id
-         * targetId: 目标模板节点id
-         * orderDirection: 排序方向：1-目标节点上面；2-目标节点下面
-         */
-        if (fromIndex.length > 1) {
-          console.log(fromIndex, toIndex, direction);
-        } else {
-          const data = that.state.data;
-          const item = data.splice(fromIndex, 1)[0];
-          data.splice(toIndex, 0, item);
-          console.log("datas", data);
-          that.setState({
-            data
-          });
-        }
-      },
-      handleSelector: "a"
     };
   }
+  
+  moveRow(dragIndex, hoverIndex){
+    const { data } = this.state;
+    const dragRow = data[dragIndex];
+
+    this.setState(
+      update(this.state, {
+        data: {
+          $splice: [[dragIndex, 1], [hoverIndex, 0, dragRow]]
+        }
+      })
+    );
+  }
+  
 
   render() {
     return (
-      <div style={{ margin: 20 }}>
-        <h2>Table row with dragging</h2>
-        <ReactDragListView {...this.dragProps}>
-          <Table
-            columns={this.columns}
-            pagination={false}
-            dataSource={this.state.data}
-          />
-        </ReactDragListView>
-      </div>
+      <Table
+        columns={this.columns}
+        dataSource={this.state.data}
+        components={this.components}
+        onRow={(record, index) => ({
+          index,
+          moveRow: rowTarget
+        })}
+      />
     );
   }
 }
+
+const Demo = DragDropContext(HTML5Backend)(DragTr);
+export default Demo;
