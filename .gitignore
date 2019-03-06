@@ -5,5 +5,5 @@ dist/*
 /**/*.log
 .vscode
 *.lock
-.nmprc
+*.nmprc
 package-lock.json

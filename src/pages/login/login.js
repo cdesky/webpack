@@ -10,7 +10,7 @@ class Login extends Component {
 
   componentDidMount() {}
 
-  login() {
+  login=()=>{
     axios
       .post("/php/test.php", {
         params: {
@@ -85,7 +85,7 @@ class Login extends Component {
             密码
           </label>
         </div>
-        <Button type="primary" block onClick={()=>this.login}>
+        <Button type="primary" block onClick={this.login}>
           登 录
         </Button>
       </div>
