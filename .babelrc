@@ -11,12 +11,6 @@
         "useESModules": true
       }
     ],
-    [
-      "@babel/proposal-class-properties" ,
-      {
-          "loose": true
-      }
-    ],
     ["import", { "libraryName": "antd", "libraryDirectory": "lib"}, "antd"],  
     ["import", { "libraryName": "antd", "style": true },"less"]
   ]
