@@ -382,10 +382,10 @@ tableChange (pagination, filters) {
           defaultExpandAllRows={true}
         //   size="middle"
           scroll={{ x: this.state.header.length * 3 * 80, y: 350 }}
-          onExpand={this.handleOnExpand.bind(this)}
+          onExpand={()=>this.handleOnExpand}
           expandedRowKeys={this.state.expandedRowKeys}
           pagination={false}
-          onChange={this.tableChange.bind(this)}
+          onChange={()=>this.tableChange}
         />
       </div>
     );

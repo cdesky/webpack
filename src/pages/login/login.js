@@ -85,7 +85,7 @@ class Login extends Component {
             密码
           </label>
         </div>
-        <Button type="primary" block onClick={this.login.bind(this)}>
+        <Button type="primary" block onClick={()=>this.login}>
           登 录
         </Button>
       </div>
