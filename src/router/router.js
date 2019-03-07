@@ -4,6 +4,7 @@ import "antd/dist/antd.min.css";
 import "../common/common.css";
 import RouterMap from "./routerMap";
 import hashHistory from "router/history";
+import { Component } from "react";
 console.log("hashHistory", hashHistory);
 
 function Main() {
@@ -42,7 +43,14 @@ const getRouter = () => (
         <Main />
       </Route>
       <Route path="/" component={RouterMap.login} />
+      <Route component={<ErrorPage />}/>
     </Switch>
   </Router>
 );
+
+class ErrorPage extends Component{
+  render(){
+    return '404';
+  }
+}
 export default getRouter;
