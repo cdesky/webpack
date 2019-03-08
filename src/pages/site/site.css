@@ -1,1 +1,11 @@
-.site {background: #ddd url('../../assets/images/2.jpg') no-repeat 0 0}
+.site {
+  background: #ddd url("../../assets/images/2.jpg") no-repeat 0 0;
+}
+
+#dragTb tr.drop-over-downward td {
+  border-bottom: 2px dashed #1890ff;
+}
+
+#dragTb tr.drop-over-upward td {
+  border-top: 2px dashed #1890ff;
+}

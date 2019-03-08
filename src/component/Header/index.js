@@ -1,5 +1,5 @@
-import { Layout, Menu, Icon } from "antd";
-// import history from "router/history";
+import { Layout, Menu, Icon,message } from "antd";
+import history from "router/history";
 const { Header } = Layout;
 class Index extends Component {
   constructor(props) {
@@ -10,6 +10,13 @@ class Index extends Component {
   componentDidMount() {
     //第一次进来的时候默认选中第一个
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
+     if (nav === null) {
+      message.error("找不到当前路径，准备跳转的登录页");
+      setTimeout(() => {
+        history.push("/");
+      }, 2000);
+      return;
+    }
     this.props.content(nav[0].children);
   }
 
@@ -27,9 +34,10 @@ class Index extends Component {
     //   setTimeout(() => {
     //     history.push("/");
     //     window.location.reload();
+    //     return;
     //   }, 2000);
     // }
-    let navRes = nav.map((val, i) => {
+    let navRes = nav&&nav.map((val, i) => {
       return (
         <Menu.Item key={i + 1} onClick={() => this.getChildren(val.children)}>
           <Icon type="user" />
