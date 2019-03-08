@@ -31,7 +31,7 @@ function Main() {
             />
           );
         })}
-      {children.length > 0 ? <Route to="/404" /> : <Route to="/404" />}
+      {children.length < 0 ? <Route to="/404" /> : <Route to="/404" />}
     </main>
   );
 }
@@ -43,14 +43,14 @@ const getRouter = () => (
         <Main />
       </Route>
       <Route path="/" component={RouterMap.login} />
-      <Route component={<ErrorPage />}/>
+      <Route component={<ErrorPage />} />
     </Switch>
   </Router>
 );
 
-class ErrorPage extends Component{
-  render(){
-    return '404';
+class ErrorPage extends Component {
+  render() {
+    return "404";
   }
 }
 export default getRouter;

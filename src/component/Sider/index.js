@@ -7,18 +7,25 @@ const { Sider } = Layout;
 class Index extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {selectedKey:null};
   }
 
   componentDidMount() {}
-
+  
+  componentWillReceiveProps(nextProps) {
+    if (nextProps) {
+      
+      let len = history.location.pathname.split("/").length,
+        pathname = history.location.pathname.split("/");
+      let selectedKey = pathname[len - 1];
+      this.setState({
+        selectedKey:selectedKey
+      })
+    }
+  }
   render() {
-    console.log("sider 回调在render");
-
     let siderBar = this.props.content;
-    let len = history.location.pathname.split('/').length,
-      pathname = history.location.pathname.split('/');
-    let selectedKey = pathname[len-1];
+    console.log("sider 回调在render");
 
     return (
       <Sider
@@ -31,7 +38,7 @@ class Index extends Component {
         <Menu
           mode="inline"
           defaultOpenKeys={["sub1"]}
-          selectedKeys={[selectedKey]}
+          selectedKeys={[this.state.selectedKey]}
           style={{ height: "100%", borderRight: 0 }}
           forceSubMenuRender={true}
         >
@@ -43,7 +50,7 @@ class Index extends Component {
                     key={"sub" + (y + 1)}
                     title={
                       <span>
-                        <Icon type="user" />
+                        <Icon type={val.icon} />
                         {val.name}
                       </span>
                     }

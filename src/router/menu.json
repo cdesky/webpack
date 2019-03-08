@@ -4,11 +4,13 @@
       "name": "项目",
       "url": "",
       "code": "project1",
+      "icon":"home",
       "children": [
         {
           "name": "项目概况",
           "url":"/app/projects",
           "code": "projects",
+          "icon":"radar-chart",
           "children": [
             {
               "name": "项目一览",
@@ -30,11 +32,13 @@
       "name": "中心",
       "code": "site1",
       "url":"",
+      "icon":"deployment-unit",
       "children": [
         {
           "name": "中心管理",
           "code": "sites",
           "url":"/app/sites",
+          "icon":"branches",
           "children": [
             {
               "name": "中心一览",

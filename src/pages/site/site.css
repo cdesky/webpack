@@ -1,5 +1,6 @@
 .site {
-  background: #ddd url("../../assets/images/2.jpg") no-repeat 0 0;
+  background: url("../../assets/images/2.jpg") no-repeat 0 0;
+  height: 500px;
 }
 
 #dragTb tr.drop-over-downward td {

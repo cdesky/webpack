@@ -12,11 +12,24 @@ class Index extends Component {
     super(props);
     this.state = {
       collapsed: false,
-      body: null
+      body: null,
+      code: null
     };
   }
 
   componentDidMount() {}
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps) {
+      let len = history.location.pathname.split("/").length,
+        pathname = history.location.pathname.split("/");
+      let code = pathname[len - 1]; //获取到点击的是哪个导航  然后去跳转相应的页面
+      this.setState({
+        code: code
+      });
+      console.log("router22", this.props, code);
+    }
+  }
 
   toggle() {
     this.setState({
@@ -38,11 +51,6 @@ class Index extends Component {
   }
 
   render() {
-    let len = history.location.pathname.split('/').length,
-      pathname = history.location.pathname.split('/');
-    let code=pathname[len-1]
-    console.log("router", this.props,code);
-
     return (
       <Layout style={{ height: "100%" }}>
         <Header
@@ -61,9 +69,7 @@ class Index extends Component {
               borderRadius: 4
             }}
           >
-            <Route
-              component={RouterMap[code]}
-            />
+            <Route component={RouterMap[this.state.code]} />
           </Content>
         </Layout>
       </Layout>

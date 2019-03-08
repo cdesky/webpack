@@ -1,4 +1,4 @@
-import { Layout, Menu, Icon,message } from "antd";
+import { Layout, Menu, Icon, message } from "antd";
 import history from "router/history";
 const { Header } = Layout;
 class Index extends Component {
@@ -10,8 +10,8 @@ class Index extends Component {
   componentDidMount() {
     //第一次进来的时候默认选中第一个
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
-     if (nav === null) {
-      message.error("找不到当前路径，准备跳转的登录页");
+    if (nav === null) {
+      message.error("找不到相应页面，返回登录页");
       setTimeout(() => {
         history.push("/");
       }, 2000);
@@ -29,22 +29,17 @@ class Index extends Component {
   render() {
     console.log("header");
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
-    // if (nav === null) {
-    //   message.error("登录超时,丢失token,请重新登录");
-    //   setTimeout(() => {
-    //     history.push("/");
-    //     window.location.reload();
-    //     return;
-    //   }, 2000);
-    // }
-    let navRes = nav&&nav.map((val, i) => {
-      return (
-        <Menu.Item key={i + 1} onClick={() => this.getChildren(val.children)}>
-          <Icon type="user" />
-          {val.name}
-        </Menu.Item>
-      );
-    });
+
+    let navRes =
+      nav &&
+      nav.map((val, i) => {
+        return (
+          <Menu.Item key={i + 1} onClick={() => this.getChildren(val.children)}>
+            <Icon type={val.icon} />
+            {val.name}
+          </Menu.Item>
+        );
+      });
     return (
       <Header className="header">
         <div className="logo">webpack</div>
