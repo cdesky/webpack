@@ -64,28 +64,28 @@ configs = {
         include: path.resolve(__dirname, "src"),
         use: [
           {
-            loader: 'file-loader?name=[name].[ext]&outputPath=font/',
+            loader: 'url-loader?name=[name].[ext]&outputPath=font/',
           }
         ]
       },
-      {
-        test: /\.(csv|tsv)$/,
-        include: path.resolve(__dirname, "src"),
-        use: [
-          {
-            loader: "csv-loader"
-          }
-        ]
-      },
-      {
-        test: /\.xml$/,
-        include: path.resolve(__dirname, "src"),
-        use: [
-          {
-            loader: "xml-loader"
-          }
-        ]
-      }
+      // {
+      //   test: /\.(csv|tsv)$/,
+      //   include: path.resolve(__dirname, "src"),
+      //   use: [
+      //     {
+      //       loader: "csv-loader"
+      //     }
+      //   ]
+      // },
+      // {
+      //   test: /\.xml$/,
+      //   include: path.resolve(__dirname, "src"),
+      //   use: [
+      //     {
+      //       loader: "xml-loader"
+      //     }
+      //   ]
+      // }
     ]
   },
   plugins: [

@@ -18,7 +18,7 @@ class Login extends Component {
           passWord: $.trim($(".pwd").val())
         }
       })
-      .then(response => {
+      .then(() => {
         // console.log(response);
         let menuRes = this.menuFirst(
           menu.data[0] ? menu.data[0].children[0] : menu.data[0]
