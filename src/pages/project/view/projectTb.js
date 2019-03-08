@@ -10,7 +10,7 @@ export default class ProjectTb extends Component {
 
   componentDidMount() {
     let soures = dataList;
-
+  
     this.setState({
       header: soures.data.colList,
       body: soures.data.rowList,

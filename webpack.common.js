@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");  
-// const MiniCssPlugin = require("mini-css-extract-plugin"); //提取css 单独一个文件
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"); //压缩css文件
 
 configs = {
@@ -29,15 +28,6 @@ configs = {
         exclude: /node_modules/,
         loader: "babel-loader",
       },
-      // {
-      //   test: /\.(le|c)ss$/,
-      //   use: [
-      //     MiniCssPlugin.loader,
-      //     'css-loader',
-      //     'postcss-loader',
-      //     'less-loader',
-      //   ]
-      // },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader","postcss-loader"],  
@@ -98,10 +88,7 @@ configs = {
       }
     ]
   },
-  plugins: [ 
-    // new MiniCssPlugin({  
-    //   　　filename: "style/[name].css", 
-    // }),
+  plugins: [
     new OptimizeCssAssetsPlugin(),
     new HtmlWebpackPlugin({
       title: "冬哥出品11",
@@ -112,7 +99,7 @@ configs = {
       minify: true,
       showError: true
     }),
-    new webpack.ProvidePlugin({ //常用引用 直接写在这里，之后就不用问题import了
+    new webpack.ProvidePlugin({ //常用引用 直接写在这里，之后就不用每次import了
       React:'react',
       ReactDom:'react-dom',
       axios:'axios',
