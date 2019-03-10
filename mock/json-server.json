@@ -1,7 +1,0 @@
-{
-    "host": "0.0.0.0", 
-    "watch": false,
-    "delay": 500,
-    "quiet": true,
-    "routes": "./routes.json"
-}

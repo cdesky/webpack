@@ -1,5 +1,0 @@
-{
-    "/news/:id/show": "/news/:id",
-    "/topics/:id/show": "/topics/:id"
-      
-  }

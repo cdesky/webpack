@@ -49,6 +49,7 @@ import {Link} from 'react-router-dom';
             <Icon type="upload" /> 上传1
           </Button>
         </Upload>
+        <img src={require('assets/images/big.jpg')}/>
       </div>
     );
   }
