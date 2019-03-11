@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"); //压缩css文件
+// const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"); //压缩css文件
 
 configs = {
   resolve: {
@@ -110,7 +110,7 @@ configs = {
     ]
   },
   plugins: [
-    new OptimizeCssAssetsPlugin(),
+    // new OptimizeCssAssetsPlugin(),
     new HtmlWebpackPlugin({
       title: "冬哥出品11",
       // alwaysWriteToDisk: true,

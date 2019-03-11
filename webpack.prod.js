@@ -73,6 +73,8 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       "ENV": JSON.stringify("production")
     }),
-    new CleanWebpackPlugin(["dist"])
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns:["dist"]
+    })
   ]
 });
