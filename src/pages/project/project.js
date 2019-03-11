@@ -27,7 +27,7 @@ import {Link} from 'react-router-dom';
         }
       }
     };
-
+ 
 
     return (
       <div className="project">
@@ -49,6 +49,8 @@ import {Link} from 'react-router-dom';
             <Icon type="upload" /> 上传1
           </Button>
         </Upload>
+        <img src={require('assets/images/2.jpg')}/> 
+        <img src={require('assets/images/upload.png')}/>
         <img src={require('assets/images/big.jpg')}/>
       </div>
     );

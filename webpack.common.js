@@ -60,9 +60,13 @@ configs = {
         ]
       }, 
       // {
-      //   loader: 'image-webpack-loader',// 压缩图片
+      //   loader: 'img-loader',// 压缩图片  为啥这个启用后就编译报错 ArgumentError: Expected argument to be of type `array` but received type `string`
       //   options: {
-      //     bypassOnDebug: true,
+      //     plugins: [
+      //       require("imagemin-pngquant")({
+      //         quality: "80" // the quality of zip
+      //       })
+      //     ]
       //   }
       // },
       {
