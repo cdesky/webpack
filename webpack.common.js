@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin"); //压缩css文件
 
 configs = {
   resolve: {
@@ -35,7 +34,8 @@ configs = {
       {
         test: /\.less$/,
         use: ["style-loader", "css-loader", "less-loader"],
-        include: path.resolve(__dirname, "src")
+        include: path.resolve(__dirname, "src"),
+        exclude: /node_modules/
       },
       {
         //匹配js,使用babel-loade， exclude是排除node_modules目录下面的   include就包括这个目录的
@@ -48,17 +48,18 @@ configs = {
       {
         test: /\.(png|svg|jpg|gif|jpeg)$/i,
         include: path.resolve(__dirname, "src"),
+        exclude: /node_modules/,
         use: [
           {
-            loader: "url-loader", 
+            loader: "url-loader",
             options: {
               limit: 8000,
               outputPath: "images/",
-              name: "[name].[ext]",
+              name: "[name].[ext]"
             }
           }
         ]
-      }, 
+      },
       // {
       //   loader: 'img-loader',// 压缩图片  为啥这个启用后就编译报错 ArgumentError: Expected argument to be of type `array` but received type `string`
       //   options: {
@@ -70,14 +71,15 @@ configs = {
       //   }
       // },
       {
-        test: /\.(html)$/,//img的src引入 要用这个插件
+        test: /\.(html)$/, //img的src引入 要用这个插件
         use: {
           loader: "html-loader",
           options: {
             attrs: ["img:src", "img:data-src", "audio:src"],
             minimize: true
           }
-        }
+        },
+        exclude: /node_modules/
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -86,34 +88,14 @@ configs = {
           {
             loader: "url-loader?name=[name].[ext]&outputPath=font/"
           }
-        ]
+        ],
+        exclude: /node_modules/
       }
-
-      // {
-      //   test: /\.(csv|tsv)$/,
-      //   include: path.resolve(__dirname, "src"),
-      //   use: [
-      //     {
-      //       loader: "csv-loader"
-      //     }
-      //   ]
-      // },
-      // {
-      //   test: /\.xml$/,
-      //   include: path.resolve(__dirname, "src"),
-      //   use: [
-      //     {
-      //       loader: "xml-loader"
-      //     }
-      //   ]
-      // }
     ]
   },
   plugins: [
-    // new OptimizeCssAssetsPlugin(),
     new HtmlWebpackPlugin({
       title: "冬哥出品11",
-      // alwaysWriteToDisk: true,
       filename: "index.html",
       template: path.resolve("index.html"),
       favicon: path.resolve("./src/favicon.ico"),

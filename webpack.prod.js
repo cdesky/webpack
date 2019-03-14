@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const UglifyJs = require("uglifyjs-webpack-plugin");
@@ -9,8 +8,6 @@ module.exports = merge(common, {
   entry: {
     app: [
       "babel-polyfill",
-      "core-js/modules/es6.promise",
-      "core-js/modules/es6.array.iterator",
       path.resolve(__dirname, "./src/index.js")
     ]
   },
@@ -31,25 +28,30 @@ module.exports = merge(common, {
       chunks: 'async',
       minSize: 30000,
       minChunks: 1,
-      maxAsyncRequests: 7,
-      maxInitialRequests:5,
-      name: false,
+      maxAsyncRequests: 10,
+      maxInitialRequests:6,
+      name: true,
       cacheGroups: {
         vendor: {
           name: 'vendor',
           chunks: 'initial',
-          priority: -10,
+          priority: 10,
           reuseExistingChunk: false,
           test: /node_modules\/(.*)\.js/
         },
-        styles: {
-          name: 'styles',
-          test: /\.(less|css)$/,
-          chunks: 'all',
-          minChunks: 1,
-          reuseExistingChunk: true,
-          enforce: true
-        }
+        // styles: {
+        //   name: 'styles',
+        //   test: /\.(less|css)$/,
+        //   chunks: 'all',
+        //   minChunks: 1,
+        //   reuseExistingChunk: true,
+        //   enforce: true
+        // },
+        common: { // 抽离自己写的公共代码，common这个名字可以随意起
+          chunks: 'initial',
+          name: 'common',  // 任意命名
+          minSize: 10    // 只要超出0字节就生成一个新包
+      }
       }
     },
   
@@ -69,10 +71,7 @@ module.exports = merge(common, {
       })
      ]
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      "ENV": JSON.stringify("production")
-    }),
+  plugins: [ 
     new CleanWebpackPlugin({
       cleanAfterEveryBuildPatterns:["dist"]
     })

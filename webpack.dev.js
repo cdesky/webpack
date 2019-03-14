@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const currentIp = require("./getIp.js");
@@ -44,9 +43,5 @@ module.exports = merge(common, {
     removeEmptyChunks: false,
     splitChunks: false
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      ENV: JSON.stringify("development")
-    })
-  ]
+  
 });
