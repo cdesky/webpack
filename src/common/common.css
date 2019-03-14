@@ -50,6 +50,10 @@ body {
 #app .ant-menu-dark.ant-menu-horizontal {
   margin-left: 12em;
 }
+
+.header {position: relative;}
+.logout {position: absolute;top:22px;right:22px;cursor: pointer;color: #fff;}
+
 .demo-icon {
   font-family: "fontello";
   font-style: normal;

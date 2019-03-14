@@ -47,9 +47,15 @@
               "children": []
             },
             {
-              "name": "行拖",
+              "name": "拖动-带拖动方向",
               "code": "dragTr",
               "url":"/app/sites/dragTr",
+              "children": []
+            },
+            {
+              "name": "拖动-操作对象位置",
+              "code": "dragTr2",
+              "url":"/app/sites/dragTr2",
               "children": []
             }
           ]

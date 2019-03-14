@@ -26,6 +26,11 @@ class Index extends Component {
     this.props.content(url);
   }
 
+  logout=()=>{
+    window.sessionStorage.removeItem('menuList');
+    history.push('/');
+  }
+
   render() {
     console.log("header");
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
@@ -41,7 +46,7 @@ class Index extends Component {
         );
       });
     return (
-      <Header className="header">
+      <Header className="header" >
         <div className="logo">webpack</div>
         <Icon
           className="trigger"
@@ -56,6 +61,7 @@ class Index extends Component {
         >
           {navRes}
         </Menu>
+        <Icon type="logout" className='logout' onClick={this.logout} title='退出'/>
       </Header>
     );
   }

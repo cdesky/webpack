@@ -1,6 +1,6 @@
 import { Table } from "antd";
-import { DragSource, DropTarget } from "react-dnd";
-// import HTML5Backend from "react-dnd-html5-backend";
+import { DragDropContext,DragSource, DropTarget } from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
 // import update from 'immutability-helper';
 import "./site.css";
 
@@ -12,7 +12,6 @@ class BodyRow extends React.Component {
       isOver,
       connectDragSource,
       connectDropTarget,
-      // moveRow,
       ...restProps
     } = this.props;
     const style = { ...restProps.style, cursor: "move" };
@@ -165,5 +164,5 @@ class DragTr extends React.Component {
   }
 }
 
-// const Demo = DragDropContext(HTML5Backend)(DragTr1);
-export default DragTr;
+const _DragTr = DragDropContext(HTML5Backend)(DragTr);
+export default _DragTr;
