@@ -13,7 +13,6 @@ export default class Site extends Component {
         <Icon type="up-circle" />
         
         {/* <Project /> */}
-        <iframe src='/app/projects/project' width='100%' height='400' ></iframe>
       </div>
     );
   }
