@@ -34,12 +34,12 @@ import {Link} from 'react-router-dom';
         this is Project~
         <Icon type="step-forward" />
         <Row>
-          <Col span={12}>col-1</Col>
-          <Col span={12}>col-2</Col>
+          <Col span={12}>col-11</Col>
+          <Col span={12}>col-22</Col>
         </Row>
         <div className="box">
-          <div className="left">ab</div>
-          <div className="right">cd
+          <div className="left">left</div>
+          <div className="right">right 
         <Link to="/app/sit12/site">hehe</Link></div>
         </div>
         <PickerColor />

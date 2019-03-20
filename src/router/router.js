@@ -35,21 +35,27 @@ function Main() {
   );
 }
 
-const getRouter = () => (
-  <Router history={hashHistory}>
-    <Switch>
-      <Route path="/app" component={RouterMap.app}>
-        <Main />
-      </Route>
-      <Route path="/" component={RouterMap.login} />
-      <Route component={<ErrorPage />} />
-    </Switch>
-  </Router>
-);
+class App extends Component {
+  render() {
+    return (
+      <Router history={hashHistory}>
+        <Switch>
+          <Route path="/app" component={RouterMap.app}>
+            <Route path='/home' component={<ErrorPage />} />
+            <Main />
+          </Route>
+          <Route path="/" component={RouterMap.login} />
+          <Route component={<ErrorPage />} />
+        </Switch>
+      </Router>
+    );
+  }
+}
+
 
 class ErrorPage extends Component {
   render() {
-    return "404";
+    return ("404");
   }
 }
-export default getRouter;
+export default App;
