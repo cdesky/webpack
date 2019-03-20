@@ -1,5 +1,4 @@
 import { Router, Route, Switch, Redirect } from "react-router-dom";
-
 import "antd/dist/antd.min.css";
 import "../common/common.css";
 import RouterMap from "./routerMap";
@@ -8,7 +7,7 @@ import { Component } from "react";
 console.log("hashHistory", hashHistory);
 
 function Main() {
-  const { children } = JSON.parse(window.sessionStorage.getItem("menuList"));
+  let children = JSON.parse(window.sessionStorage.getItem("menuList"));
   return (
     <main className="app-main">
       {children &&
