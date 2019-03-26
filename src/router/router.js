@@ -14,6 +14,7 @@ function Main() {
         children.map(v => {
           return (
             <Route
+              to={"/app/" + RouterMap[v.code]}
               key={v.code}
               path={"/app/" + RouterMap[v.code]}
               component={RouterMap[v.code]}
@@ -24,6 +25,7 @@ function Main() {
         children.map(v => {
           return (
             <Redirect
+              to={"/app/" + RouterMap[v.code]}
               key={v.code}
               path={"/app/" + RouterMap[v.code]}
               component={RouterMap[v.code]}

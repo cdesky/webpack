@@ -23,6 +23,12 @@
               "code": "table",
               "url":"/app/projects/table",
               "children": []
+            },
+            {
+              "name": "表头宽度拖拽",
+              "code": "resizeTable",
+              "url":"/app/projects/resizeTable",
+              "children": []
             }
           ]
         }

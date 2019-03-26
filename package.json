@@ -55,6 +55,7 @@
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^3.0.0",
     "react-dnd": "^7.3.1",
+    "react-resizable": "^1.7.5",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
