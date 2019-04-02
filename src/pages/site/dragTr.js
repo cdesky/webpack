@@ -55,7 +55,7 @@ const rowTarget = {
     }
 
     // 实际移动动作
-    props.moveRow(dragIndex, hoverIndex);
+    props.moverow(dragIndex, hoverIndex);
 
     monitor.getItem().index = hoverIndex;
   }
@@ -126,7 +126,7 @@ class DragTr extends React.Component {
   };
 
   // 拖拽任务分类表格行事件
-  moveRow = (dragIndex, hoverIndex) => {
+  moverow = (dragIndex, hoverIndex) => {
     try {
       // 定义拖拽类型
       let moveType;
@@ -157,7 +157,7 @@ class DragTr extends React.Component {
         pagination={false}
         onRow={(record, index) => ({
           index,
-          moveRow: this.moveRow
+          moverow: this.moverow
         })}
       />
     );

@@ -22,18 +22,24 @@ class Index extends Component {
 
   //加载它的子级
   getChildren(url) {
-    window.sessionStorage.setItem("leftMenu", JSON.stringify(url));
+    window.sessionStorage.setItem("leftMenu", JSON.stringify(url)); //左侧子级菜单
+    window.sessionStorage.setItem("currentUrl", url[0].children[0].url); //当前点击的路径
+    window.sessionStorage.setItem("currentPos", url[0].sort); //在第几个主导航
     this.props.content(url);
   }
 
   logout=()=>{
     window.sessionStorage.removeItem('menuList');
+    window.sessionStorage.removeItem('leftMenu');
+    window.sessionStorage.removeItem('currentPos');
+    window.sessionStorage.removeItem('currentUrl');
     history.push('/');
   }
 
   render() {
     console.log("header");
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
+    let pos = window.sessionStorage.getItem('currentPos')?window.sessionStorage.getItem('currentPos'):'1';
 
     let navRes =
       nav &&
@@ -56,7 +62,7 @@ class Index extends Component {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={[pos]}
           style={{ lineHeight: "64px" }}
         >
           {navRes}

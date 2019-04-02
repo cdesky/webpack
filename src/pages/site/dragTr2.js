@@ -61,7 +61,7 @@ const rowSource = {
       }
   
       // Time to actually perform the action
-      props.moveRow(dragIndex, hoverIndex);
+      props.moverow(dragIndex, hoverIndex);
   
       // Note: we're mutating the monitor item here!
       // Generally it's better to avoid mutations,
@@ -159,7 +159,7 @@ class DragTr2 extends Component {
 
   
   
-  moveRow=(dragIndex, hoverIndex)=>{
+  moverow=(dragIndex, hoverIndex)=>{
     const { content } = this.state;
     const dragRow = content[dragIndex];
 
@@ -181,7 +181,7 @@ class DragTr2 extends Component {
         components={this.components}
         onRow={(record, index) => ({
           index,
-          moveRow: this.moveRow
+          moverow: this.moverow
         })}
       />
     );

@@ -7,24 +7,41 @@ const { Sider } = Layout;
 class Index extends Component {
   constructor(props) {
     super(props);
-    this.state = {selectedKey:null};
+    this.state = { selectedItem: null };
   }
 
   componentDidMount() {}
-  
+
   componentWillReceiveProps(nextProps) {
     if (nextProps) {
-      
-      let len = history.location.pathname.split("/").length,
-        pathname = history.location.pathname.split("/");
-      let selectedKey = pathname[len - 1];
-      this.setState({
-        selectedKey:selectedKey
-      })
+      if (window.sessionStorage.getItem("currentUrl")) {
+        let url = window.sessionStorage.getItem("currentUrl");
+        let len = url.split("/").length,
+          pathname = url.split("/");
+        let selectedKey = pathname[len - 1];
+        this.setState({
+          selectedItem: selectedKey
+        });
+      } else {
+        let len = history.location.pathname.split("/").length,
+          pathname = history.location.pathname.split("/");
+        let selectedKey = pathname[len - 1];
+        this.setState({
+          selectedItem: selectedKey
+        });
+      }
     }
   }
+
+  currentPos = url => {
+    window.sessionStorage.setItem("currentUrl", url);
+  };
+
   render() {
-    let siderBar = this.props.content;
+    // let siderBar = this.props.content;
+    let siderBar = window.sessionStorage.getItem("leftMenu")
+      ? JSON.parse(window.sessionStorage.getItem("leftMenu"))
+      : this.props.content;
     console.log("sider 回调在render");
 
     return (
@@ -38,7 +55,7 @@ class Index extends Component {
         <Menu
           mode="inline"
           defaultOpenKeys={["sub1"]}
-          selectedKeys={[this.state.selectedKey]}
+          selectedKeys={[this.state.selectedItem]}
           style={{ height: "100%", borderRight: 0 }}
           forceSubMenuRender={true}
         >
@@ -58,7 +75,10 @@ class Index extends Component {
                     {val.children &&
                       val.children.map(x => {
                         return (
-                          <Menu.Item key={x.code}>
+                          <Menu.Item
+                            key={x.code}
+                            onClick={() => this.currentPos(x.url)}
+                          >
                             <Link to={x.url}>{x.name}</Link>
                           </Menu.Item>
                         );

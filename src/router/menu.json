@@ -11,6 +11,7 @@
           "url":"/app/projects",
           "code": "projects",
           "icon":"radar-chart",
+          "sort":1,
           "children": [
             {
               "name": "项目一览",
@@ -45,6 +46,7 @@
           "code": "sites",
           "url":"/app/sites",
           "icon":"branches",
+          "sort":2,
           "children": [
             {
               "name": "中心一览",

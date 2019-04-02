@@ -21,13 +21,22 @@ class Index extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps) {
-      let len = history.location.pathname.split("/").length,
-        pathname = history.location.pathname.split("/");
-      let code = pathname[len - 1]; //获取到点击的是哪个导航  然后去跳转相应的页面
-      this.setState({
-        code: code
-      });
-      console.log("router22", this.props, code);
+      if (window.sessionStorage.getItem("currentUrl")) {
+        let url = window.sessionStorage.getItem("currentUrl");
+        let len = url.split("/").length,
+          pathname = url.split("/");
+        let code = pathname[len - 1]; //获取到点击的是哪个导航  然后去跳转相应的页面
+        this.setState({
+          code: code
+        });
+      } else {
+        let len = history.location.pathname.split("/").length,
+          pathname = history.location.pathname.split("/");
+        let code = pathname[len - 1];
+        this.setState({
+          code: code
+        });
+      }
     }
   }
 
