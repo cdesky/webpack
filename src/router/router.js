@@ -13,8 +13,7 @@ function Main() {
       {children &&
         children.map(v => {
           return (
-            <Route
-              to={"/app/" + RouterMap[v.code]}
+            <Route 
               key={v.code}
               path={"/app/" + RouterMap[v.code]}
               component={RouterMap[v.code]}
@@ -25,14 +24,13 @@ function Main() {
         children.map(v => {
           return (
             <Redirect
-              to={"/app/" + RouterMap[v.code]}
+              to={v.url}
               key={v.code}
               path={"/app/" + RouterMap[v.code]}
               component={RouterMap[v.code]}
             />
           );
         })}
-      {children.length < 0 ? <Route to="/404" /> : <Route to="/404" />}
     </main>
   );
 }
@@ -43,7 +41,6 @@ class App extends Component {
       <Router history={hashHistory}>
         <Switch>
           <Route path="/app" component={RouterMap.app}>
-            <Route path='/home' component={<ErrorPage />} />
             <Main />
           </Route>
           <Route path="/" component={RouterMap.login} />
