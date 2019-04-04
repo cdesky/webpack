@@ -1,4 +1,4 @@
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import "antd/dist/antd.min.css";
 import "../common/common.css";
 import RouterMap from "./routerMap";
@@ -9,29 +9,31 @@ console.log("hashHistory", hashHistory);
 function Main() {
   let children = JSON.parse(window.sessionStorage.getItem("menuList"));
   return (
+    <Switch>
     <main className="app-main">
       {children &&
-        children.map(v => {
+        children.map(v => { 
           return (
-            <Route 
+            <Route
+              exact
               key={v.code}
-              path={"/app/" + RouterMap[v.code]}
+              path={RouterMap[v.code]}
               component={RouterMap[v.code]}
             />
           );
         })}
-      {children &&
-        children.map(v => {
-          return (
-            <Redirect
-              to={v.url}
-              key={v.code}
-              path={"/app/" + RouterMap[v.code]}
-              component={RouterMap[v.code]}
-            />
-          );
-        })}
+        
     </main>
+    </Switch>
+  );
+}
+function NoMatch({ location }) {
+  return (
+    <div>
+      <h3>
+        No match for <code>{location.pathname}</code>
+      </h3>
+    </div>
   );
 }
 
@@ -40,21 +42,14 @@ class App extends Component {
     return (
       <Router history={hashHistory}>
         <Switch>
-          <Route path="/app" component={RouterMap.app}>
-            <Main />
-          </Route>
-          <Route path="/" component={RouterMap.login} />
-          <Route component={<ErrorPage />} />
+          <Route path="/app" component={RouterMap.app} />
+          <Main exact path="/app"/>
+          <Route  path="/" component={RouterMap.login} />
+          <Route component={NoMatch} />
         </Switch>
       </Router>
     );
   }
 }
 
-
-class ErrorPage extends Component {
-  render() {
-    return ("404");
-  }
-}
 export default App;

@@ -5,9 +5,7 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-  }
 
-  componentDidMount() {
     //第一次进来的时候默认选中第一个
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
     if (nav === null) {
@@ -20,6 +18,7 @@ class Index extends Component {
     this.props.content(nav[0].children);
   }
 
+
   //加载它的子级
   getChildren(url) {
     window.sessionStorage.setItem("leftMenu", JSON.stringify(url)); //左侧子级菜单
@@ -28,18 +27,17 @@ class Index extends Component {
     this.props.content(url);
   }
 
-  logout=()=>{
-    window.sessionStorage.removeItem('menuList');
-    window.sessionStorage.removeItem('leftMenu');
-    window.sessionStorage.removeItem('currentPos');
-    window.sessionStorage.removeItem('currentUrl');
-    history.push('/');
-  }
+  logout = () => {
+    window.sessionStorage.clear();
+    history.push("/");
+  };
 
   render() {
     console.log("header");
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
-    let pos = window.sessionStorage.getItem('currentPos')?window.sessionStorage.getItem('currentPos'):'1';
+    let pos = window.sessionStorage.getItem("currentPos")
+      ? window.sessionStorage.getItem("currentPos")
+      : "1";
 
     let navRes =
       nav &&
@@ -52,7 +50,7 @@ class Index extends Component {
         );
       });
     return (
-      <Header className="header" >
+      <Header className="header">
         <div className="logo">webpack</div>
         <Icon
           className="trigger"
@@ -67,7 +65,12 @@ class Index extends Component {
         >
           {navRes}
         </Menu>
-        <Icon type="logout" className='logout' onClick={this.logout} title='退出'/>
+        <Icon
+          type="logout"
+          className="logout"
+          onClick={this.logout}
+          title="退出"
+        />
       </Header>
     );
   }

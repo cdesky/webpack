@@ -10,7 +10,6 @@ class Index extends Component {
     this.state = { selectedItem: null };
   }
 
-  componentDidMount() {}
 
   componentWillReceiveProps(nextProps) {
     if (nextProps) {
