@@ -1,4 +1,4 @@
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch,Redirect } from "react-router-dom";
 import "antd/dist/antd.min.css";
 import "../common/common.css";
 import RouterMap from "./routerMap";
@@ -22,7 +22,16 @@ function Main() {
             />
           );
         })}
-        
+         {children &&
+        children.map(v => { 
+          return (
+            <Redirect
+              key={v.code}
+              path={RouterMap[v.code]}
+              to={v.url}
+            />
+          );
+        })}
     </main>
     </Switch>
   );
