@@ -15,20 +15,20 @@ function Main() {
         children.map(v => { 
           return (
             <Route
-              exact
               key={v.code}
-              path={RouterMap[v.code]}
+              path={'/app'+v.url}
               component={RouterMap[v.code]}
             />
           );
         })}
          {children &&
-        children.map(v => { 
+        children.map(v => {
           return (
             <Redirect
+              to={v.to}
+              from={v.from}
               key={v.code}
               path={RouterMap[v.code]}
-              to={v.url}
             />
           );
         })}
@@ -36,15 +36,7 @@ function Main() {
     </Switch>
   );
 }
-function NoMatch({ location }) {
-  return (
-    <div>
-      <h3>
-        No match for <code>{location.pathname}</code>
-      </h3>
-    </div>
-  );
-}
+
 
 class App extends Component {
   render() {
@@ -52,9 +44,8 @@ class App extends Component {
       <Router history={hashHistory}>
         <Switch>
           <Route path="/app" component={RouterMap.app} />
-          <Main exact path="/app"/>
-          <Route  path="/" component={RouterMap.login} />
-          <Route component={NoMatch} />
+          <Main  path="/app"/>
+          <Route exact path="/" component={RouterMap.login} />
         </Switch>
       </Router>
     );
