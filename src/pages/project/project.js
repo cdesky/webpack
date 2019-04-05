@@ -2,10 +2,19 @@ import { Row, Col ,Upload,Button,Icon,message} from "antd";
 import "./project.less";
 import PickerColor from 'component/pickerColor/index'
 import {Link} from 'react-router-dom';
+import history from "router/history";
 
 
  class Project extends Component {
  
+  jump = ()=>{
+    var data = {id:3,name:'1',age:36};
+    var path = {
+      pathname:'/app/sites/site',
+      state:data,
+    }
+    history.push(path)
+  }
   render() {
   
     let props = {
@@ -29,6 +38,11 @@ import {Link} from 'react-router-dom';
     };
  
 
+    var data = {id:3,name:'1',age:36};
+    var path = {
+      pathname:'/app/sites/site',
+      state:data,
+    }
     return (
       <div className="project">
         this is Project~
@@ -40,7 +54,9 @@ import {Link} from 'react-router-dom';
         <div className="box">
           <div className="left">left</div>
           <div className="right">right 
-        <Link to="/app/sit12/site">hehe</Link></div>
+        <Link to={path} >hehe</Link>
+        <a href='javascript:;' onClick={this.jump}>aa</a>
+        </div>
         </div>
         <PickerColor />
          <br/>
