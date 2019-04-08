@@ -3,6 +3,7 @@ import "./project.less";
 import PickerColor from 'component/pickerColor/index'
 import {Link} from 'react-router-dom';
 import history from "router/history";
+import intl from 'react-intl-universal';
 
 
  class Project extends Component {
@@ -45,7 +46,7 @@ import history from "router/history";
     }
     return (
       <div className="project">
-        this is Project~
+        this is Project~ 
         <Icon type="step-forward" />
         <Row>
           <Col span={12}>col-11</Col>
@@ -62,7 +63,7 @@ import history from "router/history";
          <br/>
         <Upload {...props}>
           <Button>
-            <Icon type="upload" /> 上传1
+            <Icon type="upload" /> {intl.get('lang1')}
           </Button>
         </Upload>
         <img src={require('assets/images/2.jpg')}/> 

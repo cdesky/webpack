@@ -1,4 +1,4 @@
-import { Table, Icon } from "antd";
+import { Table } from "antd";
 import dataList from "../dataList";
 
 export default class ProjectTb extends Component {

@@ -36,7 +36,7 @@ class Index extends Component {
         this.setState({
           code: code
         });
-      }
+      } 
     }
   }
 

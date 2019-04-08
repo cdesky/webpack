@@ -1,5 +1,7 @@
 import { Table } from 'antd';
 import { Resizable } from 'react-resizable';
+import './resize.less';
+import intl from 'react-intl-universal';
 
 const ResizeableTitle = (props) => {
   const { onResize, width, ...restProps } = props;
@@ -16,31 +18,36 @@ const ResizeableTitle = (props) => {
 };
 
 export default class ResizTable extends Component {
-  state = {
-    columns: [{
-      title: 'Date',
-      dataIndex: 'date',
-      width: 200,
-    }, {
-      title: 'Amount',
-      dataIndex: 'amount',
-      width: 100,
-    }, {
-      title: 'Type',
-      dataIndex: 'type',
-      width: 100,
-    }, {
-      title: 'Note',
-      dataIndex: 'note',
-      width: 100,
-    }, {
-      title: 'Action',
-      key: 'action',
-      render: () => (
-        <a href="javascript:;">Delete</a>
-      ),
-    }],
-  };
+  constructor(props){
+    super(props);
+
+    this.state = {
+      columns: [{
+        title: intl.get('lang2'),
+        dataIndex: 'date',
+        width: 200,
+      }, {
+        title: '数量',
+        dataIndex: 'amount',
+        width: 100,
+      }, {
+        title: '类型',
+        dataIndex: 'type',
+        width: 100,
+      }, {
+        title: '备注',
+        dataIndex: 'note',
+        width: 100,
+      }, {
+        title: '操作',
+        key: 'action',
+        render: () => (
+          <a href="javascript:;">Delete</a>
+        ),
+      }],
+    };
+  }
+  
 
   components = {
     header: {
@@ -69,7 +76,7 @@ export default class ResizTable extends Component {
   }];
 
   handleResize = index => (e, { size }) => {
-    this.setState(({ columns }) => {
+    this.setState(({columns}) => {
       const nextColumns = [...columns];
       nextColumns[index] = {
         ...nextColumns[index],
@@ -80,7 +87,7 @@ export default class ResizTable extends Component {
   };
 
   render() {
-    const columns = this.state.columns.map((col, index) => ({
+    const resCol = this.state.columns.map((col, index) => ({
       ...col,
       onHeaderCell: column => ({
         width: column.width,
@@ -92,8 +99,9 @@ export default class ResizTable extends Component {
       <Table
         bordered
         components={this.components}
-        columns={columns}
+        columns={resCol}
         dataSource={this.data}
+        pagination={false}
       />
     );
   }

@@ -1,14 +1,19 @@
-import { Icon, Button } from "antd";
+import { Icon, Button, message } from "antd";
 import "./login.less";
 import history from "router/history";
 import menu from "router/menu";
+
+import intl from 'react-intl-universal';
+import langs from '../../lang.json';
+
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state={
+      initDone:false
+    }
   }
 
-  componentDidMount() {}
 
   login=()=>{
     axios
@@ -23,25 +28,19 @@ class Login extends Component {
           menu.data[0] ? menu.data[0].children[0] : menu.data[0]
         );
         window.sessionStorage.setItem("menuList", JSON.stringify(menu.data));
+       
+        //国际化初始
+        intl.init({
+          currentLocale: 'zh-CN', 
+          locales:{'zh-CN':langs},
+        })
+        this.setState({initDone: true});
+
         history.push(menuRes);
       })
-      .catch(error => {
-        console.log(error);
+      .catch(e => {
+        message.error(e.response.status+'错误');
       });
-    // $.post(
-    //   "/php/test.php",
-    //   {
-    //     userName: $.trim($(".uName").val()),
-    //     passWord: $.trim($(".pwd").val())
-    //   },
-    //   () => {
-    //     let menuRes = this.menuFirst(
-    //       menu.data[0] ? menu.data[0].children[0] : menu.data[0]
-    //     );
-    //     window.sessionStorage.setItem("menuList", JSON.stringify(menu.data));
-    //     history.push(menuRes);
-    //   }
-    // );
   }
 
   //登录成功后  跳转到 第一个导航栏目
@@ -85,7 +84,7 @@ class Login extends Component {
           </label>
         </div>
         <Button type="primary" block onClick={this.login}>
-          登 录
+          登  录
         </Button>
       </div>
     );
