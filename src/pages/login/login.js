@@ -4,7 +4,7 @@ import history from "router/history";
 import menu from "router/menu";
 
 import intl from 'react-intl-universal';
-import langs from '../../lang.json';
+import langs from '../../cn.json';
 
 class Login extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class Login extends Component {
        
         //国际化初始
         intl.init({
-          currentLocale: 'zh-CN', 
+          currentLocale: 'zh-CN',
           locales:{'zh-CN':langs},
         })
         this.setState({initDone: true});

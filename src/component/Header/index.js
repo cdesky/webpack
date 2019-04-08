@@ -1,10 +1,14 @@
-import { Layout, Menu, Icon, message } from "antd";
+import { Layout, Menu, Icon, message, Dropdown } from "antd";
 import history from "router/history";
+import intl from 'react-intl-universal';
+import cn from '../../cn.json';
+import en from '../../en.json';
+
 const { Header } = Layout;
 class Index extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {initDone:false};
 
     //第一次进来的时候默认选中第一个
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
@@ -18,7 +22,6 @@ class Index extends Component {
     this.props.content(nav[0].children);
   }
 
-
   //加载它的子级
   getChildren(url) {
     window.sessionStorage.setItem("leftMenu", JSON.stringify(url)); //左侧子级菜单
@@ -31,6 +34,17 @@ class Index extends Component {
     window.sessionStorage.clear();
     history.push("/");
   };
+
+  //切换语言
+  changeLang = (lang) =>{
+    //国际化初始
+    intl.init({
+      currentLocale: lang,
+      locales:{[lang]:lang==='zh-CN'?cn:en},
+    })
+    this.setState({initDone: true});
+    this.getChildren(JSON.parse(window.sessionStorage.getItem('menuList'))[0].children);
+  }
 
   render() {
     console.log("header");
@@ -49,6 +63,13 @@ class Index extends Component {
           </Menu.Item>
         );
       });
+
+    const menu = (
+      <Menu>
+        <Menu.Item onClick={() => this.changeLang("zh-CN")}>中文</Menu.Item>
+        <Menu.Item onClick={() => this.changeLang("en-US")}>英文</Menu.Item>
+      </Menu>
+    );
     return (
       <Header className="header">
         <div className="logo">webpack</div>
@@ -65,12 +86,14 @@ class Index extends Component {
         >
           {navRes}
         </Menu>
-        <Icon
-          type="logout"
-          className="logout"
-          onClick={this.logout}
-          title="退出"
-        />
+
+        <div className="appAction">
+          <Dropdown overlay={menu} placement="topRight">
+            <Icon type="global" title='切换语言'/>
+          </Dropdown>
+          &nbsp;&nbsp;
+          <Icon type="logout" onClick={this.logout} title="退出" />
+        </div>
       </Header>
     );
   }
