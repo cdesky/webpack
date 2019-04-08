@@ -1,9 +1,12 @@
+import { Spin} from "antd";
 import { Router, Route, Switch,Redirect } from "react-router-dom";
 import "antd/dist/antd.min.css";
 import "../common/common.css";
 import RouterMap from "./routerMap";
 import hashHistory from "router/history";
 import { Component } from "react";
+import intl from 'react-intl-universal';
+import langs from '../cn.json';
 console.log("hashHistory", hashHistory);
 
 function Main() {
@@ -39,8 +42,24 @@ function Main() {
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      initDone:false
+    }
+  }
+
+  componentDidMount(){
+     //国际化初始
+     intl.init({
+      currentLocale: 'zh-CN',
+      locales:{'zh-CN':langs},
+    })
+    this.setState({initDone: true});
+  }
+
   render() {
-    return (
+    return this.state.initDone?(
       <Router history={hashHistory}>
         <Switch>
           <Route path="/app" component={RouterMap.app} />
@@ -48,7 +67,7 @@ class App extends Component {
           <Route exact path="/" component={RouterMap.login} />
         </Switch>
       </Router>
-    );
+    ):<Spin />
   }
 }
 
