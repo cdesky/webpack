@@ -1,5 +1,4 @@
 import { Layout, Menu, Icon } from "antd";
-import history from "router/history";
 import { Link } from "react-router-dom";
 
 const { SubMenu } = Menu;

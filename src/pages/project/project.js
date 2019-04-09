@@ -16,11 +16,12 @@ class Project extends Component {
 
 
   jump = () => {
-    var data = { id: 3, name: "1", age: 36 };
+    // var data = { id: 3, name: "1", age: 36 };
     var path = {
       pathname: "/app/sites/site",
-      state: data
+      // state: data
     };
+    window.sessionStorage.setItem('currentUrl',path.pathname);
     history.push(path);
   };
   render() {
@@ -50,6 +51,7 @@ class Project extends Component {
       pathname: "/app/sites/site",
       state: data
     };
+    
     return (
       <div className="project">
         this is Project~

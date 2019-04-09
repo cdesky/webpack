@@ -28,6 +28,7 @@ class Index extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    debugger;
     if (nextProps) {
       let url = window.sessionStorage.getItem("currentUrl");
       if (url) {
@@ -76,9 +77,9 @@ class Index extends Component {
               borderRadius: 4
             }}
           >
-            <Spin spinning={this.state.initDone}>
+            {/* <Spin spinning={this.state.initDone}> */}
               <Route component={RouterMap[this.state.code]} />
-            </Spin>
+            {/* </Spin> */}
           </Content>
         </Layout>
       </Layout>
