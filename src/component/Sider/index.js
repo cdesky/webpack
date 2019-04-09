@@ -32,6 +32,8 @@ class Index extends Component {
     }
   }
 
+  
+
   currentPos = url => {
     window.sessionStorage.setItem("currentUrl", url);
   };

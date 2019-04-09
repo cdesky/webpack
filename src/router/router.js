@@ -16,12 +16,12 @@ function Main() {
           return (
             <Route
               key={v.code}
-              path={'/app'+v.url}
+              path={v.url}
               component={RouterMap[v.code]}
             />
           );
         })}
-         {children &&
+         {/* {children &&
         children.map(v => {
           return (
             <Redirect
@@ -31,21 +31,21 @@ function Main() {
               path={RouterMap[v.code]}
             />
           );
-        })}
+        })} */}
     </main>
     </Switch>
   );
 }
-
 
 class App extends Component {
   render() {
     return (
       <Router history={hashHistory}>
         <Switch>
-          <Route path="/app" component={RouterMap.app} />
-          <Main  path="/app"/>
-          <Route exact path="/" component={RouterMap.login} />
+          <Route  path="/app" component={RouterMap.app} />
+          <Main exact path="/app"/>
+          <Route path="/" component={RouterMap.login} />
+          <Redirect from={"*"} to={'/'} />
         </Switch>
       </Router>
     );

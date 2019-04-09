@@ -2,7 +2,6 @@ import { Row, Col ,Upload,Button,Icon,message} from "antd";
 import "./project.less";
 import PickerColor from 'component/pickerColor/index'
 import {Link} from 'react-router-dom';
-import history from "router/history";
 
 
  class Project extends Component {
@@ -13,7 +12,7 @@ import history from "router/history";
       pathname:'/app/sites/site',
       state:data,
     }
-    history.push(path)
+    this.props.history.push(path)
   }
   render() {
   

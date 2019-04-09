@@ -21,12 +21,12 @@ export default class Site extends Component {
     });
   };
   //在render函数调用前判断：如果前后state中Number不变，通过return false阻止render调用
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   debugger;
-  //   if (nextState.Number === this.state.Number) {
-  //     return false;
-  //   }
-  // }
+  shouldComponentUpdate(nextProps, nextState) {
+    debugger;
+    if (nextState.Number === this.state.Number) {
+      return false;
+    }
+  }
 
   render() {
     //当render函数被调用时，打印当前的Number
@@ -34,13 +34,13 @@ export default class Site extends Component {
     return (
       <div className="site">
         this is site2~
-        <a
+        <h2
           href="javascript:;"
           onClick={this.handleClick}
           style={{ margin: 30 }}
         >
           {this.state.Number}
-        </a>
+        </h2>
         <DatePicker />
       </div>
     );
