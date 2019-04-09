@@ -6,9 +6,14 @@ import history from "router/history";
 import intl from "react-intl-universal";
 
 class Project extends Component {
+  constructor(props){
+    super(props);
+
+  }
   componentDidMount() {
     axios.post("/php/test.php", {});
   }
+
 
   jump = () => {
     var data = { id: 3, name: "1", age: 36 };

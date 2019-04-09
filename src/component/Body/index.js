@@ -1,10 +1,11 @@
-import { Layout } from "antd";
+import { Layout, Spin } from "antd";
 import Header from "component/header/index";
 import Sider from "component/Sider/index";
 import { Route } from "react-router-dom";
 import RouterMap from "router/routerMap";
 import history from "router/history";
-
+import intl from "react-intl-universal";
+import langs from "../../cn.json";
 const { Content } = Layout;
 
 class Index extends Component {
@@ -13,11 +14,18 @@ class Index extends Component {
     this.state = {
       collapsed: false,
       body: null,
-      code: null
+      code: null,
+      initDone: true
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    //国际化初始
+    intl.init({
+      currentLocale: "zh-CN",
+      locales: { "zh-CN": langs }
+    });
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps) {
@@ -36,7 +44,8 @@ class Index extends Component {
         this.setState({
           code: code
         });
-      } 
+      }
+      this.setState({ initDone: false });
     }
   }
 
@@ -69,7 +78,6 @@ class Index extends Component {
         />
         <Layout style={{ height: "100%" }}>
           <Sider collapsed={this.state.collapsed} content={this.state.body} />
-
           <Content
             style={{
               margin: "10px",
@@ -78,7 +86,9 @@ class Index extends Component {
               borderRadius: 4
             }}
           >
-            <Route component={RouterMap[this.state.code]} />
+            <Spin spinning={this.state.initDone}>
+              <Route component={RouterMap[this.state.code]} />
+            </Spin>
           </Content>
         </Layout>
       </Layout>

@@ -32,7 +32,7 @@ class Index extends Component {
     }
   }
 
-  currentPos = url => {
+  currentPos(url) {
     window.sessionStorage.setItem("currentUrl", url);
   };
 
