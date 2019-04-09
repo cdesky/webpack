@@ -10,20 +10,12 @@ class Index extends Component {
     this.state = { selectedItem: null };
   }
 
-
   componentWillReceiveProps(nextProps) {
     if (nextProps) {
-      if (window.sessionStorage.getItem("currentUrl")) {
-        let url = window.sessionStorage.getItem("currentUrl");
+      let url = window.sessionStorage.getItem("currentUrl");
+      if (url) {
         let len = url.split("/").length,
           pathname = url.split("/");
-        let selectedKey = pathname[len - 1];
-        this.setState({
-          selectedItem: selectedKey
-        });
-      } else {
-        let len = history.location.pathname.split("/").length,
-          pathname = history.location.pathname.split("/");
         let selectedKey = pathname[len - 1];
         this.setState({
           selectedItem: selectedKey
@@ -34,7 +26,7 @@ class Index extends Component {
 
   currentPos(url) {
     window.sessionStorage.setItem("currentUrl", url);
-  };
+  }
 
   render() {
     // let siderBar = this.props.content;

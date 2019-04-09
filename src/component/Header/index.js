@@ -1,6 +1,6 @@
 import { Layout, Menu, Icon, message, Dropdown } from "antd";
-import history from "router/history";
 import intl from 'react-intl-universal';
+import history from "router/history";
 import cn from '../../cn.json';
 import en from '../../en.json';
 
@@ -19,6 +19,7 @@ class Index extends Component {
       }, 2000);
       return;
     }
+    
     this.props.content(nav[0].children);
   }
 

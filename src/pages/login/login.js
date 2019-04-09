@@ -21,7 +21,7 @@ class Login extends Component {
           menu.data[0] ? menu.data[0].children[0] : menu.data[0]
         );
         window.sessionStorage.setItem("menuList", JSON.stringify(menu.data));
-
+        window.sessionStorage.setItem('currentUrl',menuRes);
         history.push(menuRes);
       })
       .catch(e => {

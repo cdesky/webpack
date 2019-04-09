@@ -3,10 +3,6 @@ import "antd/dist/antd.min.css";
 import "../common/common.css";
 import RouterMap from "./routerMap";
 import hashHistory from "router/history";
-import { Component } from "react";
-// import intl from "react-intl-universal";
-// import langs from "../cn.json";
-console.log("hashHistory", hashHistory);
 
 function Main() {
   let children = JSON.parse(window.sessionStorage.getItem("menuList"));
@@ -42,21 +38,10 @@ function Main() {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // initDone: false
-    };
+    
   }
 
-  componentDidMount() {
-    //国际化初始
-    // intl.init({
-    //   currentLocale: "zh-CN",
-    //   locales: { "zh-CN": langs }
-    // });
-    // this.setState({ initDone: true});
-  }
 
-  
   render() {
     return (
         <Router history={hashHistory}>
