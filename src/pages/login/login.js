@@ -1,16 +1,14 @@
-import { Icon, Button } from "antd";
+import { Icon, Button, message } from "antd";
 import "./login.less";
 import history from "router/history";
 import menu from "router/menu";
+
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
-  componentDidMount() {}
-
-  login=()=>{
+  login = () => {
     axios
       .post("/php/test.php", {
         params: {
@@ -18,31 +16,18 @@ class Login extends Component {
           passWord: $.trim($(".pwd").val())
         }
       })
-      .then(() => { 
+      .then(() => {
         let menuRes = this.menuFirst(
           menu.data[0] ? menu.data[0].children[0] : menu.data[0]
         );
         window.sessionStorage.setItem("menuList", JSON.stringify(menu.data));
+        window.sessionStorage.setItem('currentUrl',menuRes);
         history.push(menuRes);
       })
-      .catch(error => {
-        console.log(error);
+      .catch(e => {
+        message.error(e.response.status + "错误");
       });
-    // $.post(
-    //   "/php/test.php",
-    //   {
-    //     userName: $.trim($(".uName").val()),
-    //     passWord: $.trim($(".pwd").val())
-    //   },
-    //   () => {
-    //     let menuRes = this.menuFirst(
-    //       menu.data[0] ? menu.data[0].children[0] : menu.data[0]
-    //     );
-    //     window.sessionStorage.setItem("menuList", JSON.stringify(menu.data));
-    //     history.push(menuRes);
-    //   }
-    // );
-  }
+  };
 
   //登录成功后  跳转到 第一个导航栏目
   menuFirst(menu) {

@@ -52,7 +52,7 @@ body {
 }
 
 .header {position: relative;}
-.logout {position: absolute;top:22px;right:22px;cursor: pointer;color: #fff;}
+.appAction {position: absolute;top:0;right:8px;cursor: pointer;color: #fff;}
 
 .demo-icon {
   font-family: "fontello";

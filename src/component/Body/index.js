@@ -1,10 +1,11 @@
-import { Layout } from "antd";
+import { Layout, Spin } from "antd";
 import Header from "component/header/index";
 import Sider from "component/Sider/index";
 import { Route } from "react-router-dom";
 import RouterMap from "router/routerMap";
-import history from "router/history";
-
+// import history from "router/history";
+import intl from "react-intl-universal";
+import langs from "../../cn.json";
 const { Content } = Layout;
 
 class Index extends Component {
@@ -13,31 +14,33 @@ class Index extends Component {
     this.state = {
       collapsed: false,
       body: null,
-      code: null
+      code: null,
+      initDone: false
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    //国际化初始
+    intl.init({
+      currentLocale: "zh-CN",
+      locales: { "zh-CN": langs }
+    });
+  }
 
   componentWillReceiveProps(nextProps) {
-    // if (nextProps) {
-    //   if (window.sessionStorage.getItem("currentUrl")) {
-    //     let url = window.sessionStorage.getItem("currentUrl");
-    //     let len = url.split("/").length,
-    //       pathname = url.split("/");
-    //     let code = pathname[len - 1]; //获取到点击的是哪个导航  然后去跳转相应的页面
-    //     this.setState({
-    //       code: code
-    //     });
-    //   } else {
-        let len = history.location.pathname.split("/").length,
-          pathname = history.location.pathname.split("/");
-        let code = pathname[len - 1];
+    if (nextProps) {
+      let url = window.sessionStorage.getItem("currentUrl");
+      if (url) {
+        let len = url.split("/").length,
+          pathname = url.split("/");
+        let code = pathname[len - 1]; //获取到点击的是哪个导航  然后去跳转相应的页面
         this.setState({
           code: code
         });
-    //   }
-    // }
+      }
+
+      this.setState({ initDone: true });
+    }
   }
 
   toggle() {
@@ -48,11 +51,7 @@ class Index extends Component {
 
   //拿到父级点击返回的左侧树
   content(val) {
-    let url = "";
-    if (val) {
-      url = val[0].children[0] ? val[0].children[0].url : val[0].url;
-      history.push(url);
-    }
+    this.props.history.push(window.sessionStorage.getItem("currentUrl"));
 
     this.setState({
       body: val
@@ -69,7 +68,6 @@ class Index extends Component {
         />
         <Layout style={{ height: "100%" }}>
           <Sider collapsed={this.state.collapsed} content={this.state.body} />
-
           <Content
             style={{
               margin: "10px",
@@ -78,7 +76,9 @@ class Index extends Component {
               borderRadius: 4
             }}
           >
-            <Route exact component={RouterMap[this.state.code]} />
+            <Spin spinning={this.state.initDone}>
+              <Route component={RouterMap[this.state.code]} />
+            </Spin>
           </Content>
         </Layout>
       </Layout>
