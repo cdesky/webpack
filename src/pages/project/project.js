@@ -37,10 +37,10 @@ class Project extends Component {
         if (info.file.status !== "uploading") {
           console.log(info.file, info.fileList);
         }
-        if (info.file.response.success === true) {
+        if (info.file.response&&info.file.response.success === true) {
           console.log("info", info);
           message.success(info.file.response.data);
-        } else if (info.file.response.success === false) {
+        } else if (info.file.response&&info.file.response.success === false) {
           message.error(info.file.response.data);
         }
       }

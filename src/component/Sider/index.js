@@ -1,5 +1,6 @@
 import { Layout, Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
+import history from "router/history";
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -11,18 +12,38 @@ class Index extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps) {
-      let url = window.sessionStorage.getItem("currentUrl");
-      if (url) {
-        let len = url.split("/").length,
-          pathname = url.split("/");
-        let selectedKey = pathname[len - 1];
-        this.setState({
-          selectedItem: selectedKey
-        });
-      }
+      // let url = window.sessionStorage.getItem("currentUrl");
+      // if (url) {
+      //   let len = url.split("/").length,
+      //     pathname = url.split("/");
+      //   let selectedKey = pathname[len - 1];
+      //   this.setState({
+      //     selectedItem: selectedKey
+      //   });
+      // }
+      // debugger
+      let len = history.location.pathname.split("/").length,
+      pathname = history.location.pathname.split("/");
+      let selectedKey = pathname[len - 1];
+      this.setState({
+        selectedItem: selectedKey
+      });
     }
   }
 
+  shouldComponentUpdate(a,b){ 
+    console.log('history',a,b);
+    // let len = history.location.pathname.split("/").length,
+    // pathname = history.location.pathname.split("/");
+    // let selectedKey = pathname[len - 1];
+    // this.setState({
+    //   selectedItem: selectedKey
+    // });
+    return true;
+  }
+
+  
+  
   currentPos(url) {
     window.sessionStorage.setItem("currentUrl", url);
   }
