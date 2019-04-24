@@ -1,0 +1,156 @@
+[
+	{
+		"levelTaskName": "CCP",
+		"totalHours": 30,
+		"deptName": [],
+		"children": [
+			{
+				"levelTaskName": "系统服务",
+				"totalHours": 13,
+				"deptName": [],
+				"children": [
+					{
+						"levelTaskName": "内部启动会",
+						"totalHours": 6,
+						"deptName": [
+							"产品",
+							"项目",
+							"技术中心",
+							"业务"
+						],
+						"children": []
+					},
+					{
+						"levelTaskName": "项目启动会",
+						"totalHours": 7,
+						"deptName": [
+							"项目"
+						],
+						"children": []
+					}
+				]
+			},
+			{
+				"levelTaskName": "其他1",
+				"totalHours": 9,
+				"deptName": [],
+				"children": [
+					{
+						"levelTaskName": "内部培训",
+						"totalHours": 9,
+						"deptName": [
+							"项目"
+						],
+						"children": []
+					}
+				]
+			},
+			{
+				"levelTaskName": "技术支持",
+				"totalHours": 8,
+				"deptName": [],
+				"children": [
+					{
+						"levelTaskName": "编程",
+						"totalHours": 8,
+						"deptName": [
+							"技术中心"
+						],
+						"children": []
+					}
+				]
+			}
+		]
+	},
+	{
+		"levelTaskName": "CTMS",
+		"totalHours": 21,
+		"deptName": [],
+		"children": [
+			{
+				"levelTaskName": "系统服务",
+				"totalHours": 13,
+				"deptName": [],
+				"children": [
+					{
+						"levelTaskName": "内部启动会",
+						"totalHours": 6,
+						"deptName": [
+							"产品"
+						],
+						"children": []
+					},
+					{
+						"levelTaskName": "项目启动会",
+						"totalHours": 7,
+						"deptName": [
+							"项目"
+						],
+						"children": []
+					}
+				]
+			},
+			{
+				"levelTaskName": "项目相关",
+				"totalHours": 8,
+				"deptName": [],
+				"children": [
+					{
+						"levelTaskName": "对外支持",
+						"totalHours": 8,
+						"deptName": [
+							"业务"
+						],
+						"children": []
+					}
+				]
+			}
+		]
+	},
+	{
+		"levelTaskName": "PV服务",
+		"totalHours": 29,
+		"deptName": [],
+		"children": [
+			{
+				"levelTaskName": "药物警戒体系说明",
+				"totalHours": 29,
+				"deptName": [],
+				"children": [
+					{
+						"levelTaskName": "人员及组织",
+						"totalHours": 6,
+						"deptName": [
+							"项目"
+						],
+						"children": []
+					},
+					{
+						"levelTaskName": "临床研究阶段PV体系SOP",
+						"totalHours": 7,
+						"deptName": [
+							"项目"
+						],
+						"children": []
+					},
+					{
+						"levelTaskName": "基础设施建设咨询",
+						"totalHours": 8,
+						"deptName": [
+							"项目"
+						],
+						"children": []
+					},
+					{
+						"levelTaskName": "药物安全管理委员会工作职责咨询",
+						"totalHours": 8,
+						"deptName": [
+							"业务"
+						],
+						"children": []
+					}
+				]
+			}
+		]
+	}
+]

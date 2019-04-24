@@ -1,4 +1,4 @@
-import { Layout, Spin } from "antd";
+import { Layout } from "antd";
 import Header from "component/header/index";
 import Sider from "component/Sider/index";
 import { Route } from "react-router-dom";
@@ -28,7 +28,6 @@ class Index extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    debugger;
     if (nextProps) {
       let url = window.sessionStorage.getItem("currentUrl");
       if (url) {
