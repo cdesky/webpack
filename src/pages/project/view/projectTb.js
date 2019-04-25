@@ -1,10 +1,35 @@
 import { Table } from "antd";
 import tableData from "./other.json";
+import row from './table.json';
 
 export default class ProjectTb extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount(){
+    this.getCol(row);
+  }
+
+  getCol=(rows)=>{
+    for (const item of rows) {
+      let ary={};
+      let a=1;
+      for (const key in item) {
+        if (item.hasOwnProperty(key)) {
+          // debugger;
+          ary[key+(a++)]=item[key];
+          this.getCol(item['child'])
+          // if(key==='child')
+          // {
+          //   item['child'].length>0 ? this.getCol(item['child']) : []
+          // }
+        }
+      }
+      
+      console.log('aaaa',ary);
+    }
   }
 
   render() {
