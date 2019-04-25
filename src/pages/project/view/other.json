@@ -1,0 +1,63 @@
+[
+  {
+    "levelTaskName": "CCP",
+    "totalHours": 30,
+    "rowSpan": 4,
+    "deptName": [],
+
+    "levelTaskName2": "系统服务",
+    "totalHours2": 13,
+    "deptName2": [],
+    "rowSpan2": 2,
+
+    "levelTaskName3": "内部启动会",
+    "totalHours3": 6,
+    "rowSpan3": 0,
+    "deptName3": ["产品", "项目", "技术中心", "业务"]
+  },
+  {
+    "levelTaskName": "CCP",
+    "totalHours": 30,
+    "rowSpan": 0,
+    "deptName": [],
+
+    "levelTaskName2": "系统服务",
+    "totalHours2": 116,
+    "deptName2": [],
+    "rowSpan2": 0,
+
+    "levelTaskName3": "项目启动会",
+    "totalHours3": 6,
+    "deptName3": ["项目"]
+  },
+  {
+    "levelTaskName": "CCP",
+    "totalHours": 30,
+    "rowSpan": 0,
+    "deptName": [],
+
+    "levelTaskName2": "其他1",
+    "totalHours2": 43,
+    "deptName2": [],
+    "rowSpan2": 1,
+
+    "levelTaskName3": "内部培训",
+    "totalHours3": 6,
+    "deptName3": ["产品", "项目"]
+  },
+  {
+    "levelTaskName": "CCP",
+    "totalHours": 30,
+    "rowSpan": 0,
+    "deptName": [],
+
+    "levelTaskName2": "技术支持",
+    "totalHours2": 22,
+    "deptName2": [],
+    "rowSpan2": 1,
+
+    "levelTaskName3": "编程",
+    "totalHours3": 6,
+    "deptName3": ["产品", "项目"]
+  }
+]

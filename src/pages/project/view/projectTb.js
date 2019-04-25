@@ -1,5 +1,5 @@
 import { Table } from "antd";
-import tableData from "./table.json";
+import tableData from "./other.json";
 
 export default class ProjectTb extends Component {
   constructor(props) {
@@ -8,119 +8,107 @@ export default class ProjectTb extends Component {
   }
 
   render() {
-    // const renderContent = (value) => {
-    //   const obj = {
-    //     children: value,
-    //     props: {}
-    //   };
-    //   // if (index === 4) {
-    //   //   obj.props.colSpan = 0;
-    //   // }
-    //   return obj;
-    // };
-
+    const renderContent = (value, row) => {
+      const obj = {
+        children: value,
+        props: {
+          rowSpan: row.rowSpan
+        }
+      };
+      return obj;
+    };
+ 
     const columns = [
       {
-        key:'ff1',
         title: "一级任务",
         dataIndex: "firstTask",
-        // colSpan: 2,
-        children:[{
-          key:'f1',
-          title:"任务名称",
-          dataIndex:"FlevelTaskName",
-          render:(value, row, index) => {
-            const obj = {
-              children: value,
-              props: {},
-            };
-            if(index===0)
-              obj.props.rowSpan=4;
-            
-              return obj;
+        children: [
+          {
+            title: "任务名称",
+            dataIndex: "levelTaskName",
+            render: renderContent
+          },
+          {
+            title: "合计",
+            dataIndex: "totalHours",
+            render: renderContent
           }
-           
-        },
-        {
-          key:'f2',
-          title:"合计",
-          dataIndex:"FtotalHours"
-        }]
-        // render: (text, row, index) => {
-        //   // return <a href="javascript:;">{text}</a>;
-        //   if (index < 4) {
-        //     return <a href="javascript:;">{text}</a>;
-        //   }
-        //   return {
-        //     children: <a href="javascript:;">{text}</a>,
-        //     // props: {
-        //     //   colSpan: 5
-        //     // }
-        //   };
-        // }
+        ],
+        render: renderContent
       },
       {
-        key:'ff2',
         title: "二级任务",
         dataIndex: "secondTask",
-        // colSpan: 2,
-        children:[{
-          key:'s1',
-          title:"任务名称",
-          dataIndex:"SlevelTaskName"
-        },
-        {
-          key:'s2',
-          title:"合计",
-          dataIndex:"StotalHours"
-        }],
-        // render:(value, row, index) => {
-        //   const obj = {
-        //     children: value,
-        //     props: {},
-        //   };
-        //   if(index===0)
-        //     obj.props.rowSpan=4;
-          
-        //     return obj;
-        // }
+        children: [
+          {
+            title: "任务名称",
+            dataIndex: "levelTaskName2",
+            render: (value,row)=>{
+              const obj = {
+                children: value,
+                props: {
+                  rowSpan: row.rowSpan2
+                }
+              };
+              return obj;
+            }
+        
+          },
+          {
+            title: "合计",
+            dataIndex: "totalHours2",
+            render: (value,row)=>{
+              const obj = {
+                children: value,
+                props: {
+                  rowSpan: row.rowSpan2
+                }
+              };
+              return obj;
+            }
+          }
+        ]
       },
       {
-        key:'ff3',
         title: "三级任务",
-        // colSpan: 3,
         dataIndex: "thirdTask",
-        children:[{
-          key:'t1',
-          title:"任务名称",
-          dataIndex:"TlevelTaskName",
-          // render:(value, row, index) => {
-          //   const obj = {
-          //     children: value,
-          //     props: {},
-          //   };
-          //   if(index===0)
-          //     obj.props.rowSpan=4;
-            
-          //     return obj;
-          // }
-        },
-        {
-          key:'t2',
-          title:"合计",
-          dataIndex:"TtotalHours"
-        },
-        {
-          key:'t3',
-          title:"部门",
-          dataIndex:"TdeptName"
-        }]
-       
+        children: [
+          {
+            title: "任务名称",
+            dataIndex: "levelTaskName3",
+            render: text => {
+              return text;
+            }
+          },
+          {
+            title: "合计",
+            dataIndex: "totalHours3",
+            render: text => {
+              return text;
+            }
+          },
+          {
+            title: "部门",
+            dataIndex: "deptName3",
+            render: text => {
+              return text.join("、");
+            }
+          }
+        ]
       }
     ];
 
-    const data =tableData;
+    const data = tableData;
 
-    return <Table columns={columns} dataSource={data} bordered defaultExpandAllRows={true}/>;
+    return (
+      <Table
+        rowKey="tables"
+        rowKey={(record, index) => index}
+        columns={columns}
+        dataSource={data}
+        bordered
+        defaultExpandAllRows={true}
+      />
+    );
   }
 }

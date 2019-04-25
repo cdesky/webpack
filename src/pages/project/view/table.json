@@ -3,12 +3,12 @@
 		"levelTaskName": "CCP",
 		"totalHours": 30,
 		"deptName": [],
-		"children": [
+		"child": [
 			{
 				"levelTaskName": "系统服务",
 				"totalHours": 13,
 				"deptName": [],
-				"children": [
+				"child": [
 					{
 						"levelTaskName": "内部启动会",
 						"totalHours": 6,
@@ -18,7 +18,7 @@
 							"技术中心",
 							"业务"
 						],
-						"children": []
+						"child": []
 					},
 					{
 						"levelTaskName": "项目启动会",
@@ -26,7 +26,7 @@
 						"deptName": [
 							"项目"
 						],
-						"children": []
+						"child": []
 					}
 				]
 			},
@@ -34,14 +34,14 @@
 				"levelTaskName": "其他1",
 				"totalHours": 9,
 				"deptName": [],
-				"children": [
+				"child": [
 					{
 						"levelTaskName": "内部培训",
 						"totalHours": 9,
-						"deptName": [
+						"deptName3": [
 							"项目"
 						],
-						"children": []
+						"child": []
 					}
 				]
 			},
@@ -49,14 +49,14 @@
 				"levelTaskName": "技术支持",
 				"totalHours": 8,
 				"deptName": [],
-				"children": [
+				"child": [
 					{
 						"levelTaskName": "编程",
 						"totalHours": 8,
 						"deptName": [
 							"技术中心"
 						],
-						"children": []
+						"child": []
 					}
 				]
 			}
@@ -66,19 +66,19 @@
 		"levelTaskName": "CTMS",
 		"totalHours": 21,
 		"deptName": [],
-		"children": [
+		"child1": [
 			{
 				"levelTaskName": "系统服务",
 				"totalHours": 13,
 				"deptName": [],
-				"children": [
+				"child1": [
 					{
 						"levelTaskName": "内部启动会",
 						"totalHours": 6,
 						"deptName": [
 							"产品"
 						],
-						"children": []
+						"child1": []
 					},
 					{
 						"levelTaskName": "项目启动会",
@@ -86,7 +86,7 @@
 						"deptName": [
 							"项目"
 						],
-						"children": []
+						"child1": []
 					}
 				]
 			},
@@ -94,14 +94,14 @@
 				"levelTaskName": "项目相关",
 				"totalHours": 8,
 				"deptName": [],
-				"children": [
+				"child1": [
 					{
 						"levelTaskName": "对外支持",
 						"totalHours": 8,
 						"deptName": [
 							"业务"
 						],
-						"children": []
+						"child1": []
 					}
 				]
 			}
@@ -111,19 +111,19 @@
 		"levelTaskName": "PV服务",
 		"totalHours": 29,
 		"deptName": [],
-		"children": [
+		"child1": [
 			{
 				"levelTaskName": "药物警戒体系说明",
 				"totalHours": 29,
 				"deptName": [],
-				"children": [
+				"child1": [
 					{
 						"levelTaskName": "人员及组织",
 						"totalHours": 6,
 						"deptName": [
 							"项目"
 						],
-						"children": []
+						"child1": []
 					},
 					{
 						"levelTaskName": "临床研究阶段PV体系SOP",
@@ -131,7 +131,7 @@
 						"deptName": [
 							"项目"
 						],
-						"children": []
+						"child1": []
 					},
 					{
 						"levelTaskName": "基础设施建设咨询",
@@ -139,7 +139,7 @@
 						"deptName": [
 							"项目"
 						],
-						"children": []
+						"child1": []
 					},
 					{
 						"levelTaskName": "药物安全管理委员会工作职责咨询",
@@ -147,7 +147,7 @@
 						"deptName": [
 							"业务"
 						],
-						"children": []
+						"child1": []
 					}
 				]
 			}
