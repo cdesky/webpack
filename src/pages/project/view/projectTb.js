@@ -15,17 +15,17 @@ export default class ProjectTb extends Component {
   getCol=(rows)=>{
     for (const item of rows) {
       let ary={};
-      let a=1;
-      for (const key in item) {
-        if (item.hasOwnProperty(key)) {
+      let a=0;
+      for (const key in item) { 
+        // if (item.hasOwnProperty(key)) {
           // debugger;
-          ary[key+(a++)]=item[key];
+          ary[key+(++a)]=item[key];
           this.getCol(item['child'])
           // if(key==='child')
           // {
           //   item['child'].length>0 ? this.getCol(item['child']) : []
           // }
-        }
+        // }
       }
       
       console.log('aaaa',ary);
@@ -33,15 +33,15 @@ export default class ProjectTb extends Component {
   }
 
   render() {
-    const renderContent = (value, row) => {
-      const obj = {
-        children: value,
-        props: {
-          rowSpan: row.rowSpan
-        }
-      };
-      return obj;
-    };
+    // const renderContent = (value, row) => {
+    //   const obj = {
+    //     children: value,
+    //     props: {
+    //       rowSpan: row.rowSpan
+    //     }
+    //   };
+    //   return obj;
+    // };
  
     const columns = [
       {
@@ -51,15 +51,30 @@ export default class ProjectTb extends Component {
           {
             title: "任务名称",
             dataIndex: "levelTaskName",
-            render: renderContent
+            render: (value,row)=>{
+              const obj = {
+                children: value,
+                props: {
+                  rowSpan: row.rowSpan
+                }
+              };
+              return obj;
+            }
           },
           {
             title: "合计",
             dataIndex: "totalHours",
-            render: renderContent
+            render: (value,row)=>{
+              const obj = {
+                children: value,
+                props: {
+                  rowSpan: row.rowSpan
+                }
+              };
+              return obj;
+            }
           }
-        ],
-        render: renderContent
+        ]
       },
       {
         title: "二级任务",

@@ -3,6 +3,7 @@ const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 const UglifyJs = require("uglifyjs-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin"); //目标生成的目录  先清空再生成文件
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(common, {
   entry: {
@@ -74,6 +75,9 @@ module.exports = merge(common, {
   plugins: [ 
     new CleanWebpackPlugin({
       cleanAfterEveryBuildPatterns:["dist"]
-    })
+    }),
+    new CopyWebpackPlugin([
+      { from: path.join(__dirname,'src/webpack/webpdf/'), to:  path.join(__dirname,'dist/assets/webpdf/') }
+    ])
   ]
 });

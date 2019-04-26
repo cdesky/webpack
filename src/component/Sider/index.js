@@ -77,9 +77,9 @@ class Index extends Component {
                   <SubMenu
                     key={"sub" + (y + 1)}
                     title={
-                      <span>
+                      <span className="sub">
                         <Icon type={val.icon} />
-                        {val.name}
+                        <span>{val.name}</span>
                       </span>
                     }
                   >
