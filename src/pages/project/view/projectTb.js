@@ -1,6 +1,6 @@
 import { Table } from "antd";
 import tableData from "./other.json";
-import row from './table.json';
+import row from "./table.json";
 
 export default class ProjectTb extends Component {
   constructor(props) {
@@ -8,15 +8,15 @@ export default class ProjectTb extends Component {
     this.state = {};
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getCol(row);
   }
 
-  getCol=(rows)=>{ 
+  getCol = rows => {
     // for (const item of rows) {
     //   let ary={};
     //   let a=0;
-    //   for (const key in item) { 
+    //   for (const key in item) {
     //     // if (item.hasOwnProperty(key)) {
     //       // debugger;
     //       ary[key+(++a)]=item[key];
@@ -27,31 +27,28 @@ export default class ProjectTb extends Component {
     //       // }
     //     // }
     //   }
-      
+
     //   console.log('aaaa',ary);
     // }
-     
-    let ary=[];
-    rows.map((x,y) => {
-      for(const key in x ) 
-      { 
-        let obj={};
-        if(key!=='child')
-        {
-          obj[key+(y+1)]=x[key];
+
+    let ary = [];
+    rows.map((x, y) => {
+      let obj = {};
+      for (const key in x) {
+        if (key !== "child") {
+          obj[key + (y + 1)] = x[key];
           // ary.push({
           //   [key]:x[key]
           // });
           ary.push(obj);
         }
       }
-      // this.getCol(x.child);
+      this.getCol(x.child);
     });
-    console.log('111',ary);
-  }
+    console.log("111", ary);
+  };
 
   render() {
-    
     const columns = [
       {
         title: "一级任务",
@@ -60,7 +57,7 @@ export default class ProjectTb extends Component {
           {
             title: "任务名称",
             dataIndex: "levelTaskName",
-            render: (value,row)=>{
+            render: (value, row) => {
               const obj = {
                 children: value,
                 props: {
@@ -73,7 +70,7 @@ export default class ProjectTb extends Component {
           {
             title: "合计",
             dataIndex: "totalHours",
-            render: (value,row)=>{
+            render: (value, row) => {
               const obj = {
                 children: value,
                 props: {
@@ -92,7 +89,7 @@ export default class ProjectTb extends Component {
           {
             title: "任务名称",
             dataIndex: "levelTaskName2",
-            render: (value,row)=>{
+            render: (value, row) => {
               const obj = {
                 children: value,
                 props: {
@@ -101,12 +98,11 @@ export default class ProjectTb extends Component {
               };
               return obj;
             }
-        
           },
           {
             title: "合计",
             dataIndex: "totalHours2",
-            render: (value,row)=>{
+            render: (value, row) => {
               const obj = {
                 children: value,
                 props: {
