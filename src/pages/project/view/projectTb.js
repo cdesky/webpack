@@ -12,37 +12,46 @@ export default class ProjectTb extends Component {
     this.getCol(row);
   }
 
-  getCol=(rows)=>{
-    for (const item of rows) {
-      let ary={};
-      let a=0;
-      for (const key in item) { 
-        // if (item.hasOwnProperty(key)) {
-          // debugger;
-          ary[key+(++a)]=item[key];
-          this.getCol(item['child'])
-          // if(key==='child')
-          // {
-          //   item['child'].length>0 ? this.getCol(item['child']) : []
-          // }
-        // }
-      }
+  getCol=(rows)=>{ 
+    // for (const item of rows) {
+    //   let ary={};
+    //   let a=0;
+    //   for (const key in item) { 
+    //     // if (item.hasOwnProperty(key)) {
+    //       // debugger;
+    //       ary[key+(++a)]=item[key];
+    //       this.getCol(item['child'])
+    //       // if(key==='child')
+    //       // {
+    //       //   item['child'].length>0 ? this.getCol(item['child']) : []
+    //       // }
+    //     // }
+    //   }
       
-      console.log('aaaa',ary);
-    }
+    //   console.log('aaaa',ary);
+    // }
+     
+    let ary=[];
+    rows.map((x,y) => {
+      for(const key in x ) 
+      { 
+        let obj={};
+        if(key!=='child')
+        {
+          obj[key+(y+1)]=x[key];
+          // ary.push({
+          //   [key]:x[key]
+          // });
+          ary.push(obj);
+        }
+      }
+      // this.getCol(x.child);
+    });
+    console.log('111',ary);
   }
 
   render() {
-    // const renderContent = (value, row) => {
-    //   const obj = {
-    //     children: value,
-    //     props: {
-    //       rowSpan: row.rowSpan
-    //     }
-    //   };
-    //   return obj;
-    // };
- 
+    
     const columns = [
       {
         title: "一级任务",
