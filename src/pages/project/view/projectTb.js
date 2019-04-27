@@ -13,9 +13,21 @@ export default class ProjectTb extends Component {
   }
 
   getCol = rows => {
-    rows.map((x) => {
-     
+    let arys=[];
+    rows.map((x,y) => {
+      let jsons={
+        ['levelTaskName'+y]:x.levelTaskName,
+        ['totalHours'+y]:x.totalHours,
+        ['deptName'+y]:x.deptName,
+      }
+      if(x.child.length>0)
+        {
+          this.getCol(x.child);
+        }
+        
+      arys.push(jsons);
     });
+    console.log(arys);
   };
 
   render() {
