@@ -13,39 +13,9 @@ export default class ProjectTb extends Component {
   }
 
   getCol = rows => {
-    // for (const item of rows) {
-    //   let ary={};
-    //   let a=0;
-    //   for (const key in item) {
-    //     // if (item.hasOwnProperty(key)) {
-    //       // debugger;
-    //       ary[key+(++a)]=item[key];
-    //       this.getCol(item['child'])
-    //       // if(key==='child')
-    //       // {
-    //       //   item['child'].length>0 ? this.getCol(item['child']) : []
-    //       // }
-    //     // }
-    //   }
-
-    //   console.log('aaaa',ary);
-    // }
-
-    let ary = [];
-    rows.map((x, y) => {
-      let obj = {};
-      for (const key in x) {
-        if (key !== "child") {
-          obj[key + (y + 1)] = x[key];
-          // ary.push({
-          //   [key]:x[key]
-          // });
-          ary.push(obj);
-        }
-      }
-      this.getCol(x.child);
+    rows.map((x) => {
+     
     });
-    console.log("111", ary);
   };
 
   render() {
