@@ -69,6 +69,22 @@
           ]
         }
       ]
+    },
+    {
+      "name": "论坛",
+      "url":"",
+      "code": "BBS",
+      "icon":"radar-chart",
+      "children": [
+        {
+          "name": "写文章",
+          "code": "publish",
+          "sort":3,
+          "url":"/app/bbs",
+          "icon":"branches",
+          "children": []
+        }
+      ]
     }
   ]
 }

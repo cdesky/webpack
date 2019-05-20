@@ -9,5 +9,6 @@ export default {
   dragTr2: Ac(() => import("pages/site/dragTr2")),
   projectDetail: Ac(() => import("pages/project/view/projectDetail")),
   table: Ac(() => import("pages/project/view/projectTb")),
-  resizeTable: Ac(() => import("pages/project/view/resizeTable"))
+  resizeTable: Ac(() => import("pages/project/view/resizeTable")),
+  bbsPublish: Ac(() => import("pages/bbs")),
 };
