@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 configs = {
   resolve: {
@@ -109,7 +110,10 @@ configs = {
       axios: "axios",
       Component: ["react", "Component"],
       $: "jquery"
-    })
+    }),
+    new CopyWebpackPlugin([
+      { from: path.resolve('./src/assets/'), to: path.resolve('./dist/assets/') }
+  ])
   ]
 };
 

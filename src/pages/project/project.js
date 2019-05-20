@@ -16,10 +16,9 @@ class Project extends Component {
 
 
   jump = () => {
-    // var data = { id: 3, name: "1", age: 36 };
     var path = {
       pathname: "/app/sites/site",
-      // state: data
+      query: { id: 1, name: "3", age: 36 }
     };
     window.sessionStorage.setItem('currentUrl',path.pathname);
     history.push(path);
@@ -46,10 +45,10 @@ class Project extends Component {
       }
     };
 
-    var data = { id: 3, name: "1", age: 36 };
+     
     var path = {
       pathname: "/app/sites/site",
-      state: data
+      state :  { id: 3, name: "4", age: 29 }
     };
     
     return (
