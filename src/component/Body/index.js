@@ -4,8 +4,6 @@ import Sider from "component/Sider/index";
 import { Route } from "react-router-dom";
 import RouterMap from "router/routerMap";
 import history from "router/history";
-import intl from "react-intl-universal";
-import langs from "../../cn.json";
 const { Content } = Layout;
 
 class Index extends Component {
@@ -20,11 +18,7 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    //国际化初始
-    intl.init({
-      currentLocale: "zh-CN",
-      locales: { "zh-CN": langs }
-    });
+   
   }
 
   componentWillReceiveProps(nextProps) {
