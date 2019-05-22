@@ -53,7 +53,11 @@ class Project extends Component {
     
     return (
       <div className="project">
-        this is Project~
+        this is Project~ 
+        <Link to={path}>hehe</Link>
+        <a href="javascript:;" onClick={this.jump} className='svg-wave'>
+          这是个点击的地方
+        </a>
         <Icon type="step-forward" />
         <Row>
           <Col span={12}>col-11</Col>
@@ -63,10 +67,7 @@ class Project extends Component {
           <div className="left">left</div>
           <div className="right">
             right
-            <Link to={path}>hehe</Link>
-            <a href="javascript:;" onClick={this.jump}>
-              aa
-            </a>
+           
           </div>
         </div>
         <PickerColor />

@@ -1,5 +1,5 @@
 import "./site.css";
-import { DatePicker, LocaleProvider } from "antd";
+import { DatePicker } from "antd";
 import { publicPath } from "../../../baseConfig.js";
 import moment from 'moment';
 moment.locale('en'); // default the locale to English
