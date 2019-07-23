@@ -1,6 +1,6 @@
 import "./site.css";
 import { DatePicker } from "antd";
-import { publicPath } from "../../../baseConfig.js";
+// import { publicPath } from "../../../baseConfig.js";
 import moment from 'moment';
 moment.locale('en'); // default the locale to English
 moment.locale('en', {
@@ -23,8 +23,7 @@ export default class Site extends Component {
 
   render() {
    
-    let alipay =
-      "https://pan-test.mobilemd.cn/landocview?target=aHR0cDovLzE5Mi4xNjguMTA0LjE0MDo4MC9kb2N2aWV3LzJhNDAxNWI0Yjg2MDk5NDE0MmU3NzE4NGZjMWY0YTkxZWJmNjUzMmFfMzBfMi5wZGY%3d";
+    // let alipay ="https://pan-test.mobilemd.cn/landocview?target=aHR0cDovLzE5Mi4xNjguMTA0LjE0MDo4MC9kb2N2aWV3LzJhNDAxNWI0Yjg2MDk5NDE0MmU3NzE4NGZjMWY0YTkxZWJmNjUzMmFfMzBfMi5wZGY%3d";
     return (
       <div className="site">
         {console.log("this.props.location", this.props.location)}
@@ -32,7 +31,7 @@ export default class Site extends Component {
         <a href="javascript:window.history.back(-1)">返回</a>
         <DatePicker />
         <WeekPicker onChange={this.onChange} />
-        <iframe
+        {/* <iframe
           src={`${publicPath}/assets/webpdf/viewer.html${alipay}`}
           width="100%"
           height="90%"
@@ -45,7 +44,7 @@ export default class Site extends Component {
           height="90%"
           className="viewImg"
           scrolling="no"
-        />
+        /> */}
       </div>
     );
   }

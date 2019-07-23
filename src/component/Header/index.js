@@ -26,7 +26,7 @@ class Index extends Component {
   //加载它的子级
   getChildren(url) {
     window.sessionStorage.setItem("leftMenu", JSON.stringify(url)); //左侧子级菜单
-    window.sessionStorage.setItem("currentUrl", url[0].children[0].url); //当前点击的路径
+    window.sessionStorage.setItem("currentUrl", url[0].children[0]!==undefined ? url[0].children[0].url :url[0].url); //当前点击的路径
     window.sessionStorage.setItem("currentPos", url[0].sort); //在第几个主导航
     this.props.content(url);
   }

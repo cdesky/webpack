@@ -12,8 +12,6 @@ class Index extends Component {
 
  
   render() {
-    
- 
     return (
       <section className="bbsContent">
         bbs 

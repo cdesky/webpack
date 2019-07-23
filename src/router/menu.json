@@ -84,7 +84,7 @@
       "children": [
         {
           "name": "写文章",
-          "code": "publish",
+          "code": "bbs",
           "sort":3,
           "url":"/app/bbs",
           "icon":"branches",
