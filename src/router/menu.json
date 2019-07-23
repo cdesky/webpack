@@ -30,6 +30,12 @@
               "code": "resizeTable",
               "url":"/app/projects/resizeTable",
               "children": []
+            },
+            {
+              "name": "表单多行保存",
+              "code": "mutiRowSave",
+              "url":"/app/projects/mutiRowSave",
+              "children": []
             }
           ]
         }

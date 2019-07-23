@@ -11,4 +11,5 @@ export default {
   table: Ac(() => import("pages/project/view/projectTb")),
   resizeTable: Ac(() => import("pages/project/view/resizeTable")),
   bbsPublish: Ac(() => import("pages/bbs")),
+  mutiRowSave: Ac(() => import("pages/project/view/mutiRowSave")),
 };
