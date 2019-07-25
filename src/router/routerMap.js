@@ -10,6 +10,6 @@ export default {
   projectDetail: Ac(() => import("pages/project/view/projectDetail")),
   table: Ac(() => import("pages/project/view/projectTb")),
   resizeTable: Ac(() => import("pages/project/view/resizeTable")),
-  bbsDiz: Ac(() => import("pages/bbs")),
-  mutiRowSave: Ac(() => import("pages/project/view/mutiRowSave")),
+  bbs: Ac(() => import("pages/bbs/bbs")), //如果导航是只有2级，那这里要配置3个才能实现选中与跳转页面
+  mouseMove: Ac(() => import("pages/project/view/mouseMove")),
 };

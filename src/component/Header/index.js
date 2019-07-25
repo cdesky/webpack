@@ -48,7 +48,7 @@ class Index extends Component {
   }
 
   render() {
-    console.log("header");
+    console.log("render在header");
     let nav = JSON.parse(window.sessionStorage.getItem("menuList"));
     let pos = window.sessionStorage.getItem("currentPos")
       ? window.sessionStorage.getItem("currentPos")

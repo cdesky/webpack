@@ -12,16 +12,7 @@ class Index extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps) {
-      // let url = window.sessionStorage.getItem("currentUrl");
-      // if (url) {
-      //   let len = url.split("/").length,
-      //     pathname = url.split("/");
-      //   let selectedKey = pathname[len - 1];
-      //   this.setState({
-      //     selectedItem: selectedKey
-      //   });
-      // }
-      // debugger
+       
       let len = history.location.pathname.split("/").length,
       pathname = history.location.pathname.split("/");
       let selectedKey = pathname[len - 1];
@@ -32,13 +23,7 @@ class Index extends Component {
   }
 
   shouldComponentUpdate(a,b){ 
-    console.log('history',a,b);
-    // let len = history.location.pathname.split("/").length,
-    // pathname = history.location.pathname.split("/");
-    // let selectedKey = pathname[len - 1];
-    // this.setState({
-    //   selectedItem: selectedKey
-    // });
+    console.log('history',a,b); 
     return true;
   }
 
