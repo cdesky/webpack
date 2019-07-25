@@ -11,7 +11,7 @@ class Index extends Component {
   render() {
     return (
       <section className="bbsContent">
-        fsdf bbs
+        开始你的表演
       </section>
     );
   }

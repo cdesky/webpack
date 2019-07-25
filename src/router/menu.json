@@ -87,7 +87,7 @@
           "code": "bbs",
           "sort":3,
           "url":"/app/bbs",
-          "icon":"branches",
+          "icon":"rocket",
           "children": []
         }
       ]

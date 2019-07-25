@@ -74,7 +74,7 @@ class Index extends Component {
                           <Menu.Item
                             key={x.code}
                             onClick={() => this.currentPos(x.url)}
-                          >
+                          > 
                             <Link to={x.url}>{x.name}</Link>
                           </Menu.Item>
                         );
@@ -83,8 +83,10 @@ class Index extends Component {
                 );
               } else {
                 return (
-                  <Menu.Item key={val.code}>
-                    <Link to={val.url}>{val.name}</Link>
+                  <Menu.Item key={val.code}> 
+                    <Link to={val.url}>
+                      <Icon type={val.icon} />{val.name}
+                    </Link>
                   </Menu.Item>
                 );
               }
