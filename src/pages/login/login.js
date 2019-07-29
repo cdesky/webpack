@@ -1,7 +1,9 @@
 import { Icon, Button, message } from "antd";
 import "./login.less";
 import history from "router/history";
-import menu from "router/menu";
+import menu from "router/menu";  
+import Sockjs from "./sockt.js";
+// import Stomp from "Stomp";
 
 class Login extends Component {
   constructor(props) {
@@ -40,6 +42,19 @@ class Login extends Component {
       }
     }
     return url;
+  }
+
+  componentDidMount() {
+    var socket = Sockjs('http://192.168.3.90:11744/gs-guide-websocket');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, (frame) => { 
+            console.log('Connected:' + frame); 
+            // 后端推送的地址
+            stompClient.subscribe('/topic/chat/', (response) => {
+                console.log('1111',response);
+                window.sessionStorage.setItem('sockResponse',response.body);
+            });
+        });
   }
 
   render() {
